@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simuluesi i Investimeve</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --accent-color: #2c5282;
+            --sp500-color: #3182ce;
+            --re-color: #dd6b20;
+            --bank-color: #718096;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 15px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .widget-container {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 25px;
+            max-width: 850px;
+            margin: 0 auto;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            box-sizing: border-box;
+        }
+
+        .widget-title {
+            text-align: center;
+            font-size: 1.4em;
+            color: var(--accent-color);
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .widget-subtitle {
+            text-align: center;
+            font-size: 0.9em;
+            color: #718096;
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+
+        .controls-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .control-group label {
+            font-weight: 600;
+            font-size: 0.88em;
+            margin-bottom: 6px;
+            color: #4a5568;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .control-group input[type="range"] {
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .result-card {
+            padding: 12px 8px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.85em;
+        }
+
+        .result-sp500 { background: #ebf8ff; color: var(--sp500-color); border: 1px solid #bee3f8; }
+        .result-re { background: #fffaf0; color: var(--re-color); border: 1px solid #feebc8; }
+        .result-bank { background: #edf2f7; color: var(--bank-color); border: 1px solid #e2e8f0; }
+
+        .result-value {
+            font-size: 1.35em;
+            display: block;
+            margin-top: 4px;
+        }
+
+        @media (max-width: 600px) {
+            .results-grid { grid-template-columns: 1fr; }
+            .widget-container { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="widget-container">
+    <div class="widget-title">Simulimi i Investimeve (Bursa vs. Betoni vs. Banka)</div>
+    <div class="widget-subtitle">Lëvizni parametrat për të parë ndryshimin e pasurisë ndër vite</div>
+    
+    <div class="controls-grid">
+        <div class="control-group">
+            <label>Investimi Fillestar ($)<span id="val-initial">10,000</span></label>
+            <input type="range" id="slider-initial" min="1000" max="100000" step="1000" value="10000">
+        </div>
+        <div class="control-group">
+            <label>Shtesa Mujore ($)<span id="val-monthly">200</span></label>
+            <input type="range" id="slider-monthly" min="0" max="2000" step="50" value="200">
+        </div>
+        <div class="control-group">
+            <label>Kthimi S&P 500 (%)<span id="val-sp">10.0%</span></label>
+            <input type="range" id="slider-sp" min="5" max="20" step="0.1" value="10.0">
+        </div>
+        <div class="control-group">
+            <label>Kthimi Pasuri Paluajtshme (%)<span id="val-re">6.1%</span></label>
+            <input type="range" id="slider-re" min="1" max="15" step="0.1" value="6.1">
+        </div>
+        <div class="control-group">
+            <label>Interesi Bankar/Bono (%)<span id="val-bank">2.4%</span></label>
+            <input type="range" id="slider-bank" min="0" max="10" step="0.1" value="2.4">
+        </div>
+        <div class="control-group">
+            <label>Vitet e Investimit<span id="val-years">30</span></label>
+            <input type="range" id="slider-years" min="1" max="40" step="1" value="30">
+        </div>
+    </div>
+
+    <canvas id="investmentChart" width="400" height="200"></canvas>
+
+    <div class="results-grid">
+        <div class="result-card result-sp500">
+            Vlera Finale: S&P 500
+            <span class="result-value" id="res-sp">...</span>
+        </div>
+        <div class="result-card result-re">
+            Vlera Finale: Shtëpia
+            <span class="result-value" id="res-re">...</span>
+        </div>
+        <div class="result-card result-bank">
+            Vlera Finale: Bankë/Bono
+            <span class="result-value" id="res-bank">...</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    const formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        maximumFractionDigits: 0
+    });
+
+    const inputs = ['initial', 'monthly', 'sp', 're', 'bank', 'years'];
+    const domEls = {};
+    inputs.forEach(id => {
+        domEls[id] = {
+            slider: document.getElementById(`slider-${id}`),
+            valText: document.getElementById(`val-${id}`)
+        };
+    });
+
+    function calculateCompound(initial, monthly, rate, years) {
+        let values = [];
+        let r = rate / 100 / 12;
+        let currentVal = initial;
+        for(let i=0; i<=years; i++) {
+            if(i===0) {
+                values.push(currentVal);
+            } else {
+                for(let m=0; m<12; m++) {
+                    currentVal = (currentVal + monthly) * (1 + r);
+                }
+                values.push(currentVal);
+            }
+        }
+        return values;
+    }
+
+    let myChart;
+    const ctx = document.getElementById('investmentChart').getContext('2d');
+    
+    function updateChart() {
+        const initial = parseFloat(domEls.initial.slider.value);
+        const monthly = parseFloat(domEls.monthly.slider.value);
+        const rateSP = parseFloat(domEls.sp.slider.value);
+        const rateRE = parseFloat(domEls.re.slider.value);
+        const rateBank = parseFloat(domEls.bank.slider.value);
+        const years = parseInt(domEls.years.slider.value);
+
+        domEls.initial.valText.innerText = formatter.format(initial);
+        domEls.monthly.valText.innerText = formatter.format(monthly);
+        domEls.sp.valText.innerText = rateSP.toFixed(1) + '%';
+        domEls.re.valText.innerText = rateRE.toFixed(1) + '%';
+        domEls.bank.valText.innerText = rateBank.toFixed(1) + '%';
+        domEls.years.valText.innerText = years;
+
+        const dataSP = calculateCompound(initial, monthly, rateSP, years);
+        const dataRE = calculateCompound(initial, monthly, rateRE, years);
+        const dataBank = calculateCompound(initial, monthly, rateBank, years);
+
+        const labels = Array.from({length: years + 1}, (_, i) => `Viti ${i}`);
+
+        document.getElementById('res-sp').innerText = formatter.format(dataSP[years]);
+        document.getElementById('res-re').innerText = formatter.format(dataRE[years]);
+        document.getElementById('res-bank').innerText = formatter.format(dataBank[years]);
+
+        if (myChart) {
+            myChart.data.labels = labels;
+            myChart.data.datasets[0].data = dataSP;
+            myChart.data.datasets[1].data = dataRE;
+            myChart.data.datasets[2].data = dataBank;
+            myChart.update();
+        } else {
+            myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Bursa (S&P 500)',
+                            data: dataSP,
+                            borderColor: '#3182ce',
+                            backgroundColor: 'rgba(49, 130, 206, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4,
+                            pointRadius: 0
+                        },
+                        {
+                            label: 'Pasuri e Paluajtshme',
+                            data: dataRE,
+                            borderColor: '#dd6b20',
+                            borderWidth: 3,
+                            fill: false,
+                            tension: 0.4,
+                            pointRadius: 0
+                        },
+                        {
+                            label: 'Banka / Bono',
+                            data: dataBank,
+                            borderColor: '#718096',
+                            borderWidth: 3,
+                            fill: false,
+                            tension: 0.4,
+                            pointRadius: 0
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) label += ': ';
+                                    if (context.parsed.y !== null) {
+                                        label += formatter.format(context.parsed.y);
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            ticks: {
+                                callback: function(value) {
+                                    if(value >= 1000000) return '$' + (value/1000000).toFixed(1) + 'M';
+                                    if(value >= 1000) return '$' + (value/1000).toFixed(0) + 'K';
+                                    return '$' + value;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+    inputs.forEach(id => {
+        domEls[id].slider.addEventListener('input', updateChart);
+    });
+
+    updateChart();
+</script>
+
+</body>
+</html>
