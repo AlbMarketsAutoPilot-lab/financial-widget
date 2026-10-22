@@ -3,8 +3,9 @@
 <!--
   KriTere.com - Blogger theme
   Before saving, search (Ctrl+F) for "REPLACE_" and swap every placeholder for your real value:
-    REPLACE_LOGO_URL               your logo image (PNG/SVG, roughly 200x200)
+    REPLACE_LOGO_URL               your logo image (square PNG/SVG, around 200x200)
     REPLACE_SHARE_IMAGE_URL        1200x630 image shown when the site is shared on social networks
+    REPLACE_STORY_PHOTO_URL        a photo of the original hand-drawn paper board (or any family game photo)
     REPLACE_DGM_YOUTUBE_ID         Don't Get Mad! trailer id (the part after watch?v=)
     REPLACE_DGM_WEB_URL            Don't Get Mad! web version
     REPLACE_DGM_MS_STORE_URL       Don't Get Mad! Microsoft Store page
@@ -18,7 +19,8 @@
 <head>
   <meta charset='UTF-8'/>
   <meta content='width=device-width, initial-scale=1' name='viewport'/>
-  <meta content='#FFD21F' name='theme-color'/>
+  <meta content='#0b0b0b' name='theme-color'/>
+  <script>document.documentElement.className += &#39; js&#39;;</script>
   <link expr:href='data:blog.blogspotFaviconUrl' rel='icon' type='image/x-icon'/>
   <link expr:href='data:blog.homepageUrl + &quot;feeds/posts/default&quot;' expr:title='data:blog.title + &quot; - Atom&quot;' rel='alternate' type='application/atom+xml'/>
 
@@ -27,7 +29,7 @@
 
   <link href='https://fonts.googleapis.com' rel='preconnect'/>
   <link crossorigin='anonymous' href='https://fonts.gstatic.com' rel='preconnect'/>
-  <link href='https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&amp;family=Nunito:wght@400;700;800&amp;display=swap' rel='stylesheet'/>
+  <link href='https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&amp;family=DM+Sans:opsz,wght@9..40,400..700&amp;family=Caveat:wght@600&amp;display=swap' rel='stylesheet'/>
 
   <b:if cond='data:view.isHomepage'>
     <title>KriTere - Family Board Games: Don&#39;t Get Mad! &amp; Kris Ann&#39;s Journey</title>
@@ -152,220 +154,261 @@
 
   <b:skin><![CDATA[
     :root {
+      --night: #0b0b0b;
+      --surface: #151515;
+      --surface-2: #1d1d1d;
+      --line: #2a2a2a;
       --yellow: #FFD21F;
-      --yellow-soft: #FFF4C2;
-      --black: #111111;
-      --ink: #1d1d1d;
-      --muted: #4d4d4d;
+      --yellow-deep: #F5C400;
       --white: #ffffff;
-      --radius: 22px;
-      --shadow: 6px 6px 0 var(--black);
-      --font-display: 'Fredoka', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-      --font-body: 'Nunito', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      --text: #f2f2f2;
+      --muted: #a8a8a8;
+      --ink: #111111;
+      --ink-muted: #4a4a4a;
+      --display: 'Bricolage Grotesque', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      --body: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      --hand: 'Caveat', 'Comic Sans MS', cursive;
+      --radius: 28px;
+      --ease: cubic-bezier(.2, .7, .2, 1);
     }
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-    body { margin: 0; background: var(--white); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.6; overflow-x: hidden; }
+    body { margin: 0; background: var(--night); color: var(--text); font: 400 17px/1.65 var(--body); overflow-x: clip; -webkit-font-smoothing: antialiased; }
     img { max-width: 100%; height: auto; display: block; }
     a { color: inherit; }
-    h1, h2, h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.1; }
-    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-    .skip-link { position: absolute; left: -999px; top: 8px; z-index: 100; background: var(--black); color: var(--yellow); padding: 10px 16px; border-radius: 10px; font-weight: 800; }
+    h1, h2, h3 { font-family: var(--display); font-weight: 800; letter-spacing: -.02em; line-height: 1.02; margin: 0; }
+    p { margin: 0; }
+    .wrap { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+    .skip-link { position: absolute; left: -999px; top: 8px; z-index: 100; background: var(--yellow); color: var(--ink); padding: 10px 16px; border-radius: 10px; font-weight: 700; }
     .skip-link:focus { left: 8px; }
-    :focus-visible { outline: 3px solid var(--black); outline-offset: 3px; }
-    .story :focus-visible, .site-footer :focus-visible { outline-color: var(--yellow); }
-    .hl { background: linear-gradient(transparent 58%, var(--yellow) 58%); padding: 0 .1em; }
+    :focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; border-radius: 6px; }
+    .light :focus-visible, .story :focus-visible { outline-color: var(--ink); }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; font: 700 13px/1 var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--yellow); }
+    .eyebrow::before { content: ''; width: 28px; height: 2px; background: currentColor; }
+    .js .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+    .js .reveal.in { opacity: 1; transform: none; }
 
     /* ---------- Header ---------- */
-    .site-header { position: sticky; top: 0; z-index: 50; background: var(--white); border-bottom: 3px solid var(--black); }
-    .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 72px; }
-    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--font-display); font-weight: 700; font-size: 26px; letter-spacing: .3px; }
-    .brand img { height: 46px; width: auto; }
-    .brand .tere { background: var(--yellow); border: 2px solid var(--black); border-radius: 8px; padding: 0 6px; margin-left: 1px; }
-    .main-nav { display: flex; align-items: center; gap: 4px; }
-    .main-nav a { text-decoration: none; font-weight: 800; padding: 8px 14px; border-radius: 999px; }
-    .main-nav a:hover { background: var(--yellow-soft); }
-    .main-nav .nav-cta { background: var(--black); color: var(--yellow); margin-left: 6px; white-space: nowrap; }
-    .main-nav .nav-cta:hover { background: var(--black); transform: translateY(-1px); }
+    .site-header { position: sticky; top: 0; z-index: 60; background: rgba(11,11,11,.78); -webkit-backdrop-filter: saturate(160%) blur(14px); backdrop-filter: saturate(160%) blur(14px); border-bottom: 1px solid rgba(255,255,255,.07); }
+    .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 70px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; font: 800 24px/1 var(--display); letter-spacing: -.02em; color: var(--white); }
+    .brand img { width: 40px; height: 40px; border-radius: 10px; object-fit: contain; }
+    .brand b { color: var(--yellow); }
+    .main-nav { display: flex; align-items: center; gap: 6px; }
+    .main-nav a { text-decoration: none; color: var(--muted); font-weight: 600; font-size: 15px; padding: 8px 14px; border-radius: 999px; transition: color .2s, background .2s; }
+    .main-nav a:hover { color: var(--white); background: rgba(255,255,255,.06); }
+    .main-nav .nav-cta { margin-left: 8px; background: var(--yellow); color: var(--ink); font-weight: 700; white-space: nowrap; }
+    .main-nav .nav-cta:hover { background: var(--white); color: var(--ink); }
 
     /* ---------- Buttons ---------- */
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 12px 22px; border: 3px solid var(--black); border-radius: 14px; font: 800 16px/1.2 var(--font-body); text-decoration: none; cursor: pointer; box-shadow: 4px 4px 0 var(--black); transition: transform .15s ease, box-shadow .15s ease, background .15s ease; }
-    .btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--black); }
-    .btn:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--black); }
-    .btn svg { width: 24px; height: 24px; flex: none; fill: currentColor; }
-    .btn .ico-stroke { fill: none; stroke: currentColor; }
-    .btn-black { background: var(--black); color: var(--yellow); }
-    .btn-white { background: var(--white); color: var(--black); }
-    .btn-yellow { background: var(--yellow); color: var(--black); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; padding: 0 26px; border-radius: 999px; border: 1.5px solid transparent; font: 700 16px/1 var(--body); text-decoration: none; cursor: pointer; transition: transform .25s var(--ease), background .2s, color .2s, border-color .2s, box-shadow .25s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--yellow); color: var(--ink); box-shadow: 0 10px 30px -10px rgba(255,210,31,.6); }
+    .btn-primary:hover { background: var(--white); }
+    .btn-ghost { border-color: rgba(255,255,255,.25); color: var(--white); }
+    .btn-ghost:hover { border-color: var(--white); }
+    .btn-dark { background: var(--ink); color: var(--white); }
+    .btn svg { width: 18px; height: 18px; fill: currentColor; }
 
     /* ---------- Hero ---------- */
-    .hero { position: relative; overflow: hidden; background: var(--yellow); border-bottom: 3px solid var(--black); }
-    .hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(0,0,0,.13) 2px, transparent 2.6px); background-size: 28px 28px; pointer-events: none; }
-    .hero .wrap { position: relative; display: grid; grid-template-columns: 1.25fr .75fr; gap: 40px; align-items: center; padding-top: 64px; padding-bottom: 76px; }
-    .eyebrow { display: inline-block; background: var(--black); color: var(--yellow); font-weight: 800; font-size: 14px; letter-spacing: .6px; text-transform: uppercase; padding: 6px 14px; border-radius: 999px; }
-    .hero h1 { font-size: clamp(36px, 5.6vw, 64px); margin: 18px 0 16px; }
-    .hero h1 .white { background: var(--white); border: 3px solid var(--black); border-radius: 14px; padding: 0 .18em; display: inline-block; transform: rotate(-1.5deg); }
-    .hero .lead { font-size: clamp(17px, 2vw, 20px); max-width: 620px; margin: 0; }
-    .trust { list-style: none; margin: 24px 0 30px; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
-    .trust li { background: var(--white); border: 2px solid var(--black); border-radius: 999px; padding: 6px 14px; font-weight: 800; font-size: 15px; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+    .hero { position: relative; overflow: hidden; padding: 72px 0 96px; background: radial-gradient(700px circle at 78% 42%, rgba(255,210,31,.16), transparent 62%), radial-gradient(500px circle at 0% 100%, rgba(255,255,255,.05), transparent 60%); }
+    .hero .wrap { display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 48px; }
+    .hero h1 { font-size: clamp(42px, 5.6vw, 78px); margin: 22px 0 24px; color: var(--white); }
+    .hero h1 .mark { position: relative; color: var(--yellow); white-space: nowrap; }
+    .hero h1 .mark svg { position: absolute; left: -2%; bottom: -.16em; width: 104%; height: .32em; fill: none; stroke: var(--yellow); stroke-width: 7; stroke-linecap: round; }
+    .hero .lead { font-size: clamp(17px, 1.6vw, 20px); color: var(--muted); max-width: 560px; }
+    .hero .lead strong { color: var(--white); font-weight: 700; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
+    .board-art { width: 100%; max-width: 560px; height: auto; margin-left: auto; overflow: visible; }
+    .board-art .track { fill: none; stroke: rgba(255,255,255,.14); stroke-width: 2; stroke-dasharray: 2 10; stroke-linecap: round; }
+    .board-art .sq { fill: var(--night); stroke: rgba(255,255,255,.75); stroke-width: 2.5; }
+    .board-art .sq-gold { fill: var(--yellow); stroke: var(--yellow); }
+    .board-art .sq-start { fill: var(--white); stroke: var(--white); }
+    .board-art .start-label { fill: var(--muted); font: 700 13px var(--body); letter-spacing: .18em; text-anchor: middle; }
+    .board-art .finish { fill: var(--yellow); filter: drop-shadow(0 0 14px rgba(255,210,31,.7)); }
+    .board-art .pawn { fill: var(--yellow); stroke: var(--night); stroke-width: 3; filter: drop-shadow(0 6px 10px rgba(0,0,0,.6)); }
+    .board-art .die rect { stroke-width: 0; }
+    .board-art .die-light rect { fill: var(--white); }
+    .board-art .die-gold rect { fill: var(--yellow); }
+    .board-art .pip { fill: var(--night); }
+    .board-art .pip-dark { fill: var(--night); }
+    .board-art .die { transform-box: fill-box; transform-origin: center; animation: float 6s ease-in-out infinite; }
+    .board-art .die-gold { animation-delay: -3s; }
+    @keyframes float { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-12px) rotate(4deg); } }
 
-    .dice-stage { position: relative; height: 340px; }
-    .die { position: absolute; width: 150px; height: 150px; padding: 18px; display: grid; grid-template: repeat(3, 1fr) / repeat(3, 1fr); background: var(--white); border: 4px solid var(--black); border-radius: 30px; box-shadow: 8px 8px 0 var(--black); }
-    .die i { width: 26px; height: 26px; border-radius: 50%; background: var(--black); place-self: center; }
-    .die .p1 { grid-area: 1 / 1; } .die .p3 { grid-area: 1 / 3; } .die .p4 { grid-area: 2 / 1; } .die .p5 { grid-area: 2 / 2; }
-    .die .p6 { grid-area: 2 / 3; } .die .p7 { grid-area: 3 / 1; } .die .p9 { grid-area: 3 / 3; }
-    .die-a { top: 10px; left: 6%; transform: rotate(-12deg); animation: bob 4.5s ease-in-out infinite; }
-    .die-b { bottom: 14px; right: 6%; transform: rotate(9deg); background: var(--black); animation: bob 4.5s ease-in-out -2.2s infinite; }
-    .die-b i { background: var(--yellow); }
-    .pawn { position: absolute; left: 44%; top: 45%; width: 54px; height: 80px; animation: bob 3.6s ease-in-out -1s infinite; }
-    .pawn::before { content: ''; position: absolute; left: 12px; top: 0; width: 30px; height: 30px; border-radius: 50%; background: var(--white); border: 4px solid var(--black); }
-    .pawn::after { content: ''; position: absolute; left: 0; bottom: 0; width: 54px; height: 52px; background: var(--white); border: 4px solid var(--black); border-radius: 50% 50% 12px 12px / 70% 70% 12px 12px; }
-    @keyframes bob { 0%, 100% { translate: 0 0; } 50% { translate: 0 -12px; } }
+    /* ---------- Ticker ---------- */
+    .ticker-zone { position: relative; z-index: 2; overflow: hidden; padding: 20px 0; margin: -28px 0 -20px; }
+    .ticker { background: var(--yellow); color: var(--ink); overflow: hidden; transform: rotate(-1.6deg); margin: 0 -20px; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); }
+    .ticker-track { display: flex; width: max-content; animation: ticker 32s linear infinite; }
+    .ticker ul { display: flex; list-style: none; margin: 0; padding: 14px 0; }
+    .ticker li { display: flex; align-items: center; gap: 28px; padding-right: 28px; font: 800 clamp(16px, 2vw, 22px)/1 var(--display); text-transform: uppercase; letter-spacing: .02em; white-space: nowrap; }
+    .ticker li::after { content: '\2605'; font-size: .8em; }
+    @keyframes ticker { to { transform: translateX(-50%); } }
 
     /* ---------- Sections ---------- */
-    .section { padding: 80px 0; }
-    .section-alt { background: var(--yellow-soft); border-top: 3px solid var(--black); border-bottom: 3px solid var(--black); }
-    .section-head { text-align: center; max-width: 740px; margin: 0 auto 44px; }
-    .section-head h2 { font-size: clamp(32px, 4.2vw, 48px); margin: 12px 0 12px; }
-    .section-head p { margin: 0; color: var(--muted); font-size: 18px; }
+    .section { padding: 120px 0; position: relative; }
+    .section-head { max-width: 760px; margin-bottom: 56px; }
+    .section-head h2 { font-size: clamp(38px, 5vw, 64px); margin-top: 18px; color: var(--white); }
+    .section-head p { margin-top: 18px; color: var(--muted); font-size: 19px; }
+    .light { background: #fafaf7; color: var(--ink); }
+    .light .section-head h2 { color: var(--ink); }
+    .light .section-head p { color: var(--ink-muted); }
+    .light .eyebrow { color: var(--ink); }
 
     /* ---------- Games ---------- */
-    .games-grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
-    .game-card { display: flex; flex-direction: column; background: var(--white); border: 3px solid var(--black); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; scroll-margin-top: 90px; }
-    .video { position: relative; aspect-ratio: 16 / 9; background: #000; border-bottom: 3px solid var(--black); }
+    .games-grid { display: grid; grid-template-columns: 1fr; gap: 32px; }
+    .game { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 90px; transition: border-color .3s, transform .4s var(--ease), box-shadow .4s; }
+    .game:hover { border-color: rgba(255,210,31,.45); box-shadow: 0 30px 80px -40px rgba(255,210,31,.35); }
+    .video { position: relative; aspect-ratio: 16 / 9; background: #000; }
     .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-    .yt-lite { position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; background: #000; cursor: pointer; }
-    .yt-lite img { width: 100%; height: 100%; object-fit: cover; opacity: .9; }
-    .yt-play { position: absolute; inset: 0; margin: auto; width: 86px; height: 86px; display: grid; place-items: center; border-radius: 50%; background: var(--yellow); border: 3px solid var(--black); box-shadow: 4px 4px 0 var(--black); transition: transform .2s ease; }
-    .yt-play::before { content: ''; margin-left: 7px; border-left: 28px solid var(--black); border-top: 17px solid transparent; border-bottom: 17px solid transparent; }
-    .yt-lite:hover .yt-play, .yt-lite:focus-visible .yt-play { transform: scale(1.08); }
-    .yt-label { position: absolute; left: 14px; bottom: 14px; background: var(--black); color: var(--yellow); font: 800 14px/1 var(--font-body); padding: 8px 14px; border-radius: 999px; }
-    .game-body { flex: 1; display: flex; flex-direction: column; gap: 20px; padding: 26px 26px 30px; }
-    .game-title { display: flex; align-items: center; gap: 14px; }
-    .game-icon { flex: none; width: 60px; height: 60px; display: grid; place-items: center; font-size: 30px; background: var(--yellow); border: 3px solid var(--black); border-radius: 16px; }
-    .game-title h3 { font-size: clamp(27px, 3vw, 36px); margin: 0; }
-    .game-title p { margin: 2px 0 0; color: var(--muted); font-weight: 800; }
-    .tags { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
-    .tags li { background: var(--yellow-soft); border: 2px solid var(--black); border-radius: 999px; padding: 3px 12px; font-size: 14px; font-weight: 800; }
-    .game-desc p { margin: 0 0 10px; }
-    .game-desc p:last-child { margin-bottom: 0; }
-    .play-buttons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    .play-buttons .btn { flex-direction: column; gap: 6px; min-height: 100px; padding: 14px 8px; text-align: center; }
-    .play-buttons .btn svg { width: 28px; height: 28px; }
-    .btn-label { display: flex; flex-direction: column; line-height: 1.15; }
-    .btn-label small { font-size: 11px; font-weight: 800; letter-spacing: .6px; text-transform: uppercase; opacity: .85; }
-    .shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-    .shots a { display: block; aspect-ratio: 4 / 3; overflow: hidden; background: var(--yellow-soft); border: 2px solid var(--black); border-radius: 12px; }
-    .shots img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s ease; }
-    .shots a:hover img { transform: scale(1.06); }
-    .shots-title { margin: 0 0 -8px; font-size: 14px; font-weight: 800; letter-spacing: .6px; text-transform: uppercase; color: var(--muted); }
+    .yt-lite { position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; background: #000; cursor: pointer; color: var(--white); }
+    .yt-lite img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease), opacity .3s; opacity: .85; }
+    .yt-lite::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgba(0,0,0,.7)); }
+    .yt-lite:hover img { transform: scale(1.04); opacity: 1; }
+    .yt-play { position: absolute; z-index: 1; left: 50%; top: 50%; width: 88px; height: 88px; margin: -44px 0 0 -44px; border-radius: 50%; background: var(--yellow); display: grid; place-items: center; box-shadow: 0 0 0 10px rgba(255,210,31,.22); transition: transform .35s var(--ease), box-shadow .35s; }
+    .yt-play::before { content: ''; margin-left: 6px; border-left: 24px solid var(--ink); border-top: 15px solid transparent; border-bottom: 15px solid transparent; }
+    .yt-lite:hover .yt-play { transform: scale(1.08); box-shadow: 0 0 0 16px rgba(255,210,31,.18); }
+    .yt-meta { position: absolute; z-index: 1; left: 22px; bottom: 18px; display: flex; align-items: center; gap: 10px; font: 700 14px/1 var(--body); letter-spacing: .08em; text-transform: uppercase; }
+    .yt-meta::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--yellow); }
+    .game-body { flex: 1; display: flex; flex-direction: column; padding: 34px 34px 36px; }
+    .game-kicker { font: 700 13px/1 var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--yellow); }
+    .game h3 { font-size: clamp(36px, 4vw, 52px); margin: 14px 0 12px; color: var(--white); }
+    .game-meta { display: flex; flex-wrap: wrap; gap: 8px 18px; color: var(--muted); font-size: 15px; font-weight: 600; }
+    .game-meta span { display: inline-flex; align-items: center; gap: 8px; }
+    .game-meta span::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--yellow); }
+    .game-desc { margin-top: 22px; color: #d6d6d6; }
+    .game-desc p + p { margin-top: 12px; }
+    .stores { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 30px; }
+    .store { display: flex; align-items: center; gap: 14px; min-height: 64px; padding: 10px 18px; border-radius: 16px; text-decoration: none; background: var(--surface-2); border: 1px solid #333; color: var(--white); transition: transform .25s var(--ease), border-color .2s, background .2s; }
+    .store:hover { transform: translateY(-2px); border-color: var(--white); }
+    .store svg { width: 28px; height: 28px; flex: none; fill: currentColor; }
+    .store svg.ico-stroke { fill: none; stroke: currentColor; }
+    .store span { display: flex; flex-direction: column; line-height: 1.15; font: 700 17px/1.15 var(--body); }
+    .store small { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; opacity: .7; margin-bottom: 3px; }
+    .store-web { grid-column: 1 / -1; justify-content: center; background: var(--yellow); border-color: var(--yellow); color: var(--ink); }
+    .store-web:hover { background: var(--white); border-color: var(--white); }
+    .posters-label { margin-top: 34px; font: 700 13px/1 var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+    .posters { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 24px) / 3); gap: 12px; margin-top: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+    .posters::-webkit-scrollbar { display: none; }
+    .posters a { display: block; aspect-ratio: 3 / 4; border-radius: 16px; overflow: hidden; background: var(--surface-2); scroll-snap-align: start; }
+    .posters img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
+    .posters a:hover img { transform: scale(1.06); }
 
-    /* ---------- Features ---------- */
-    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
-    .feature { background: var(--white); border: 3px solid var(--black); border-radius: 18px; padding: 24px; box-shadow: 4px 4px 0 var(--black); }
-    .feature .emoji { font-size: 34px; line-height: 1; }
-    .feature h3 { font-size: 22px; margin: 12px 0 6px; }
-    .feature p { margin: 0; color: var(--muted); }
+    /* ---------- Promises (light) ---------- */
+    .promises { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 2px solid var(--ink); }
+    .promise { padding: 34px 28px 10px 0; }
+    .promise + .promise { padding-left: 28px; border-left: 1px solid #dcdcd4; }
+    .promise-icon { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: var(--yellow); }
+    .promise-icon svg { width: 26px; height: 26px; fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .promise h3 { font-size: 24px; margin: 22px 0 10px; }
+    .promise p { color: var(--ink-muted); }
 
-    /* ---------- Story ---------- */
-    .story { background: var(--black); color: var(--white); }
-    .story .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; }
-    .story h2 { font-size: clamp(32px, 4.2vw, 48px); margin: 14px 0 18px; }
-    .story h2 span { color: var(--yellow); }
-    .story p { color: #e6e6e6; font-size: 18px; }
-    .story .eyebrow { background: var(--yellow); color: var(--black); }
-    .paper { position: relative; transform: rotate(2deg); background: var(--white); color: var(--ink); border: 3px solid var(--yellow); border-radius: 18px; padding: 34px 30px 30px 54px; background-image: linear-gradient(90deg, transparent 38px, #f2b8b8 38px, #f2b8b8 40px, transparent 40px), repeating-linear-gradient(transparent 0 31px, #d9e4f2 31px 32px); box-shadow: 10px 10px 0 var(--yellow); }
-    .paper::before { content: '\270F\FE0F'; position: absolute; top: -26px; right: 22px; font-size: 44px; }
-    .paper blockquote { margin: 0; font-family: var(--font-display); font-size: clamp(21px, 2.4vw, 26px); line-height: 1.35; font-weight: 600; }
-    .paper figcaption { margin-top: 14px; font-weight: 800; color: var(--muted); }
+    /* ---------- Story (yellow) ---------- */
+    .story { background: var(--yellow); color: var(--ink); overflow: hidden; }
+    .story .wrap { display: grid; grid-template-columns: .9fr 1.1fr; gap: 80px; align-items: center; }
+    .story .eyebrow { color: var(--ink); }
+    .story h2 { font-size: clamp(42px, 5.6vw, 76px); margin: 18px 0 26px; }
+    .story p { font-size: 19px; max-width: 560px; }
+    .story p + p { margin-top: 16px; }
+    .story .names { font-family: var(--hand); font-size: 1.5em; line-height: 1; }
+    .polaroid { position: relative; margin: 0; background: var(--white); padding: 16px 16px 64px; border-radius: 6px; transform: rotate(-4deg); box-shadow: 0 30px 60px -20px rgba(0,0,0,.35); max-width: 460px; justify-self: center; width: 100%; }
+    .polaroid img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; background: #eee; border-radius: 2px; }
+    .polaroid figcaption { position: absolute; left: 0; right: 0; bottom: 14px; text-align: center; font: 600 30px/1 var(--hand); color: var(--ink); }
+    .polaroid::before { content: ''; position: absolute; top: -16px; left: 50%; width: 120px; height: 34px; margin-left: -60px; background: rgba(255,255,255,.55); transform: rotate(3deg); box-shadow: 0 2px 6px rgba(0,0,0,.08); }
 
-    /* ---------- FAQ ---------- */
-    .faq { max-width: 820px; margin: 0 auto; display: grid; gap: 14px; }
-    .faq details { background: var(--white); border: 3px solid var(--black); border-radius: 16px; box-shadow: 4px 4px 0 var(--black); }
-    .faq summary { cursor: pointer; list-style: none; padding: 18px 56px 18px 22px; position: relative; font-weight: 800; font-size: 18px; }
+    /* ---------- FAQ (light) ---------- */
+    .faq-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 72px; align-items: start; }
+    .faq-layout .section-head { margin: 0; position: sticky; top: 110px; }
+    .faq details { border-bottom: 1px solid #dcdcd4; }
+    .faq details:first-child { border-top: 2px solid var(--ink); }
+    .faq summary { cursor: pointer; list-style: none; position: relative; padding: 26px 56px 26px 0; font: 700 clamp(19px, 2vw, 22px)/1.3 var(--display); letter-spacing: -.01em; }
     .faq summary::-webkit-details-marker { display: none; }
-    .faq summary::after { content: '+'; position: absolute; right: 18px; top: 50%; translate: 0 -50%; width: 30px; height: 30px; display: grid; place-items: center; border-radius: 50%; background: var(--yellow); border: 2px solid var(--black); font: 700 22px/1 var(--font-display); }
-    .faq details[open] summary::after { content: '\2212'; }
-    .faq details p { margin: 0; padding: 0 22px 20px; color: var(--muted); }
+    .faq summary::after { content: ''; position: absolute; right: 4px; top: 50%; width: 36px; height: 36px; margin-top: -18px; border-radius: 50%; background: var(--ink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFD21F' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M12 6v12M6 12h12'/%3E%3C/svg%3E") center / 18px no-repeat; transition: transform .3s var(--ease); }
+    .faq details[open] summary::after { transform: rotate(45deg); }
+    .faq details p { padding: 0 56px 28px 0; color: var(--ink-muted); font-size: 18px; }
 
-    /* ---------- Follow ---------- */
-    .follow { background: var(--yellow); border-top: 3px solid var(--black); text-align: center; position: relative; overflow: hidden; }
-    .follow::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(0,0,0,.1) 2px, transparent 2.6px); background-size: 28px 28px; pointer-events: none; }
-    .follow .wrap { position: relative; }
-    .follow .section-head p { color: var(--ink); }
-    .social { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin: 0; padding: 0; list-style: none; }
-    .social a { display: inline-flex; align-items: center; gap: 10px; padding: 12px 20px; background: var(--white); border: 3px solid var(--black); border-radius: 999px; box-shadow: 4px 4px 0 var(--black); font-weight: 800; text-decoration: none; transition: transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease; }
-    .social a:hover { background: var(--black); color: var(--yellow); transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--black); }
-    .social svg { width: 22px; height: 22px; fill: currentColor; flex: none; }
-
-    /* ---------- Footer ---------- */
-    .site-footer { background: var(--black); color: #cfcfcf; padding: 48px 0 36px; }
-    .site-footer .wrap { display: grid; gap: 22px; justify-items: center; text-align: center; }
-    .site-footer .brand { color: var(--white); }
-    .site-footer .brand .tere { color: var(--black); border-color: var(--yellow); }
-    .footer-social { display: flex; gap: 10px; list-style: none; margin: 0; padding: 0; }
-    .footer-social a { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; border: 2px solid #444; color: var(--white); transition: background .15s ease, color .15s ease, border-color .15s ease; }
-    .footer-social a:hover { background: var(--yellow); border-color: var(--yellow); color: var(--black); }
-    .footer-social svg { width: 20px; height: 20px; fill: currentColor; }
-    .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 22px; list-style: none; margin: 0; padding: 0; }
-    .footer-links a { color: var(--white); font-weight: 700; text-decoration: none; }
+    /* ---------- Follow + footer ---------- */
+    .follow { text-align: center; padding: 130px 0 90px; background: radial-gradient(800px circle at 50% 0%, rgba(255,210,31,.14), transparent 60%); }
+    .follow .section-head { margin: 0 auto 52px; }
+    .follow .eyebrow::after { content: ''; width: 28px; height: 2px; background: currentColor; }
+    .social { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; list-style: none; margin: 0; padding: 0; }
+    .social a { display: flex; flex-direction: column; align-items: center; gap: 12px; text-decoration: none; color: var(--muted); font-weight: 600; font-size: 14px; transition: color .2s; }
+    .social .bubble { width: 76px; height: 76px; border-radius: 50%; display: grid; place-items: center; background: var(--surface); border: 1px solid var(--line); color: var(--white); transition: transform .3s var(--ease), background .2s, color .2s, border-color .2s; }
+    .social svg { width: 28px; height: 28px; fill: currentColor; }
+    .social a:hover { color: var(--white); }
+    .social a:hover .bubble { transform: translateY(-6px) rotate(-6deg); background: var(--yellow); border-color: var(--yellow); color: var(--ink); }
+    .site-footer { border-top: 1px solid var(--line); padding: 34px 0 40px; color: var(--muted); font-size: 14px; }
+    .site-footer .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px; }
+    .site-footer .brand { font-size: 20px; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 8px 24px; list-style: none; margin: 0; padding: 0; }
+    .footer-links a { text-decoration: none; }
     .footer-links a:hover { color: var(--yellow); }
-    .footer-copy { margin: 0; font-size: 14px; }
 
     /* ---------- Blog posts and pages (privacy policy, rules, news...) ---------- */
-    .content-area { min-height: 50vh; }
-    .entry { max-width: 800px; margin: 0 auto; padding: 48px 20px 80px; }
-    .entry h1 { font-size: clamp(32px, 5vw, 48px); margin: 0 0 24px; }
-    .entry-body { font-size: 18px; line-height: 1.75; }
-    .entry-body a { text-decoration: underline; text-decoration-color: var(--yellow); text-decoration-thickness: 3px; text-underline-offset: 3px; font-weight: 700; }
-    .entry-body img { height: auto !important; margin: 16px auto; border-radius: 14px; }
-    .entry-body iframe { width: 100% !important; height: auto !important; aspect-ratio: 16 / 9; border: 0; border-radius: 14px; }
-    .back-home { display: inline-block; margin-top: 40px; }
-    .post-list { max-width: 1100px; margin: 0 auto; padding: 48px 20px 80px; }
-    .post-list > h1 { font-size: clamp(30px, 4vw, 42px); margin: 0 0 28px; }
-    .post-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
-    .post-card { border: 3px solid var(--black); border-radius: 18px; overflow: hidden; box-shadow: 4px 4px 0 var(--black); text-decoration: none; display: block; background: var(--white); }
-    .post-card img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-bottom: 3px solid var(--black); }
-    .post-card h2 { font-size: 22px; margin: 0; padding: 16px 18px 20px; }
-    .pager { display: flex; justify-content: center; gap: 14px; margin-top: 36px; }
+    .content-area { min-height: 60vh; }
+    .entry { max-width: 780px; margin: 0 auto; padding: 72px 24px 100px; }
+    .entry h1 { font-size: clamp(36px, 5.4vw, 60px); color: var(--white); margin-bottom: 32px; }
+    .entry-body { font-size: 18px; line-height: 1.8; color: #dedede; }
+    .entry-body h2, .entry-body h3 { color: var(--white); margin: 1.6em 0 .5em; }
+    .entry-body a { color: var(--yellow); text-underline-offset: 3px; }
+    .entry-body img { height: auto !important; margin: 20px auto; border-radius: 18px; }
+    .entry-body iframe { width: 100% !important; height: auto !important; aspect-ratio: 16 / 9; border: 0; border-radius: 18px; }
+    .back-home { margin-top: 48px; }
+    .post-list { max-width: 1240px; margin: 0 auto; padding: 72px 24px 100px; }
+    .post-list > h1 { font-size: clamp(34px, 4.5vw, 54px); color: var(--white); margin-bottom: 36px; }
+    .post-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+    .post-card { display: block; text-decoration: none; background: var(--surface); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; transition: border-color .2s, transform .3s var(--ease); }
+    .post-card:hover { border-color: var(--yellow); transform: translateY(-4px); }
+    .post-card img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+    .post-card h2 { font: 700 22px/1.2 var(--display); color: var(--white); padding: 20px 22px 24px; margin: 0; }
+    .pager { display: flex; justify-content: center; gap: 14px; margin-top: 44px; }
 
-    /* ---------- Screenshot lightbox ---------- */
-    .lightbox { padding: 0; border: 3px solid var(--black); border-radius: 16px; background: var(--black); max-width: min(94vw, 1200px); max-height: 92vh; overflow: visible; }
-    .lightbox::backdrop { background: rgba(0,0,0,.82); }
-    .lightbox img { max-height: 86vh; width: auto; margin: 0 auto; border-radius: 13px; }
-    .lightbox-close { position: absolute; top: -18px; right: -18px; width: 44px; height: 44px; border-radius: 50%; border: 3px solid var(--black); background: var(--yellow); font: 700 24px/1 var(--font-display); cursor: pointer; }
+    /* ---------- Poster lightbox ---------- */
+    .lightbox { padding: 0; border: 0; border-radius: 20px; background: #000; max-width: min(94vw, 1100px); max-height: 92vh; overflow: visible; }
+    .lightbox::backdrop { background: rgba(0,0,0,.88); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+    .lightbox img { max-height: 88vh; width: auto; margin: 0 auto; border-radius: 20px; }
+    .lightbox-close { position: absolute; top: -20px; right: -20px; width: 48px; height: 48px; border: 0; border-radius: 50%; background: var(--yellow); color: var(--ink); font: 400 30px/1 var(--body); cursor: pointer; }
 
     /* ---------- Responsive ---------- */
-    @media (min-width: 960px) {
+    @media (min-width: 1000px) {
       .games-grid { grid-template-columns: 1fr 1fr; }
     }
-    @media (max-width: 900px) {
-      .hero .wrap { grid-template-columns: 1fr; padding-top: 44px; padding-bottom: 56px; gap: 10px; }
-      .dice-stage { height: 190px; order: -1; max-width: 360px; width: 100%; margin: 0 auto; }
-      .die { width: 104px; height: 104px; padding: 12px; border-radius: 22px; box-shadow: 6px 6px 0 var(--black); }
-      .die i { width: 18px; height: 18px; }
-      .pawn { transform: scale(.75); top: 40%; }
-      .story .wrap { grid-template-columns: 1fr; gap: 48px; }
+    @media (max-width: 999px) {
+      .hero .wrap, .story .wrap, .faq-layout { grid-template-columns: 1fr; }
+      .hero { padding: 48px 0 72px; }
+      .hero .wrap { gap: 24px; }
+      .board-art { max-width: 460px; margin: 0 auto; }
+      .story .wrap { gap: 64px; }
+      .polaroid { max-width: 360px; }
+      .faq-layout { gap: 36px; }
+      .faq-layout .section-head { position: static; }
+      .promises { grid-template-columns: 1fr 1fr; }
+      .promise:nth-child(3) { padding-left: 0; border-left: 0; }
+      .promise:nth-child(n+3) { border-top: 1px solid #dcdcd4; margin-top: 24px; }
     }
-    @media (max-width: 760px) {
+    @media (max-width: 720px) {
+      .wrap { padding: 0 18px; }
       .main-nav a:not(.nav-cta) { display: none; }
-      .section { padding: 60px 0; }
-      .game-body { padding: 22px 18px 24px; }
-      .play-buttons { gap: 10px; }
-      .play-buttons .btn { min-height: 92px; padding: 12px 4px; font-size: 15px; }
-      .social a span { display: none; }
-      .social a { padding: 14px; }
-      .social svg { width: 26px; height: 26px; }
-    }
-    @media (max-width: 380px) {
-      .brand { font-size: 22px; }
-      .brand img { height: 38px; }
-      .play-buttons .btn { font-size: 14px; }
+      .section { padding: 88px 0; }
+      .section-head { margin-bottom: 40px; }
+      .game-body { padding: 26px 20px 28px; }
+      .store { padding: 10px 14px; gap: 10px; }
+      .store span { font-size: 15px; }
+      .store svg { width: 24px; height: 24px; }
+      .posters { grid-auto-columns: 46%; }
+      .promises { grid-template-columns: 1fr; }
+      .promise, .promise + .promise { padding: 28px 0 4px; border-left: 0; }
+      .promise + .promise { border-top: 1px solid #dcdcd4; margin-top: 24px; }
+      .social { gap: 14px 10px; }
+      .social li { width: calc(33.333% - 10px); }
+      .social .bubble { width: 68px; height: 68px; }
+      .site-footer .wrap { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation: none !important; transition: none !important; }
+      .js .reveal { opacity: 1; transform: none; }
     }
   ]]></b:skin>
 </head>
@@ -376,15 +419,15 @@
   <header class='site-header'>
     <div class='wrap'>
       <a aria-label='KriTere home' class='brand' expr:href='data:blog.homepageUrl'>
-        <img alt='KriTere logo' height='46' src='REPLACE_LOGO_URL' width='46'/>
-        <span>Kri<span class='tere'>Tere</span></span>
+        <img alt='' height='40' src='REPLACE_LOGO_URL' width='40'/>
+        <span>Kri<b>Tere</b></span>
       </a>
       <nav aria-label='Main' class='main-nav'>
         <a expr:href='data:blog.homepageUrl + &quot;#games&quot;'>Games</a>
-        <a expr:href='data:blog.homepageUrl + &quot;#story&quot;'>Our Story</a>
-        <a expr:href='data:blog.homepageUrl + &quot;#faq&quot;'>FAQ</a>
+        <a expr:href='data:blog.homepageUrl + &quot;#story&quot;'>Our story</a>
+        <a expr:href='data:blog.homepageUrl + &quot;#faq&quot;'>Parents</a>
         <a expr:href='data:blog.homepageUrl + &quot;#follow&quot;'>Follow</a>
-        <a class='nav-cta' expr:href='data:blog.homepageUrl + &quot;#games&quot;'>Play now &#127922;</a>
+        <a class='nav-cta' expr:href='data:blog.homepageUrl + &quot;#games&quot;'>Play now</a>
       </nav>
     </div>
   </header>
@@ -396,173 +439,113 @@
     <section aria-labelledby='hero-title' class='hero'>
       <div class='wrap'>
         <div>
-          <span class='eyebrow'>Family game night, anywhere</span>
-          <h1 id='hero-title'>Fun &amp; clever <span class='white'>board games</span> for the whole family</h1>
-          <p class='lead'>KriTere.com, named after two sisters, KrisAnn and Terez, brings you two family-friendly, educational and fun board games: <strong>Don&#39;t Get Mad!</strong> and <strong>Kris Ann&#39;s Journey</strong>. Play on PC, in your web browser or on Android.</p>
-          <ul aria-label='Why families love KriTere' class='trust'>
-            <li>&#128683; No ads in games</li>
-            <li>&#128722; No in-app purchases</li>
-            <li>&#128100; No accounts</li>
-            <li>&#128244; Works offline</li>
-            <li>&#128106; 2-4 players or AI</li>
-          </ul>
+          <span class='eyebrow'>Made by a family, for families</span>
+          <h1 id='hero-title'>Family board games that bring <span class='mark'>everyone<svg aria-hidden='true' preserveAspectRatio='none' viewBox='0 0 300 20'><path d='M4 14 C 60 4, 140 4, 200 10 S 280 16, 296 6'/></svg></span> together.</h1>
+          <p class='lead'><strong>Don&#39;t Get Mad!</strong> and <strong>Kris Ann&#39;s Journey</strong>: two clever, educational and fun board games for 2 to 4 players, or you against the AI robots. Play in your browser, on Windows PC or on Android.</p>
           <div class='hero-actions'>
-            <a class='btn btn-black' href='#games'>&#9654; Watch the trailers</a>
-            <a class='btn btn-white' href='#story'>Our story</a>
+            <a class='btn btn-primary' href='#games'><svg aria-hidden='true' focusable='false' viewBox='0 0 24 24'><path d='M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z'/></svg> Watch the trailers</a>
+            <a class='btn btn-ghost' href='#story'>Our story</a>
           </div>
         </div>
-        <div aria-hidden='true' class='dice-stage'>
-          <div class='die die-a'><i class='p1'>&#8203;</i><i class='p3'>&#8203;</i><i class='p5'>&#8203;</i><i class='p7'>&#8203;</i><i class='p9'>&#8203;</i></div>
-          <div class='pawn'>&#8203;</div>
-          <div class='die die-b'><i class='p1'>&#8203;</i><i class='p3'>&#8203;</i><i class='p4'>&#8203;</i><i class='p6'>&#8203;</i><i class='p7'>&#8203;</i><i class='p9'>&#8203;</i></div>
-        </div>
+        <svg aria-hidden='true' class='board-art' focusable='false' viewBox='0 0 560 520'>
+<path class='track' d='M60 455 C210 470 330 430 320 345 S110 290 140 200 S420 150 505 70' id='track'/>
+<rect class='sq sq-start' height='46' rx='11' transform='translate(60.0 455.0) rotate(5.7)' width='46' x='-23' y='-23'/><rect class='sq' height='46' rx='11' transform='translate(148.6 457.3) rotate(-3.2)' width='46' x='-23' y='-23'/><rect class='sq' height='46' rx='11' transform='translate(235.2 442.7) rotate(-17.5)' width='46' x='-23' y='-23'/><rect class='sq' height='46' rx='11' transform='translate(308.1 395.4) rotate(-55.9)' width='46' x='-23' y='-23'/><rect class='sq sq-gold' height='46' rx='11' transform='translate(303.7 314.9) rotate(-137.6)' width='46' x='-23' y='-23'/><rect class='sq' height='46' rx='11' transform='translate(223.6 278.9) rotate(-162.7)' width='46' x='-23' y='-23'/><rect class='sq' height='46' rx='11' transform='translate(145.2 240.8) rotate(-128.6)' width='46' x='-23' y='-23'/><rect class='sq' height='46' rx='11' transform='translate(169.0 166.2) rotate(-31.6)' width='46' x='-23' y='-23'/><rect class='sq sq-gold' height='46' rx='11' transform='translate(252.6 139.2) rotate(-10.5)' width='46' x='-23' y='-23'/><rect class='sq' height='46' rx='11' transform='translate(340.3 125.6) rotate(-8.5)' width='46' x='-23' y='-23'/><rect class='sq' height='46' rx='11' transform='translate(427.0 108.6) rotate(-15.5)' width='46' x='-23' y='-23'/>
+<text class='start-label' x='60' y='500'>START</text>
+<polygon class='finish' points='505.0,44.0 511.5,61.1 529.7,62.0 515.5,73.4 520.3,91.0 505.0,81.0 489.7,91.0 494.5,73.4 480.3,62.0 498.5,61.1'/>
+<g class='pawn-mover'><g transform='translate(0 -30) scale(1.3)'><path class='pawn' d='M-15 22 C-15 6 -9 0 -5 -4 A11 11 0 1 1 5 -4 C9 0 15 6 15 22 Z'/></g>
+<animateMotion begin='0s' calcMode='spline' dur='9s' keyPoints='0;0.25;0.25;0.5;0.5;0.75;0.75;1;1' keySplines='.5 0 .5 1;0 0 1 1;.5 0 .5 1;0 0 1 1;.5 0 .5 1;0 0 1 1;.5 0 .5 1;0 0 1 1' keyTimes='0;0.12;0.25;0.37;0.5;0.62;0.75;0.87;1' repeatCount='indefinite'><mpath href='#track'/></animateMotion></g>
+<g class='die die-light'><g transform='rotate(-14 468 380)'><rect height='92' rx='20' width='92' x='422' y='334'/><circle class='pip' cx='446.0' cy='358.0' r='7.0'/><circle class='pip' cx='490.0' cy='358.0' r='7.0'/><circle class='pip' cx='468.0' cy='380.0' r='7.0'/><circle class='pip' cx='446.0' cy='402.0' r='7.0'/><circle class='pip' cx='490.0' cy='402.0' r='7.0'/></g></g>
+<g class='die die-gold'><g transform='rotate(12 452 236)'><rect height='70' rx='16' width='70' x='417' y='201'/><circle class='pip-dark' cx='435.0' cy='219.0' r='5.4'/><circle class='pip-dark' cx='452.0' cy='236.0' r='5.4'/><circle class='pip-dark' cx='469.0' cy='253.0' r='5.4'/></g></g>
+</svg>
       </div>
     </section>
+
+    <div class='ticker-zone'>
+    <div aria-label='What families get' class='ticker' role='region'>
+      <div class='ticker-track'>
+        <ul>
+          <li>No ads in our games</li><li>No in-app purchases</li><li>No accounts</li><li>Works offline</li><li>2-4 players</li><li>Play vs AI robots</li>
+        </ul>
+        <ul aria-hidden='true'>
+          <li>No ads in our games</li><li>No in-app purchases</li><li>No accounts</li><li>Works offline</li><li>2-4 players</li><li>Play vs AI robots</li>
+        </ul>
+      </div>
+    </div>
+    </div>
 
     <!-- ===== GAMES ===== -->
     <section aria-labelledby='games-title' class='section' id='games'>
       <div class='wrap'>
-        <div class='section-head'>
-          <span class='eyebrow'>Our games</span>
-          <h2 id='games-title'>Two games, <span class='hl'>endless game nights</span></h2>
-          <p>Watch the trailers, then play in your browser, on Windows PC or on Android.</p>
+        <div class='section-head reveal'>
+          <span class='eyebrow'>The games</span>
+          <h2 id='games-title'>Pick a game. Gather the family.</h2>
+          <p>Watch the trailers, then play right away in your browser or install the app on PC or Android.</p>
         </div>
 
         <div class='games-grid'>
 
           <!-- Game 1: Don't Get Mad! -->
-          <article aria-labelledby='dgm-title' class='game-card' id='dont-get-mad'>
+          <article aria-labelledby='dgm-title' class='game reveal' id='dont-get-mad'>
             <div class='video'>
               <button aria-label="Play the Don't Get Mad! trailer" class='yt-lite' data-id='REPLACE_DGM_YOUTUBE_ID' data-title="Don't Get Mad! - Trailer" type='button'>
                 <img alt="Don't Get Mad! trailer" height='360' loading='lazy' src='https://i.ytimg.com/vi/REPLACE_DGM_YOUTUBE_ID/hqdefault.jpg' width='480'/>
                 <span class='yt-play'>&#8203;</span>
-                <span class='yt-label'>Watch trailer</span>
+                <span class='yt-meta'>Watch the trailer</span>
               </button>
             </div>
             <div class='game-body'>
-              <div class='game-title'>
-                <span aria-hidden='true' class='game-icon'>&#127922;</span>
-                <div>
-                  <h3 id='dgm-title'>Don&#39;t Get Mad!</h3>
-                  <p>The hand-drawn family board game</p>
-                </div>
-              </div>
-              <ul class='tags'>
-                <li>2-4 players</li>
-                <li>Play vs AI robots</li>
-                <li>Offline in apps</li>
-                <li>Family classic</li>
-              </ul>
+              <p class='game-kicker'>Game 01 &#183; Family classic</p>
+              <h3 id='dgm-title'>Don&#39;t Get Mad!</h3>
+              <p class='game-meta'><span>2-4 players</span><span>vs AI robots</span><span>Offline in apps</span></p>
               <div class='game-desc'>
-                <p>Don&#39;t Get Mad! started on paper: father and daughter drew this colorful board game by hand, complete with every square and story.</p>
-                <p>They had so much fun playing it together that they decided to share it with everyone in electronic form. Perfect for a game night with family and friends!</p>
+                <p>It started on paper: father and daughter drew this colorful board game by hand, complete with every square and story.</p>
+                <p>They had so much fun playing it together that they decided to share it with everyone.</p>
               </div>
-              <div class='play-buttons'>
-                <a class='btn btn-black' href='REPLACE_DGM_WEB_URL' rel='noopener'>
-                  <svg aria-hidden='true' class='ico-stroke' focusable='false' stroke-linecap='round' stroke-width='2' viewBox='0 0 24 24'><circle cx='12' cy='12' r='10'/><path d='M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20'/></svg>
-                  <span class='btn-label'><small>Play on</small>Web</span>
-                </a>
-                <a class='btn btn-white' href='REPLACE_DGM_MS_STORE_URL' rel='noopener' target='_blank'>
-                  <svg aria-hidden='true' focusable='false' viewBox='0 0 24 24'><path d='M0 3.45 9.75 2.1v9.45H0zm10.95-1.5L24 0v11.4H10.95zM0 12.6h9.75v9.45L0 20.7zm10.95 0H24V24l-13.05-1.8z'/></svg>
-                  <span class='btn-label'><small>Play on</small>PC</span>
-                </a>
-                <a class='btn btn-yellow' href='REPLACE_DGM_PLAY_STORE_URL' rel='noopener' target='_blank'>
-                  <svg aria-hidden='true' focusable='false' viewBox='0 0 24 24'><path d='M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z'/></svg>
-                  <span class='btn-label'><small>Play on</small>Android</span>
-                </a>
+              <div class='stores'>
+                <a class='store store-web' href='REPLACE_DGM_WEB_URL' rel='noopener'><svg aria-hidden='true' class='ico-stroke' focusable='false' stroke-linecap='round' stroke-width='2' viewBox='0 0 24 24'><circle cx='12' cy='12' r='10'/><path d='M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20'/></svg><span>Play now in your browser</span></a>
+                <a class='store' href='REPLACE_DGM_MS_STORE_URL' rel='noopener' target='_blank'><svg aria-hidden='true' focusable='false' viewBox='0 0 24 24'><path d='M0 3.45 9.75 2.1v9.45H0zm10.95-1.5L24 0v11.4H10.95zM0 12.6h9.75v9.45L0 20.7zm10.95 0H24V24l-13.05-1.8z'/></svg><span><small>Get it for</small>Windows</span></a>
+                <a class='store' href='REPLACE_DGM_PLAY_STORE_URL' rel='noopener' target='_blank'><svg aria-hidden='true' focusable='false' viewBox='0 0 24 24'><path d='M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z'/></svg><span><small>Get it on</small>Android</span></a>
               </div>
-              <p class='shots-title'>Posters &amp; screenshots</p>
-              <div class='shots'>
-                <a class='shot' href='REPLACE_DGM_POSTER_1'><img alt="Don't Get Mad! poster 1" height='600' loading='lazy' src='REPLACE_DGM_POSTER_1' width='800'/></a>
-                <a class='shot' href='REPLACE_DGM_POSTER_2'><img alt="Don't Get Mad! poster 2" height='600' loading='lazy' src='REPLACE_DGM_POSTER_2' width='800'/></a>
-                <a class='shot' href='REPLACE_DGM_POSTER_3'><img alt="Don't Get Mad! poster 3" height='600' loading='lazy' src='REPLACE_DGM_POSTER_3' width='800'/></a>
+              <p class='posters-label'>Posters</p>
+              <div class='posters'>
+                <a class='shot' href='REPLACE_DGM_POSTER_1'><img alt="Don't Get Mad! poster 1" height='800' loading='lazy' src='REPLACE_DGM_POSTER_1' width='600'/></a>
+                <a class='shot' href='REPLACE_DGM_POSTER_2'><img alt="Don't Get Mad! poster 2" height='800' loading='lazy' src='REPLACE_DGM_POSTER_2' width='600'/></a>
+                <a class='shot' href='REPLACE_DGM_POSTER_3'><img alt="Don't Get Mad! poster 3" height='800' loading='lazy' src='REPLACE_DGM_POSTER_3' width='600'/></a>
               </div>
             </div>
           </article>
 
           <!-- Game 2: Kris Ann's Journey -->
-          <article aria-labelledby='kaj-title' class='game-card' id='kris-anns-journey'>
+          <article aria-labelledby='kaj-title' class='game reveal' id='kris-anns-journey'>
             <div class='video'>
               <button aria-label="Play the Kris Ann's Journey trailer" class='yt-lite' data-id='REPLACE_KAJ_YOUTUBE_ID' data-title="Kris Ann's Journey - Trailer" type='button'>
                 <img alt="Kris Ann's Journey trailer" height='360' loading='lazy' src='https://i.ytimg.com/vi/REPLACE_KAJ_YOUTUBE_ID/hqdefault.jpg' width='480'/>
                 <span class='yt-play'>&#8203;</span>
-                <span class='yt-label'>Watch trailer</span>
+                <span class='yt-meta'>Watch the trailer</span>
               </button>
             </div>
             <div class='game-body'>
-              <div class='game-title'>
-                <span aria-hidden='true' class='game-icon'>&#128506;&#65039;</span>
-                <div>
-                  <h3 id='kaj-title'>Kris Ann&#39;s Journey</h3>
-                  <p>Strategy board game + trivia quiz</p>
-                </div>
-              </div>
-              <ul class='tags'>
-                <li>2-4 players</li>
-                <li>Play vs AI robots</li>
-                <li>Offline in apps</li>
-                <li>Trivia &amp; strategy</li>
-              </ul>
+              <p class='game-kicker'>Game 02 &#183; Strategy + trivia</p>
+              <h3 id='kaj-title'>Kris Ann&#39;s Journey</h3>
+              <p class='game-meta'><span>2-4 players</span><span>vs AI robots</span><span>Offline in apps</span></p>
               <div class='game-desc'>
-                <p>Kris Ann&#39;s Journey (KAJ) is a strategy board game and trivia quiz in one!</p>
-                <p>Travel the world, answer quiz questions and make smart tactical choices to score points. Learn something new every time you play.</p>
+                <p>A strategy board game and trivia quiz in one! Travel the world, answer quiz questions and make smart tactical choices to score points.</p>
+                <p>Every game night turns into a little trip around the world.</p>
               </div>
-              <div class='play-buttons'>
-                <a class='btn btn-black' href='REPLACE_KAJ_WEB_URL' rel='noopener'>
-                  <svg aria-hidden='true' class='ico-stroke' focusable='false' stroke-linecap='round' stroke-width='2' viewBox='0 0 24 24'><circle cx='12' cy='12' r='10'/><path d='M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20'/></svg>
-                  <span class='btn-label'><small>Play on</small>Web</span>
-                </a>
-                <a class='btn btn-white' href='REPLACE_KAJ_MS_STORE_URL' rel='noopener' target='_blank'>
-                  <svg aria-hidden='true' focusable='false' viewBox='0 0 24 24'><path d='M0 3.45 9.75 2.1v9.45H0zm10.95-1.5L24 0v11.4H10.95zM0 12.6h9.75v9.45L0 20.7zm10.95 0H24V24l-13.05-1.8z'/></svg>
-                  <span class='btn-label'><small>Play on</small>PC</span>
-                </a>
-                <a class='btn btn-yellow' href='REPLACE_KAJ_PLAY_STORE_URL' rel='noopener' target='_blank'>
-                  <svg aria-hidden='true' focusable='false' viewBox='0 0 24 24'><path d='M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z'/></svg>
-                  <span class='btn-label'><small>Play on</small>Android</span>
-                </a>
+              <div class='stores'>
+                <a class='store store-web' href='REPLACE_KAJ_WEB_URL' rel='noopener'><svg aria-hidden='true' class='ico-stroke' focusable='false' stroke-linecap='round' stroke-width='2' viewBox='0 0 24 24'><circle cx='12' cy='12' r='10'/><path d='M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20'/></svg><span>Play now in your browser</span></a>
+                <a class='store' href='REPLACE_KAJ_MS_STORE_URL' rel='noopener' target='_blank'><svg aria-hidden='true' focusable='false' viewBox='0 0 24 24'><path d='M0 3.45 9.75 2.1v9.45H0zm10.95-1.5L24 0v11.4H10.95zM0 12.6h9.75v9.45L0 20.7zm10.95 0H24V24l-13.05-1.8z'/></svg><span><small>Get it for</small>Windows</span></a>
+                <a class='store' href='REPLACE_KAJ_PLAY_STORE_URL' rel='noopener' target='_blank'><svg aria-hidden='true' focusable='false' viewBox='0 0 24 24'><path d='M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z'/></svg><span><small>Get it on</small>Android</span></a>
               </div>
-              <p class='shots-title'>Posters &amp; screenshots</p>
-              <div class='shots'>
-                <a class='shot' href='REPLACE_KAJ_POSTER_1'><img alt="Kris Ann's Journey poster 1" height='600' loading='lazy' src='REPLACE_KAJ_POSTER_1' width='800'/></a>
-                <a class='shot' href='REPLACE_KAJ_POSTER_2'><img alt="Kris Ann's Journey poster 2" height='600' loading='lazy' src='REPLACE_KAJ_POSTER_2' width='800'/></a>
-                <a class='shot' href='REPLACE_KAJ_POSTER_3'><img alt="Kris Ann's Journey poster 3" height='600' loading='lazy' src='REPLACE_KAJ_POSTER_3' width='800'/></a>
+              <p class='posters-label'>Posters</p>
+              <div class='posters'>
+                <a class='shot' href='REPLACE_KAJ_POSTER_1'><img alt="Kris Ann's Journey poster 1" height='800' loading='lazy' src='REPLACE_KAJ_POSTER_1' width='600'/></a>
+                <a class='shot' href='REPLACE_KAJ_POSTER_2'><img alt="Kris Ann's Journey poster 2" height='800' loading='lazy' src='REPLACE_KAJ_POSTER_2' width='600'/></a>
+                <a class='shot' href='REPLACE_KAJ_POSTER_3'><img alt="Kris Ann's Journey poster 3" height='800' loading='lazy' src='REPLACE_KAJ_POSTER_3' width='600'/></a>
               </div>
             </div>
           </article>
 
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== WHY FAMILIES LOVE IT ===== -->
-    <section aria-labelledby='why-title' class='section section-alt'>
-      <div class='wrap'>
-        <div class='section-head'>
-          <span class='eyebrow'>For parents</span>
-          <h2 id='why-title'>Safe, smart and <span class='hl'>made with love</span></h2>
-          <p>Games we would happily give to our own kids, because we did.</p>
-        </div>
-        <div class='features'>
-          <div class='feature'>
-            <div aria-hidden='true' class='emoji'>&#128737;&#65039;</div>
-            <h3>No ads, no purchases</h3>
-            <p>No ads, no in-app purchases and no accounts required. Just open and play.</p>
-          </div>
-          <div class='feature'>
-            <div aria-hidden='true' class='emoji'>&#129504;</div>
-            <h3>Learn while playing</h3>
-            <p>Intelligent and educational: quiz questions, world travel and smart tactical choices.</p>
-          </div>
-          <div class='feature'>
-            <div aria-hidden='true' class='emoji'>&#9992;&#65039;</div>
-            <h3>Works offline</h3>
-            <p>Both games work fully offline in the apps, perfect for trips and holidays.</p>
-          </div>
-          <div class='feature'>
-            <div aria-hidden='true' class='emoji'>&#129302;</div>
-            <h3>Together or vs AI</h3>
-            <p>2 to 4 players around one device, or challenge the AI robots on your own.</p>
-          </div>
         </div>
       </div>
     </section>
@@ -570,25 +553,58 @@
     <!-- ===== STORY ===== -->
     <section aria-labelledby='story-title' class='section story' id='story'>
       <div class='wrap'>
-        <div>
-          <span class='eyebrow'>Our story</span>
-          <h2 id='story-title'>Named after two sisters, <span>KrisAnn &amp; Terez</span></h2>
-          <p>KriTere.com is a family project. Our games are made by a family, for families: bright, fair and full of little stories.</p>
-          <p>Both games are ideal for a fun game night with family and friends, with 2 to 4 players or AI robots when you want to play on your own.</p>
-        </div>
-        <figure class='paper'>
-          <blockquote>&#8220;Father and daughter drew Don&#39;t Get Mad! by hand on paper, every square and every story. It was so much fun, we had to share it with everyone.&#8221;</blockquote>
-          <figcaption>How it all started</figcaption>
+        <figure class='polaroid reveal'>
+          <img alt="The original hand-drawn paper board of Don't Get Mad!" height='600' loading='lazy' src='REPLACE_STORY_PHOTO_URL' width='600'/>
+          <figcaption>where it all began &#9999;&#65039;</figcaption>
         </figure>
+        <div class='reveal'>
+          <span class='eyebrow'>Our story</span>
+          <h2 id='story-title'>It all started on a sheet of paper.</h2>
+          <p>KriTere is named after two sisters, <span class='names'>KrisAnn &amp; Terez</span>.</p>
+          <p>Our first game, Don&#39;t Get Mad!, was drawn by hand by a father and his daughter, every square and every story. Game nights were so much fun that we decided to share them with every family, on every screen.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROMISES ===== -->
+    <section aria-labelledby='promise-title' class='section light'>
+      <div class='wrap'>
+        <div class='section-head reveal'>
+          <span class='eyebrow'>Our promise to parents</span>
+          <h2 id='promise-title'>Just the game. Nothing else.</h2>
+        </div>
+        <div class='promises reveal'>
+          <div class='promise'>
+            <div class='promise-icon'><svg aria-hidden='true' viewBox='0 0 24 24'><path d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/><path d='m9 12 2 2 4-4'/></svg></div>
+            <h3>Safe to hand over</h3>
+            <p>No ads, no in-app purchases and no accounts in our games. Kids just play.</p>
+          </div>
+          <div class='promise'>
+            <div class='promise-icon'><svg aria-hidden='true' viewBox='0 0 24 24'><path d='M9 18h6M10 22h4'/><path d='M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z'/></svg></div>
+            <h3>Smart fun</h3>
+            <p>Strategy, quiz questions and trips around the world. Learning happens on its own.</p>
+          </div>
+          <div class='promise'>
+            <div class='promise-icon'><svg aria-hidden='true' viewBox='0 0 24 24'><path d='M2 2l20 20'/><path d='M8.5 16.5a5 5 0 0 1 7 0'/><path d='M5 12.9a10 10 0 0 1 5-2.8'/><path d='M19 12.9a10 10 0 0 0-2-1.4'/><path d='M2 8.8a15 15 0 0 1 4.2-2.6'/><path d='M22 8.8A15 15 0 0 0 10.7 5'/><path d='M12 20h.01'/></svg></div>
+            <h3>Works offline</h3>
+            <p>Both apps work fully offline. Perfect for car rides, flights and holidays.</p>
+          </div>
+          <div class='promise'>
+            <div class='promise-icon'><svg aria-hidden='true' viewBox='0 0 24 24'><circle cx='9' cy='7' r='4'/><path d='M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2'/><path d='M16 3.1a4 4 0 0 1 0 7.8'/><path d='M21 21v-2a4 4 0 0 0-3-3.9'/></svg></div>
+            <h3>Together or solo</h3>
+            <p>2 to 4 players on one device, or challenge the AI robots on your own.</p>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- ===== FAQ ===== -->
-    <section aria-labelledby='faq-title' class='section section-alt' id='faq'>
-      <div class='wrap'>
+    <section aria-labelledby='faq-title' class='section light' id='faq' style='padding-top:0'>
+      <div class='wrap faq-layout'>
         <div class='section-head'>
           <span class='eyebrow'>Questions</span>
           <h2 id='faq-title'>Parents often ask</h2>
+          <p>Anything else? Write to us on any of our social channels.</p>
         </div>
         <div class='faq'>
           <details>
@@ -641,16 +657,17 @@
         <b:includable id='main' var='top'>
           <b:if cond='data:view.isError'>
             <article class='entry'>
-              <h1>Oops! This page rolled off the board &#127922;</h1>
-              <div class='entry-body'><p>We couldn&#39;t find that page. Head back home to watch the trailers and play.</p></div>
-              <a class='btn btn-black back-home' expr:href='data:blog.homepageUrl'>&#8592; Back to the games</a>
+              <span class='eyebrow'>Error 404</span>
+              <h1>This square is empty.</h1>
+              <div class='entry-body'><p>We couldn&#39;t find that page. Roll again from the start!</p></div>
+              <a class='btn btn-primary back-home' expr:href='data:blog.homepageUrl'>Back to the games</a>
             </article>
           <b:elseif cond='data:view.isSingleItem'/>
             <b:loop values='data:posts' var='post'>
               <article class='entry'>
                 <h1><data:post.title/></h1>
                 <div class='entry-body'><data:post.body/></div>
-                <a class='btn btn-black back-home' expr:href='data:blog.homepageUrl + &quot;#games&quot;'>&#8592; Back to the games</a>
+                <a class='btn btn-primary back-home' expr:href='data:blog.homepageUrl + &quot;#games&quot;'>Back to the games</a>
               </article>
             </b:loop>
           <b:else/>
@@ -667,8 +684,8 @@
                 </b:loop>
               </div>
               <div class='pager'>
-                <b:if cond='data:newerPageUrl'><a class='btn btn-white' expr:href='data:newerPageUrl'>&#8592; Newer</a></b:if>
-                <b:if cond='data:olderPageUrl'><a class='btn btn-black' expr:href='data:olderPageUrl'>Older &#8594;</a></b:if>
+                <b:if cond='data:newerPageUrl'><a class='btn btn-ghost' expr:href='data:newerPageUrl'>Newer</a></b:if>
+                <b:if cond='data:olderPageUrl'><a class='btn btn-primary' expr:href='data:olderPageUrl'>Older</a></b:if>
               </div>
             </div>
           </b:if>
@@ -679,48 +696,37 @@
   </b:if>
 
   <!-- ===== FOLLOW ===== -->
-  <section aria-labelledby='follow-title' class='section follow' id='follow'>
+  <section aria-labelledby='follow-title' class='follow' id='follow'>
     <div class='wrap'>
-      <div class='section-head'>
+      <div class='section-head reveal'>
         <span class='eyebrow'>Join the family</span>
-        <h2 id='follow-title'>Follow KriTere</h2>
-        <p>New trailers, updates and game-night fun. Follow us on your favourite network!</p>
+        <h2 id='follow-title'>Follow the fun.</h2>
+        <p>New trailers, updates and game-night ideas.</p>
       </div>
-      <ul class='social'>
-        <li><a aria-label='KriTere on YouTube' href='REPLACE_YOUTUBE_URL' rel='noopener me' target='_blank'><svg aria-hidden='true' focusable='false' viewBox='0 0 24 24'><path d='M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z'/></svg><span>YouTube</span></a></li>
-        <li><a aria-label='KriTere on X' href='REPLACE_X_URL' rel='noopener me' target='_blank'><svg aria-hidden='true' focusable='false' viewBox='0 0 24 24'><path d='M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z'/></svg><span>X</span></a></li>
-        <li><a aria-label='KriTere on Facebook' href='REPLACE_FACEBOOK_URL' rel='noopener me' target='_blank'><svg aria-hidden='true' focusable='false' viewBox='0 0 24 24'><path d='M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z'/></svg><span>Facebook</span></a></li>
-        <li><a aria-label='KriTere on Instagram' href='REPLACE_INSTAGRAM_URL' rel='noopener me' target='_blank'><svg aria-hidden='true' focusable='false' viewBox='0 0 24 24'><path d='M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077'/></svg><span>Instagram</span></a></li>
-        <li><a aria-label='KriTere on Threads' href='REPLACE_THREADS_URL' rel='noopener me' target='_blank'><svg aria-hidden='true' focusable='false' viewBox='0 0 24 24'><path d='M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221z'/></svg><span>Threads</span></a></li>
-        <li><a aria-label='KriTere on TikTok' href='REPLACE_TIKTOK_URL' rel='noopener me' target='_blank'><svg aria-hidden='true' focusable='false' viewBox='0 0 24 24'><path d='M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z'/></svg><span>TikTok</span></a></li>
+      <ul class='social reveal'>
+        <li><a href='REPLACE_YOUTUBE_URL' rel='noopener me' target='_blank'><span class='bubble'><svg aria-hidden='true' focusable='false' viewBox='0 0 24 24'><path d='M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z'/></svg></span>YouTube</a></li>
+        <li><a href='REPLACE_TIKTOK_URL' rel='noopener me' target='_blank'><span class='bubble'><svg aria-hidden='true' focusable='false' viewBox='0 0 24 24'><path d='M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z'/></svg></span>TikTok</a></li>
+        <li><a href='REPLACE_INSTAGRAM_URL' rel='noopener me' target='_blank'><span class='bubble'><svg aria-hidden='true' focusable='false' viewBox='0 0 24 24'><path d='M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077'/></svg></span>Instagram</a></li>
+        <li><a href='REPLACE_FACEBOOK_URL' rel='noopener me' target='_blank'><span class='bubble'><svg aria-hidden='true' focusable='false' viewBox='0 0 24 24'><path d='M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z'/></svg></span>Facebook</a></li>
+        <li><a href='REPLACE_THREADS_URL' rel='noopener me' target='_blank'><span class='bubble'><svg aria-hidden='true' focusable='false' viewBox='0 0 24 24'><path d='M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221z'/></svg></span>Threads</a></li>
+        <li><a href='REPLACE_X_URL' rel='noopener me' target='_blank'><span class='bubble'><svg aria-hidden='true' focusable='false' viewBox='0 0 24 24'><path d='M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z'/></svg></span>X</a></li>
       </ul>
     </div>
   </section>
 
-  <!-- ===== FOOTER ===== -->
   <footer class='site-footer'>
     <div class='wrap'>
-      <a aria-label='KriTere home' class='brand' expr:href='data:blog.homepageUrl'>
-        <span>Kri<span class='tere'>Tere</span></span>
-      </a>
-      <ul class='footer-social'>
-        <li><a aria-label='YouTube' href='REPLACE_YOUTUBE_URL' rel='noopener' target='_blank'><svg aria-hidden='true' focusable='false' viewBox='0 0 24 24'><path d='M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z'/></svg></a></li>
-        <li><a aria-label='X' href='REPLACE_X_URL' rel='noopener' target='_blank'><svg aria-hidden='true' focusable='false' viewBox='0 0 24 24'><path d='M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z'/></svg></a></li>
-        <li><a aria-label='Facebook' href='REPLACE_FACEBOOK_URL' rel='noopener' target='_blank'><svg aria-hidden='true' focusable='false' viewBox='0 0 24 24'><path d='M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z'/></svg></a></li>
-        <li><a aria-label='Instagram' href='REPLACE_INSTAGRAM_URL' rel='noopener' target='_blank'><svg aria-hidden='true' focusable='false' viewBox='0 0 24 24'><path d='M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077'/></svg></a></li>
-        <li><a aria-label='Threads' href='REPLACE_THREADS_URL' rel='noopener' target='_blank'><svg aria-hidden='true' focusable='false' viewBox='0 0 24 24'><path d='M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221z'/></svg></a></li>
-        <li><a aria-label='TikTok' href='REPLACE_TIKTOK_URL' rel='noopener' target='_blank'><svg aria-hidden='true' focusable='false' viewBox='0 0 24 24'><path d='M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z'/></svg></a></li>
-      </ul>
+      <a aria-label='KriTere home' class='brand' expr:href='data:blog.homepageUrl'><span>Kri<b>Tere</b></span></a>
       <ul class='footer-links'>
         <li><a expr:href='data:blog.homepageUrl + &quot;#games&quot;'>Games</a></li>
         <li><a expr:href='data:blog.homepageUrl + &quot;p/privacy-policy.html&quot;'>Privacy Policy</a></li>
         <li><a expr:href='data:blog.homepageUrl + &quot;p/contact.html&quot;'>Contact</a></li>
       </ul>
-      <p class='footer-copy'>&#169; <span id='year'>2026</span> KriTere.com &#183; Made with &#128155; for families</p>
+      <p>&#169; <span id='year'>2026</span> KriTere.com &#183; Made with love for families</p>
     </div>
   </footer>
 
-  <dialog aria-label='Screenshot' class='lightbox' id='lightbox'>
+  <dialog aria-label='Poster' class='lightbox' id='lightbox'>
     <button aria-label='Close' class='lightbox-close' type='button'>&#215;</button>
     <img alt='' id='lightbox-img' src='data:image/gif;base64,R0lGODlhAQABAAAAACw='/>
   </dialog>
@@ -728,6 +734,8 @@
   <script type='text/javascript'>
   //<![CDATA[
   (function () {
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     // Trailers: show the thumbnail first and load YouTube only when it is clicked.
     // youtube-nocookie.com does not set tracking cookies until the video plays.
     document.querySelectorAll('.yt-lite').forEach(function (btn) {
@@ -756,6 +764,23 @@
       });
       box.querySelector('.lightbox-close').addEventListener('click', function () { box.close(); });
       box.addEventListener('click', function (e) { if (e.target === box) box.close(); });
+    }
+
+    // Hero pawn: stop the SVG animation for visitors who prefer less motion
+    var art = document.querySelector('.board-art');
+    if (art && reduceMotion && art.pauseAnimations) art.pauseAnimations();
+
+    // Fade sections in as they scroll into view
+    var items = document.querySelectorAll('.reveal');
+    if (!reduceMotion && 'IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
+        });
+      }, { rootMargin: '0px 0px -8% 0px' });
+      items.forEach(function (el) { io.observe(el); });
+    } else {
+      items.forEach(function (el) { el.classList.add('in'); });
     }
 
     var year = document.getElementById('year');
