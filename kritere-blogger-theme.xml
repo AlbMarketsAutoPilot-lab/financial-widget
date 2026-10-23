@@ -498,6 +498,15 @@
     .promises li small { display: block; font-weight: 700; font-size: 14px; color: #4a4f57; }
     .all-ages { margin-top: 22px; font-weight: 800; }
 
+    /* ================= Ad spots ================= */
+    .ad-slot { padding: 26px 16px 34px; text-align: center; }
+    .ad-slot ins { max-width: 970px; min-height: 100px; margin: 0 auto; }
+    .ad-label { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #6b7078; margin-bottom: 8px; }
+    .ad-white { background: var(--kt-white); }
+    .ad-cream { background: #FFFCD2; }
+    .ad-slot:has(ins[data-ad-status='unfilled']) { display: none; }
+    .ad-white + .parents { padding-top: 56px; }
+
     /* ================= FAQ ================= */
     .faq-sec { background: var(--kt-white); padding: 0 0 100px; }
     .faq-sec h2 { font: italic 800 clamp(34px, 4.4vw, 54px)/1.05 var(--font-brand); text-align: center; margin-bottom: 34px; }
@@ -969,6 +978,13 @@
       </div>
     </section>
 
+    <!-- Ad spot: child-directed (data-tag-for-age-treatment='1'), away from buttons -->
+    <aside aria-label='Advertisement' class='ad-slot ad-white'>
+      <p class='ad-label'>Advertisement</p>
+      <ins class='adsbygoogle' data-ad-client='ca-pub-2373589608434861' data-ad-format='auto' data-ad-slot='1292405443' data-full-width-responsive='true' data-tag-for-age-treatment='1' style='display:block'></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </aside>
+
     <!-- ===================== PARENTS' CORNER ===================== -->
     <section aria-labelledby='parents-title' class='parents' id='parents'>
       <div class='wrap'>
@@ -1056,6 +1072,13 @@
         </div>
       </div>
     </section>
+    <!-- Ad spot: child-directed (data-tag-for-age-treatment='1'), away from buttons -->
+    <aside aria-label='Advertisement' class='ad-slot ad-cream'>
+      <p class='ad-label'>Advertisement</p>
+      <ins class='adsbygoogle' data-ad-client='ca-pub-2373589608434861' data-ad-format='auto' data-ad-slot='4072154013' data-full-width-responsive='true' data-tag-for-age-treatment='1' style='display:block'></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </aside>
+
   </main>
   </b:if>
 

@@ -9,8 +9,8 @@ rules in Europe (GDPR / ePrivacy) and the USA (COPPA and US state privacy laws).
 - Auto ads turned OFF for kritere.com.
 - The theme asks Google for non-personalised ads for every visitor.
 
-Right now kritere.com shows **no ads at all**, because Auto ads are off and the theme has no
-ad spots yet. Step 1 fixes that.
+Two ad spots with the child tag are now in the theme: one before Parents' corner and one
+after Our story, both labelled "Advertisement".
 
 ## Which settings affect your other sites?
 
@@ -145,7 +145,7 @@ often full of in-app purchases. It lowers revenue, so it's your choice.
 
 ## Final checklist
 
-- [ ] Two ad units created and their numbers sent (step 1)
+- [x] Two ad units created and added to the theme (KriTere1: 1292405443, KriTere2: 4072154013)
 - [ ] GDPR message published and includes kritere.com
 - [ ] Ad partners: "Automatically include commonly used ad partners"
 - [ ] Fallback message ON, auto-created messages ON
