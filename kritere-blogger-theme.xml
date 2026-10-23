@@ -12,7 +12,9 @@
   <meta content='width=device-width, initial-scale=1' name='viewport'/>
   <meta content='#FEF812' name='theme-color'/>
   <script>document.documentElement.className += &#39; js&#39;;</script>
-  <link expr:href='data:blog.blogspotFaviconUrl' rel='icon' type='image/x-icon'/>
+  <link href='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiORkyylSiIfsD7S_ToHyIBdmyp0BdGSh2vOXsHuhMKZG4ypYKFWcMIak6wqATsnidNebAqdRf5qSqWNrRe2V0SCMO4R5rmHz0S4KBzhQ55os28C9vHJDn1Q58yJBstiU2_lunP2oxxOMOqFurlKEB3yPfVtaSgRYimlPjpOrdPR2H8D3mw-FKIWoPPQcU/s96/icon-512x512.png' rel='icon' sizes='96x96' type='image/png'/>
+  <link href='https://blogger.googleusercontent.com' rel='preconnect'/>
+  <link href='https://i.ytimg.com' rel='preconnect'/>
   <link href='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiORkyylSiIfsD7S_ToHyIBdmyp0BdGSh2vOXsHuhMKZG4ypYKFWcMIak6wqATsnidNebAqdRf5qSqWNrRe2V0SCMO4R5rmHz0S4KBzhQ55os28C9vHJDn1Q58yJBstiU2_lunP2oxxOMOqFurlKEB3yPfVtaSgRYimlPjpOrdPR2H8D3mw-FKIWoPPQcU/s180/icon-512x512.png' rel='apple-touch-icon'/>
   <link expr:href='data:blog.homepageUrl + &quot;feeds/posts/default&quot;' expr:title='data:blog.title + &quot; - Atom&quot;' rel='alternate' type='application/atom+xml'/>
 
@@ -21,11 +23,11 @@
 
   <link href='https://fonts.googleapis.com' rel='preconnect'/>
   <link crossorigin='anonymous' href='https://fonts.gstatic.com' rel='preconnect'/>
-  <link href='https://fonts.googleapis.com/css2?family=Cinzel:wght@700&amp;family=Kanit:ital,wght@0,700;1,800&amp;family=Nunito:wght@400;700;800;900&amp;family=Patrick+Hand&amp;family=Raleway:wght@500;600&amp;display=swap' rel='stylesheet'/>
+  <link href='https://fonts.googleapis.com/css2?family=Cinzel:wght@700&amp;family=Kanit:ital,wght@1,800&amp;family=Nunito:wght@400;700;800;900&amp;family=Patrick+Hand&amp;family=Raleway:wght@500;600&amp;display=swap' rel='stylesheet'/>
 
   <b:if cond='data:view.isHomepage'>
-    <title>KriTere - Family Board Games: Don&#39;t Get Mad! &amp; Kris Ann&#39;s Journey</title>
-    <meta content='Two family-friendly, educational board games for all ages: Don&#39;t Get Mad! and Kris Ann&#39;s Journey. 2-4 players or vs AI. Web, PC and Android. No ads, no in-app purchases, no accounts.' name='description'/>
+    <title>Family Board Games for Kids &amp; Adults: Don&#39;t Get Mad! &amp; Kris Ann&#39;s Journey | KriTere</title>
+    <meta content='Family board games for game night: the dice race game Don&#39;t Get Mad! and the geography trivia game Kris Ann&#39;s Journey. 2-4 players or vs robots. Play online, on PC or Android. No ads, no in-app purchases, works offline.' name='description'/>
     <link expr:href='data:blog.canonicalHomepageUrl' rel='canonical'/>
     <meta content='index, follow, max-image-preview:large' name='robots'/>
 
@@ -86,6 +88,9 @@
           "operatingSystem": "Windows, Android, Web browser",
           "applicationCategory": "GameApplication",
           "installUrl": ["https://dgm.kritere.com", "https://apps.microsoft.com/detail/9mtj320kbn5t", "https://play.google.com/store/apps/details?id=com.dontgetmad.game"],
+          "sameAs": ["https://play.google.com/store/apps/details?id=com.dontgetmad.game", "https://apps.microsoft.com/detail/9mtj320kbn5t"],
+          "applicationSubCategory": "Board game",
+          "creator": { "@id": "https://www.kritere.com/#organization" },
           "playMode": ["MultiPlayer", "SinglePlayer"],
           "numberOfPlayers": { "@type": "QuantitativeValue", "minValue": 2, "maxValue": 4 },
           "isFamilyFriendly": true,
@@ -97,7 +102,10 @@
             "name": "Don't Get Mad! - Trailer",
             "description": "Official trailer of the family dice board game Don't Get Mad!",
             "thumbnailUrl": "https://i.ytimg.com/vi/Sde7gRZZifs/maxresdefault.jpg",
-            "embedUrl": "https://www.youtube.com/embed/Sde7gRZZifs"
+            "embedUrl": "https://www.youtube.com/embed/Sde7gRZZifs",
+            "contentUrl": "https://www.youtube.com/watch?v=Sde7gRZZifs",
+            "uploadDate": "2026-10-17",
+            "duration": "PT12S"
           }
         },
         {
@@ -114,6 +122,9 @@
           "operatingSystem": "Windows, Android, Web browser",
           "applicationCategory": "GameApplication",
           "installUrl": ["https://kaj.kritere.com", "https://apps.microsoft.com/detail/9msz5ddh2krt", "https://play.google.com/store/apps/details?id=com.kaj.game"],
+          "sameAs": ["https://play.google.com/store/apps/details?id=com.kaj.game", "https://apps.microsoft.com/detail/9msz5ddh2krt"],
+          "applicationSubCategory": "Board game",
+          "creator": { "@id": "https://www.kritere.com/#organization" },
           "playMode": ["MultiPlayer", "SinglePlayer"],
           "numberOfPlayers": { "@type": "QuantitativeValue", "minValue": 2, "maxValue": 4 },
           "isFamilyFriendly": true,
@@ -125,8 +136,38 @@
             "name": "Kris Ann's Journey - Trailer",
             "description": "Official trailer of the family strategy and trivia board game Kris Ann's Journey.",
             "thumbnailUrl": "https://i.ytimg.com/vi/ttQuumXjomU/maxresdefault.jpg",
-            "embedUrl": "https://www.youtube.com/embed/ttQuumXjomU"
+            "embedUrl": "https://www.youtube.com/embed/ttQuumXjomU",
+            "contentUrl": "https://www.youtube.com/watch?v=ttQuumXjomU",
+            "uploadDate": "2026-10-12",
+            "duration": "PT18S"
           }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://www.kritere.com/#webpage",
+          "url": "https://www.kritere.com/",
+          "name": "Family Board Games for Kids &amp; Adults: Don't Get Mad! &amp; Kris Ann's Journey",
+          "description": "Family board games for game night: the dice race game Don't Get Mad! and the geography trivia game Kris Ann's Journey. Play online, on PC or Android.",
+          "inLanguage": "en",
+          "isPartOf": { "@id": "https://www.kritere.com/#website" },
+          "about": [{ "@id": "https://www.kritere.com/#dont-get-mad" }, { "@id": "https://www.kritere.com/#kris-anns-journey" }],
+          "primaryImageOfPage": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiiz-iBbouZRaTttBvaa33WCgPpnKCUAmWebpR91HWNzyQNLBe_gmvKOvYBqjTOeitATHTKiUJ1A6Pw4MNMo8OMOcUJAylCzLe0vqcLbzAgEbwLPd4lR_zkN0C9u1HV2-9LenzPbvBShI62sO4DHHE1vtf3z7IcVW1izW_CYAvNOe-reYLyLcuNuRnZR4A/s1600/kritere-share.jpg"
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://www.kritere.com/#faq",
+          "mainEntity": [
+            {"@type": "Question", "name": "What is Don't Get Mad!?", "acceptedAnswer": {"@type": "Answer", "text": "Don't Get Mad! is a dice board game for 2 to 4 players on one phone, tablet or computer. Roll the die and race from your front door to the Festival of Lights. Every square is a little story: hot-air balloons, wrong ferries, sheep with right of way. Bonus cards and lanterns can turn the game around, so the leader is never safe and the player in last place can still win. If your family loves classic dice race games like Ludo or Snakes and Ladders, you will feel right at home."}},
+            {"@type": "Question", "name": "What is Kris Ann's Journey?", "acceptedAnswer": {"@type": "Answer", "text": "Kris Ann's Journey (KAJ) is a geography strategy board game and trivia quiz in one. Choose a traveller, travel the world by walking, flying, sailing, train, bus or car, answer quiz questions and make smart choices to score the most points. There are no dice: you choose every move."}},
+            {"@type": "Question", "name": "Which game is best for young children?", "acceptedAnswer": {"@type": "Answer", "text": "Don't Get Mad! is perfect for little ones: luck makes everyone equal, so a child can beat a grown-up. Kris Ann's Journey is great for kids who can read and love quizzes, and for the whole family to learn about the world together."}},
+            {"@type": "Question", "name": "What do kids learn from Kris Ann's Journey?", "acceptedAnswer": {"@type": "Answer", "text": "Kids learn flags, capitals, currencies, continents, neighbouring countries and which countries are bigger, plus hundreds of fun facts about countries, wonders, food, animals, languages and inventions. They also learn to plan ahead and make smart choices."}},
+            {"@type": "Question", "name": "Are the games safe for kids?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Both games have no ads, no in-app purchases, no accounts, no chat, and they collect no personal data. You can hand them to your children without worry."}},
+            {"@type": "Question", "name": "Can we play offline?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The Windows PC and Android apps of both games work fully offline, perfect for car rides, flights and holidays. The web versions run right in your browser."}},
+            {"@type": "Question", "name": "Can I play alone?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. In both games you can play against computer robots. In Kris Ann's Journey the robots play at easy, normal or hard level."}},
+            {"@type": "Question", "name": "How long does a game take?", "acceptedAnswer": {"@type": "Answer", "text": "Don't Get Mad! has two journeys: a quick trip for a short break, or the grand journey for a long evening. Kris Ann's Journey can be played in 30 turns (53 areas, 7 wonders) or 50 turns (84 areas, 11 wonders), and your game is saved so you can continue later."}},
+            {"@type": "Question", "name": "Which devices can we play on?", "acceptedAnswer": {"@type": "Answer", "text": "Play in any modern web browser, on Windows PC from the Microsoft Store, or on Android from Google Play."}},
+            {"@type": "Question", "name": "Why is it called KriTere?", "acceptedAnswer": {"@type": "Answer", "text": "KriTere is named after two sisters, KrisAnn and Terez. Don't Get Mad! started on paper: father and daughter drew the board by hand and had so much fun playing it that they decided to share it with everyone."}}
+          ]
         }
       ]
     }
@@ -237,8 +278,8 @@
     .yt-lite { position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; cursor: pointer; background: #000; }
     .yt-lite img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
     .yt-lite:hover img { transform: scale(1.05); }
-    .yt-play { position: absolute; right: 18px; bottom: 16px; width: 84px; height: 84px; border-radius: 50%; display: grid; place-items: center; background: var(--kt-yellow); border: 4px solid var(--kt-black); box-shadow: 0 0 0 10px rgba(254,248,18,.35), 0 10px 30px rgba(0,0,0,.35); animation: pulse 2.4s ease-in-out infinite; }
-    .yt-play::before { content: ''; margin-left: 7px; border-left: 26px solid var(--kt-black); border-top: 16px solid transparent; border-bottom: 16px solid transparent; }
+    .yt-play { position: absolute; right: 18px; bottom: 16px; width: 84px; height: 84px; border-radius: 50%; font-size: 0; background: var(--kt-yellow); border: 4px solid var(--kt-black); box-shadow: 0 0 0 10px rgba(254,248,18,.35), 0 10px 30px rgba(0,0,0,.35); animation: pulse 2.4s ease-in-out infinite; }
+    .yt-play::before { content: ''; position: absolute; left: 50%; top: 50%; transform: translate(-38%, -50%); border-left: 26px solid var(--kt-black); border-top: 16px solid transparent; border-bottom: 16px solid transparent; }
     .yt-lite:hover .yt-play { animation: none; transform: scale(1.08); }
     .yt-tag { position: absolute; left: 16px; bottom: 16px; padding: 7px 14px; border-radius: 999px; background: var(--kt-black); color: var(--kt-yellow); font: 900 14px/1 var(--font-body); }
     @keyframes pulse { 0%, 100% { box-shadow: 0 0 0 8px rgba(254,248,18,.35), 0 10px 30px rgba(0,0,0,.35); } 50% { box-shadow: 0 0 0 18px rgba(254,248,18,.12), 0 10px 30px rgba(0,0,0,.35); } }
@@ -252,6 +293,8 @@
     .shot img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
     .car-btn { position: absolute; top: calc(50% - 32px); width: 50px; height: 50px; border-radius: 50%; border: 3px solid var(--kt-black); background: var(--kt-yellow); color: var(--kt-black); font: 900 22px/1 var(--font-body); cursor: pointer; z-index: 2; display: grid; place-items: center; box-shadow: 0 6px 16px rgba(0,0,0,.25); transition: transform .2s var(--bounce); }
     .car-btn:hover { transform: scale(1.1); }
+    .car-btn[disabled] { opacity: 0; pointer-events: none; }
+    .car-btn { transition: transform .2s var(--bounce), opacity .25s; }
     .car-prev { left: -16px; }
     .car-next { right: -16px; }
 
@@ -295,14 +338,14 @@
     .door:hover { transform: translateY(-6px) rotate(-.6deg); box-shadow: 12px 16px 0 var(--kt-black); }
     .door img { width: 150px; height: 150px; border-radius: 26px; object-fit: cover; box-shadow: 0 8px 20px rgba(0,0,0,.25); transition: transform .4s var(--bounce); }
     .door:hover img { transform: rotate(-4deg) scale(1.05); }
-    .door h2 { font-size: clamp(24px, 2.6vw, 32px); line-height: 1.05; margin-bottom: 8px; }
-    .door p { font-weight: 700; font-size: 16px; line-height: 1.4; }
+    .door .door-title { font-size: clamp(24px, 2.6vw, 32px); line-height: 1.05; margin-bottom: 8px; }
+    .door p:not(.door-title) { font-weight: 700; font-size: 16px; line-height: 1.4; }
     .door .go { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; padding: 8px 16px; border-radius: 999px; font-weight: 900; font-size: 15px; }
     .door-dgm { background: #f6f5f3 var(--marble) center / cover; color: var(--dgm-ink); }
-    .door-dgm h2 { font: 400 clamp(28px, 3vw, 38px)/1 var(--font-hand); display: inline-block; background: var(--dgm-red); color: var(--kt-white); padding: 6px 14px 4px; border-radius: 10px; transform: rotate(-3deg); box-shadow: 0 4px 0 rgba(0,0,0,.18); }
+    .door-dgm .door-title { font: 400 clamp(28px, 3vw, 38px)/1 var(--font-hand); display: inline-block; background: var(--dgm-red); color: var(--kt-white); padding: 6px 14px 4px; border-radius: 10px; transform: rotate(-3deg); box-shadow: 0 4px 0 rgba(0,0,0,.18); }
     .door-dgm .go { background: var(--dgm-purple); color: var(--kt-white); }
     .door-kaj { background: radial-gradient(500px 260px at 80% 0%, #1E5C68, transparent 70%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='480'%3E%3Ccircle cx='217' cy='269' r='1.5' fill='%23fff' opacity='0.63'/%3E%3Ccircle cx='89' cy='246' r='1.2' fill='%23fff' opacity='0.72'/%3E%3Ccircle cx='45' cy='146' r='0.6' fill='%23fff' opacity='0.67'/%3E%3Ccircle cx='286' cy='190' r='0.9' fill='%23fff' opacity='0.74'/%3E%3Ccircle cx='299' cy='399' r='0.6' fill='%23fff' opacity='0.39'/%3E%3Ccircle cx='422' cy='288' r='1.5' fill='%23ffeeb0' opacity='0.63'/%3E%3Ccircle cx='284' cy='94' r='0.7' fill='%23ffeeb0' opacity='0.73'/%3E%3Ccircle cx='2' cy='41' r='1.2' fill='%23fff' opacity='0.52'/%3E%3Ccircle cx='340' cy='151' r='0.7' fill='%23fff' opacity='0.66'/%3E%3Ccircle cx='34' cy='368' r='0.9' fill='%23fff' opacity='0.41'/%3E%3Ccircle cx='186' cy='460' r='1.5' fill='%23fff' opacity='0.76'/%3E%3Ccircle cx='101' cy='437' r='0.9' fill='%23ffeeb0' opacity='0.58'/%3E%3Ccircle cx='201' cy='272' r='0.7' fill='%23fff' opacity='0.82'/%3E%3Ccircle cx='162' cy='149' r='0.6' fill='%23fff' opacity='0.93'/%3E%3Ccircle cx='65' cy='339' r='0.6' fill='%23ffeeb0' opacity='0.39'/%3E%3Ccircle cx='85' cy='268' r='0.9' fill='%23fff' opacity='0.66'/%3E%3Ccircle cx='201' cy='184' r='0.9' fill='%23fff' opacity='0.60'/%3E%3Ccircle cx='0' cy='415' r='1.5' fill='%23fff' opacity='0.71'/%3E%3Ccircle cx='101' cy='189' r='1.5' fill='%23fff' opacity='0.71'/%3E%3Ccircle cx='20' cy='70' r='0.9' fill='%23fff' opacity='0.50'/%3E%3Ccircle cx='399' cy='185' r='0.6' fill='%23fff' opacity='0.40'/%3E%3Ccircle cx='7' cy='177' r='1' fill='%23ffeeb0' opacity='0.62'/%3E%3Ccircle cx='400' cy='65' r='0.9' fill='%23fff' opacity='0.46'/%3E%3Ccircle cx='149' cy='110' r='1' fill='%23fff' opacity='0.50'/%3E%3Ccircle cx='76' cy='302' r='1' fill='%23ffeeb0' opacity='0.47'/%3E%3Ccircle cx='423' cy='290' r='0.9' fill='%23fff' opacity='0.38'/%3E%3Ccircle cx='19' cy='462' r='0.7' fill='%23ffeeb0' opacity='0.79'/%3E%3Ccircle cx='123' cy='395' r='1' fill='%23fff' opacity='0.64'/%3E%3Ccircle cx='446' cy='469' r='0.7' fill='%23fff' opacity='0.49'/%3E%3Ccircle cx='135' cy='440' r='0.7' fill='%23fff' opacity='0.80'/%3E%3Ccircle cx='129' cy='214' r='0.6' fill='%23fff' opacity='0.38'/%3E%3Ccircle cx='177' cy='275' r='0.7' fill='%23fff' opacity='0.41'/%3E%3Ccircle cx='428' cy='471' r='1.2' fill='%23fff' opacity='0.79'/%3E%3Ccircle cx='283' cy='443' r='0.9' fill='%23fff' opacity='0.90'/%3E%3Ccircle cx='462' cy='10' r='1.2' fill='%23fff' opacity='0.39'/%3E%3Ccircle cx='351' cy='153' r='0.6' fill='%23fff' opacity='0.40'/%3E%3Ccircle cx='354' cy='432' r='1.2' fill='%23fff' opacity='0.79'/%3E%3Ccircle cx='381' cy='439' r='0.8' fill='%23ffeeb0' opacity='0.40'/%3E%3Ccircle cx='432' cy='418' r='0.9' fill='%23fff' opacity='0.92'/%3E%3Ccircle cx='414' cy='275' r='1' fill='%23ffeeb0' opacity='0.75'/%3E%3Ccircle cx='280' cy='292' r='0.6' fill='%23fff' opacity='0.40'/%3E%3Ccircle cx='477' cy='422' r='1.2' fill='%23ffeeb0' opacity='0.55'/%3E%3Ccircle cx='211' cy='402' r='0.6' fill='%23fff' opacity='0.66'/%3E%3Ccircle cx='149' cy='42' r='0.6' fill='%23fff' opacity='0.49'/%3E%3Ccircle cx='239' cy='295' r='0.9' fill='%23fff' opacity='0.50'/%3E%3Ccircle cx='177' cy='69' r='1' fill='%23fff' opacity='0.47'/%3E%3Ccircle cx='362' cy='164' r='0.9' fill='%23fff' opacity='0.65'/%3E%3Ccircle cx='157' cy='320' r='0.7' fill='%23fff' opacity='0.73'/%3E%3Ccircle cx='423' cy='185' r='1' fill='%23fff' opacity='0.90'/%3E%3Ccircle cx='65' cy='238' r='1.5' fill='%23fff' opacity='0.89'/%3E%3Ccircle cx='341' cy='456' r='0.8' fill='%23fff' opacity='0.84'/%3E%3Ccircle cx='216' cy='132' r='0.7' fill='%23ffeeb0' opacity='0.85'/%3E%3Ccircle cx='300' cy='237' r='0.8' fill='%23ffeeb0' opacity='0.78'/%3E%3Ccircle cx='154' cy='398' r='0.8' fill='%23fff' opacity='0.87'/%3E%3Ccircle cx='326' cy='135' r='0.8' fill='%23fff' opacity='0.54'/%3E%3Ccircle cx='308' cy='194' r='0.7' fill='%23fff' opacity='0.36'/%3E%3Ccircle cx='114' cy='68' r='0.6' fill='%23fff' opacity='0.94'/%3E%3Ccircle cx='214' cy='302' r='1.2' fill='%23fff' opacity='0.73'/%3E%3Ccircle cx='460' cy='329' r='0.7' fill='%23fff' opacity='0.84'/%3E%3Ccircle cx='86' cy='5' r='0.9' fill='%23fff' opacity='0.67'/%3E%3Ccircle cx='86' cy='131' r='0.8' fill='%23fff' opacity='0.67'/%3E%3Ccircle cx='189' cy='380' r='0.7' fill='%23ffeeb0' opacity='0.40'/%3E%3Ccircle cx='62' cy='218' r='1.2' fill='%23fff' opacity='0.88'/%3E%3Ccircle cx='181' cy='273' r='1' fill='%23fff' opacity='0.83'/%3E%3Ccircle cx='223' cy='313' r='0.7' fill='%23fff' opacity='0.41'/%3E%3Ccircle cx='102' cy='432' r='0.6' fill='%23fff' opacity='0.94'/%3E%3Ccircle cx='126' cy='345' r='0.6' fill='%23fff' opacity='0.56'/%3E%3Ccircle cx='18' cy='164' r='0.9' fill='%23ffeeb0' opacity='0.81'/%3E%3Ccircle cx='441' cy='105' r='1.5' fill='%23fff' opacity='0.39'/%3E%3Ccircle cx='83' cy='161' r='1.5' fill='%23ffeeb0' opacity='0.90'/%3E%3C/svg%3E") 0 0 / 480px, var(--kaj-night); color: var(--kaj-text); }
-    .door-kaj h2 { font: 700 clamp(22px, 2.4vw, 30px)/1.1 var(--font-kaj); color: var(--kaj-gold); }
+    .door-kaj .door-title { font: 700 clamp(22px, 2.4vw, 30px)/1.1 var(--font-kaj); color: var(--kaj-gold); }
     .door-kaj .go { background: var(--kaj-gold); color: var(--kaj-deep); }
 
     /* ================= Don't Get Mad! world ================= */
@@ -441,10 +484,10 @@
     .or-both { position: absolute; left: 50%; top: 50%; width: 112px; height: 112px; margin: -56px 0 0 -56px; border-radius: 50%; background: var(--kt-black); color: var(--kt-yellow); display: grid; place-items: center; text-align: center; font: italic 800 19px/1.05 var(--font-brand); transform: rotate(-8deg); border: 4px solid var(--kt-white); z-index: 2; box-shadow: 0 8px 0 rgba(1,8,17,.2); }
 
     /* ================= Parents' corner ================= */
-    .parents { padding: 100px 0; background: var(--kt-white); }
+    .parents { padding: 100px 0 80px; background: var(--kt-white); }
     .parents .wrap { display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: center; }
     .parents .photo { position: relative; }
-    .parents .photo img { border-radius: 30px; border: 4px solid var(--kt-black); box-shadow: 10px 12px 0 var(--kt-yellow), 10px 12px 0 4px var(--kt-black); aspect-ratio: 4 / 3; object-fit: cover; }
+    .parents .photo img { border-radius: 30px; border: 4px solid var(--kt-black); box-shadow: 10px 12px 0 var(--kt-yellow), 10px 12px 0 4px var(--kt-black); width: 100%; height: auto; }
     .parents .photo .speech { top: auto; bottom: -22px; right: -10px; font-size: 24px; }
     .parents .intro { margin: 16px 0 28px; font-size: 20px; font-weight: 700; }
     .promises { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; list-style: none; padding: 0; margin: 0; }
@@ -452,6 +495,18 @@
     .promises .ic { flex: none; width: 46px; height: 46px; display: grid; place-items: center; border-radius: 50%; background: var(--kt-yellow); border: 2.5px solid var(--kt-black); font-size: 22px; }
     .promises li small { display: block; font-weight: 700; font-size: 14px; color: #4a4f57; }
     .all-ages { margin-top: 22px; font-weight: 800; }
+
+    /* ================= FAQ ================= */
+    .faq-sec { background: var(--kt-white); padding: 0 0 100px; }
+    .faq-sec h2 { font: italic 800 clamp(34px, 4.4vw, 54px)/1.05 var(--font-brand); text-align: center; margin-bottom: 34px; }
+    .faq-list { max-width: 860px; margin: 0 auto; display: grid; gap: 12px; }
+    .faq-list details { border: 2.5px solid var(--kt-black); border-radius: 20px; background: #FFFDE0; }
+    .faq-list details[open] { background: var(--kt-white); box-shadow: 6px 7px 0 var(--kt-yellow), 6px 7px 0 2.5px var(--kt-black); }
+    .faq-list summary { cursor: pointer; list-style: none; position: relative; padding: 18px 64px 18px 22px; font-weight: 900; font-size: 19px; }
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-list summary::after { content: '+'; position: absolute; right: 16px; top: 50%; width: 34px; height: 34px; margin-top: -17px; border-radius: 50%; background: var(--kt-yellow); border: 2.5px solid var(--kt-black); display: grid; place-items: center; font: 900 22px/1 var(--font-body); transition: transform .25s var(--ease); }
+    .faq-list details[open] summary::after { transform: rotate(45deg); }
+    .faq-list details p { padding: 0 22px 20px; font-size: 17px; }
 
     /* ================= Story ================= */
     .story { position: relative; background: #FFFCD2; padding: 100px 0; border-top: 4px solid var(--kt-black); }
@@ -499,11 +554,22 @@
     .entry { max-width: 800px; margin: 0 auto; padding: 64px 22px 90px; }
     .entry h1 { font: italic 800 clamp(36px, 5.4vw, 58px)/1.05 var(--font-brand); margin-bottom: 28px; }
     .entry-body { font-size: 19px; line-height: 1.75; }
+    .entry-body p, .entry-body ul, .entry-body ol { margin: 0 0 16px; }
+    .entry-body li { margin-bottom: 6px; }
     .entry-body h2, .entry-body h3 { font-family: var(--font-brand); margin: 1.6em 0 .4em; }
     .entry-body a { font-weight: 800; text-decoration-color: var(--kt-yellow); text-decoration-thickness: 4px; text-underline-offset: 3px; }
     .entry-body img { height: auto !important; margin: 18px auto; border-radius: 18px; }
     .entry-body iframe { width: 100% !important; height: auto !important; aspect-ratio: 16 / 9; border: 0; border-radius: 18px; }
     .back-home { margin-top: 40px; }
+    /* Boxes and buttons used on the Privacy Policy and Contact pages */
+    .entry-body .kt-updated { color: #4a4f57; font-size: 16px; margin-top: -10px; }
+    .entry-body .kt-box { background: #FFFDE0; border: 2.5px solid var(--kt-black); border-radius: 20px; padding: 18px 22px; margin: 24px 0; }
+    .entry-body .kt-box p { margin: 0 0 8px; }
+    .entry-body .kt-box ul { margin: 0; padding-left: 22px; }
+    .entry-body .kt-buttons { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0 10px; }
+    .entry-body a.kt-btn { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 20px; border-radius: 999px; border: 2.5px solid var(--kt-black); background: var(--kt-white); color: var(--kt-black); font-weight: 900; font-size: 16px; text-decoration: none; transition: background .2s, transform .2s var(--bounce); }
+    .entry-body a.kt-btn:hover { background: var(--kt-yellow); transform: translateY(-2px); }
+    .entry-body a.kt-btn.main { background: var(--kt-black); color: var(--kt-yellow); font-size: 18px; min-height: 56px; padding: 0 26px; }
     .post-list { max-width: 1200px; margin: 0 auto; padding: 64px 22px 90px; }
     .post-list > h1 { font: italic 800 clamp(34px, 4.5vw, 52px)/1.05 var(--font-brand); margin-bottom: 32px; }
     .post-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 24px; }
@@ -531,7 +597,8 @@
       .mascot-stage { height: 330px; order: -1; max-width: 460px; width: 100%; margin: 0 auto; }
       .mascot { width: 210px; margin: -105px 0 0 -105px; }
       .doors, .versus, .kaj-grid { grid-template-columns: 1fr; }
-      .versus { gap: 70px; }
+      .versus { gap: 14px; }
+      .or-both { position: relative; left: auto; top: auto; margin: 0; justify-self: center; width: 96px; height: 96px; font-size: 17px; }
       .parents .wrap, .story .wrap { gap: 48px; }
     }
     @media (max-width: 760px) {
@@ -539,7 +606,7 @@
       .site-footer { padding-bottom: 100px; }
       .footer-links { justify-content: center; }
       .yt-play { width: 62px; height: 62px; right: 12px; bottom: 12px; border-width: 3px; }
-      .yt-play::before { border-left-width: 20px; border-top-width: 12px; border-bottom-width: 12px; margin-left: 5px; }
+      .yt-play::before { border-left-width: 20px; border-top-width: 12px; border-bottom-width: 12px; }
       .yt-tag { left: 10px; bottom: 12px; font-size: 13px; }
       .features li { font-size: 14px; padding: 7px 14px; border-radius: 16px; }
       .wrap { padding: 0 16px; }
@@ -555,7 +622,9 @@
       .postcard .stamp { width: 44px; height: 48px; font-size: 22px; }
       .postcard p { font-size: 20px; }
       .shots { grid-auto-columns: 86%; gap: 14px; }
-      .car-btn { display: none; }
+      .car-btn { width: 42px; height: 42px; top: calc(50% - 30px); font-size: 18px; border-width: 2.5px; }
+      .car-prev { left: 6px; }
+      .car-next { right: 6px; }
       .travellers { gap: 14px; }
       .traveller { padding: 18px 12px; }
       .traveller .emoji { width: 64px; height: 64px; font-size: 32px; }
@@ -595,6 +664,7 @@
         <a expr:href='data:blog.homepageUrl + &quot;#dont-get-mad&quot;'>Don&#39;t Get Mad!</a>
         <a expr:href='data:blog.homepageUrl + &quot;#kris-anns-journey&quot;'>Kris Ann&#39;s Journey</a>
         <a expr:href='data:blog.homepageUrl + &quot;#parents&quot;'>Parents</a>
+        <a expr:href='data:blog.homepageUrl + &quot;#faq&quot;'>FAQ</a>
         <a expr:href='data:blog.homepageUrl + &quot;#story&quot;'>Our story</a>
         <a class='nav-cta' expr:href='data:blog.homepageUrl + &quot;#which-game&quot;'>Let&#39;s play!</a>
       </nav>
@@ -610,7 +680,7 @@
         <div class='hero-top'>
           <div>
             <span class='badge'>&#127881; 2 board games &#183; 2-4 players &#183; all ages</span>
-            <h1 id='hero-title'>Family game night <span class='underline'>starts here!</span></h1>
+            <h1 id='hero-title'>Family board games for <span class='underline'>game night!</span></h1>
             <p class='lead'>KriTere.com, named after two sisters, KrisAnn and Terez, offers two family-friendly, intelligent, educational and fun board games: <strong>Don&#39;t Get Mad!</strong> and <strong>Kris Ann&#39;s Journey</strong>. Easily play on any device: PC, web browser or Android app.</p>
             <ul aria-label='Our promise' class='ticks'>
               <li>No ads in the games</li>
@@ -638,7 +708,7 @@
           <a class='door door-dgm reveal' href='#dont-get-mad'>
             <img alt="Don't Get Mad! game icon" height='150' src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg8CXosmK_MLzF_oDIIy-DVPh0rSdXXy6ya_19h3tcnrpsDJSzsl6Z2Uyyt2K0t2579AUpbrwOqg7eC2qu1AdLoS2f8IZQQAo4rea6hyphenhyphen6PlL0f01swWdADq0nP5IXwgHU5vdLA7W5lncy-uJ1IgDhVuumlvCeSW9GNd2-vdsX61fhrXvATJF-Xg7ygridk/s300-rj/DGM-icon.png' width='150'/>
             <div>
-              <h2>Don&#39;t Get Mad!</h2>
+              <p class='door-title'>Don&#39;t Get Mad!</p>
               <p>Roll the die and race to the Festival of Lights. Anyone can win!</p>
               <span class='go'>Watch &amp; play &#8594;</span>
             </div>
@@ -646,7 +716,7 @@
           <a class='door door-kaj reveal' href='#kris-anns-journey'>
             <img alt="Kris Ann's Journey game icon" height='150' src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgrtA56ZRsvWVZzntQAMjZcKHpjtDbHTFUkp0MUKrLhLhMHcGWNVOqiub76SZKh5QCefaAwvfdxWttr09YgpLOWHXesdcPXgQEeN8m4UhqeRzqHm1nJGhItJlT83GtWVkcuKqv9Ws83LiQEC6fF6-UjctJnuEHaWdNSzRKlsqEOXoGvSbxTKYt4MUPQCZ4/s300-rj/icon512.png' width='150'/>
             <div>
-              <h2>Kris Ann&#39;s Journey</h2>
+              <p class='door-title'>Kris Ann&#39;s Journey</p>
               <p>Travel the world, answer quiz questions and plan smart moves.</p>
               <span class='go'>Watch &amp; play &#8594;</span>
             </div>
@@ -661,7 +731,7 @@
       <div class='wrap'>
         <div class='world-head reveal'>
           <h2 class='sticker' id='dgm-title'>Don&#39;t Get Mad!</h2>
-          <p class='dgm-tagline'>Game night with family or friends, on one phone.</p>
+          <p class='dgm-tagline'>The family dice board game: game night with family or friends, on one phone.</p>
         </div>
 
         <div class='dgm-main'>
@@ -678,9 +748,9 @@
             <p class='intro'>A dice board game where nobody is safe: the leader can lose it all near the finish, and the player in last place can still win.</p>
             <p>Roll the die and race from your front door to the Festival of Lights. Every square is the next moment of the same trip, the kind every grown-up knows.</p>
             <div class='play-row'>
-              <a class='play-btn primary' href='https://dgm.kritere.com' rel='noopener'><svg aria-hidden='true' class='ico-stroke' focusable='false' stroke-linecap='round' stroke-width='2' viewBox='0 0 24 24'><circle cx='12' cy='12' r='10'/><path d='M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20'/></svg><span><small>Play on</small>Web</span></a>
-              <a class='play-btn' data-ms='9MTJ320KBN5T' href='https://apps.microsoft.com/detail/9mtj320kbn5t' rel='noopener' target='_blank'><svg aria-hidden='true' focusable='false' viewBox='0 0 24 24'><path d='M0 3.45 9.75 2.1v9.45H0zm10.95-1.5L24 0v11.4H10.95zM0 12.6h9.75v9.45L0 20.7zm10.95 0H24V24l-13.05-1.8z'/></svg><span><small>Play on</small>PC</span></a>
-              <a class='play-btn' data-play='com.dontgetmad.game' href='https://play.google.com/store/apps/details?id=com.dontgetmad.game' rel='noopener' target='_blank'><svg aria-hidden='true' focusable='false' viewBox='0 0 24 24'><path d='M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z'/></svg><span><small>Play on</small>Android</span></a>
+              <a class='play-btn primary' href='https://dgm.kritere.com' title='Play Don&#39;t Get Mad! online in your browser' rel='noopener'><svg aria-hidden='true' class='ico-stroke' focusable='false' stroke-linecap='round' stroke-width='2' viewBox='0 0 24 24'><circle cx='12' cy='12' r='10'/><path d='M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20'/></svg><span><small>Play on</small>Web</span></a>
+              <a class='play-btn' data-ms='9MTJ320KBN5T' href='https://apps.microsoft.com/detail/9mtj320kbn5t' title='Get Don&#39;t Get Mad! from the Microsoft Store' rel='noopener' target='_blank'><svg aria-hidden='true' focusable='false' viewBox='0 0 24 24'><path d='M0 3.45 9.75 2.1v9.45H0zm10.95-1.5L24 0v11.4H10.95zM0 12.6h9.75v9.45L0 20.7zm10.95 0H24V24l-13.05-1.8z'/></svg><span><small>Play on</small>PC</span></a>
+              <a class='play-btn' data-play='com.dontgetmad.game' href='https://play.google.com/store/apps/details?id=com.dontgetmad.game' title='Get Don&#39;t Get Mad! on Google Play' rel='noopener' target='_blank'><svg aria-hidden='true' focusable='false' viewBox='0 0 24 24'><path d='M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z'/></svg><span><small>Play on</small>Android</span></a>
             </div>
           </div>
         </div>
@@ -748,7 +818,7 @@
         <div class='kaj-head reveal'>
           <img alt="Kris Ann's Journey game icon" height='132' loading='lazy' src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgrtA56ZRsvWVZzntQAMjZcKHpjtDbHTFUkp0MUKrLhLhMHcGWNVOqiub76SZKh5QCefaAwvfdxWttr09YgpLOWHXesdcPXgQEeN8m4UhqeRzqHm1nJGhItJlT83GtWVkcuKqv9Ws83LiQEC6fF6-UjctJnuEHaWdNSzRKlsqEOXoGvSbxTKYt4MUPQCZ4/s264-rj/icon512.png' width='132'/>
           <h2 id='kaj-title'>Kris Ann&#39;s Journey</h2>
-          <p>A strategy board game and trivia quiz in one!</p>
+          <p>A geography strategy board game and trivia quiz in one!</p>
         </div>
 
         <div class='kaj-main'>
@@ -765,9 +835,9 @@
             <p class='intro'>Travel the world, answer quiz questions and make smart choices to score the most points.</p>
             <p>Play with family and friends on one phone or tablet, or against robots.</p>
             <div class='play-row'>
-              <a class='play-btn primary' href='https://kaj.kritere.com' rel='noopener'><svg aria-hidden='true' class='ico-stroke' focusable='false' stroke-linecap='round' stroke-width='2' viewBox='0 0 24 24'><circle cx='12' cy='12' r='10'/><path d='M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20'/></svg><span><small>Play on</small>Web</span></a>
-              <a class='play-btn' data-ms='9MSZ5DDH2KRT' href='https://apps.microsoft.com/detail/9msz5ddh2krt' rel='noopener' target='_blank'><svg aria-hidden='true' focusable='false' viewBox='0 0 24 24'><path d='M0 3.45 9.75 2.1v9.45H0zm10.95-1.5L24 0v11.4H10.95zM0 12.6h9.75v9.45L0 20.7zm10.95 0H24V24l-13.05-1.8z'/></svg><span><small>Play on</small>PC</span></a>
-              <a class='play-btn' data-play='com.kaj.game' href='https://play.google.com/store/apps/details?id=com.kaj.game' rel='noopener' target='_blank'><svg aria-hidden='true' focusable='false' viewBox='0 0 24 24'><path d='M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z'/></svg><span><small>Play on</small>Android</span></a>
+              <a class='play-btn primary' href='https://kaj.kritere.com' title='Play Kris Ann&#39;s Journey online in your browser' rel='noopener'><svg aria-hidden='true' class='ico-stroke' focusable='false' stroke-linecap='round' stroke-width='2' viewBox='0 0 24 24'><circle cx='12' cy='12' r='10'/><path d='M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20'/></svg><span><small>Play on</small>Web</span></a>
+              <a class='play-btn' data-ms='9MSZ5DDH2KRT' href='https://apps.microsoft.com/detail/9msz5ddh2krt' title='Get Kris Ann&#39;s Journey from the Microsoft Store' rel='noopener' target='_blank'><svg aria-hidden='true' focusable='false' viewBox='0 0 24 24'><path d='M0 3.45 9.75 2.1v9.45H0zm10.95-1.5L24 0v11.4H10.95zM0 12.6h9.75v9.45L0 20.7zm10.95 0H24V24l-13.05-1.8z'/></svg><span><small>Play on</small>PC</span></a>
+              <a class='play-btn' data-play='com.kaj.game' href='https://play.google.com/store/apps/details?id=com.kaj.game' title='Get Kris Ann&#39;s Journey on Google Play' rel='noopener' target='_blank'><svg aria-hidden='true' focusable='false' viewBox='0 0 24 24'><path d='M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z'/></svg><span><small>Play on</small>Android</span></a>
             </div>
           </div>
         </div>
@@ -916,6 +986,55 @@
             <li><span aria-hidden='true' class='ic'>&#128244;</span><span>Works offline<small>Car rides, flights, holidays</small></span></li>
           </ul>
           <p class='all-ages'>&#128106; For all ages: 2 to 4 players around one device, or challenge the AI robots.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FAQ ===================== -->
+    <section aria-labelledby='faq-title' class='faq-sec' id='faq'>
+      <div class='wrap'>
+        <h2 class='reveal' id='faq-title'>Questions families ask</h2>
+        <div class='faq-list reveal'>
+          <details>
+            <summary>What is Don&#39;t Get Mad!?</summary>
+            <p>Don&#39;t Get Mad! is a dice board game for 2 to 4 players on one phone, tablet or computer. Roll the die and race from your front door to the Festival of Lights. Every square is a little story: hot-air balloons, wrong ferries, sheep with right of way. Bonus cards and lanterns can turn the game around, so the leader is never safe and the player in last place can still win. If your family loves classic dice race games like Ludo or Snakes and Ladders, you will feel right at home.</p>
+          </details>
+          <details>
+            <summary>What is Kris Ann&#39;s Journey?</summary>
+            <p>Kris Ann&#39;s Journey (KAJ) is a geography strategy board game and trivia quiz in one. Choose a traveller, travel the world by walking, flying, sailing, train, bus or car, answer quiz questions and make smart choices to score the most points. There are no dice: you choose every move.</p>
+          </details>
+          <details>
+            <summary>Which game is best for young children?</summary>
+            <p>Don&#39;t Get Mad! is perfect for little ones: luck makes everyone equal, so a child can beat a grown-up. Kris Ann&#39;s Journey is great for kids who can read and love quizzes, and for the whole family to learn about the world together.</p>
+          </details>
+          <details>
+            <summary>What do kids learn from Kris Ann&#39;s Journey?</summary>
+            <p>Kids learn flags, capitals, currencies, continents, neighbouring countries and which countries are bigger, plus hundreds of fun facts about countries, wonders, food, animals, languages and inventions. They also learn to plan ahead and make smart choices.</p>
+          </details>
+          <details>
+            <summary>Are the games safe for kids?</summary>
+            <p>Yes. Both games have no ads, no in-app purchases, no accounts, no chat, and they collect no personal data. You can hand them to your children without worry.</p>
+          </details>
+          <details>
+            <summary>Can we play offline?</summary>
+            <p>Yes. The Windows PC and Android apps of both games work fully offline, perfect for car rides, flights and holidays. The web versions run right in your browser.</p>
+          </details>
+          <details>
+            <summary>Can I play alone?</summary>
+            <p>Yes. In both games you can play against computer robots. In Kris Ann&#39;s Journey the robots play at easy, normal or hard level.</p>
+          </details>
+          <details>
+            <summary>How long does a game take?</summary>
+            <p>Don&#39;t Get Mad! has two journeys: a quick trip for a short break, or the grand journey for a long evening. Kris Ann&#39;s Journey can be played in 30 turns (53 areas, 7 wonders) or 50 turns (84 areas, 11 wonders), and your game is saved so you can continue later.</p>
+          </details>
+          <details>
+            <summary>Which devices can we play on?</summary>
+            <p>Play in any modern web browser, on Windows PC from the Microsoft Store, or on Android from Google Play.</p>
+          </details>
+          <details>
+            <summary>Why is it called KriTere?</summary>
+            <p>KriTere is named after two sisters, KrisAnn and Terez. Don&#39;t Get Mad! started on paper: father and daughter drew the board by hand and had so much fun playing it that they decided to share it with everyone.</p>
+          </details>
         </div>
       </div>
     </section>
@@ -1080,6 +1199,15 @@
       a.removeAttribute('target');
     });
 
+    // Highlight the button that fits this device: Android -> Play Store, Windows -> Microsoft Store.
+    // Other devices (iPhone, iPad, Mac...) keep "Play on Web" highlighted.
+    document.querySelectorAll('.play-row').forEach(function (row) {
+      var best = onAndroid ? row.querySelector('[data-play]') : (onWindows ? row.querySelector('[data-ms]') : null);
+      if (!best) return;
+      row.querySelectorAll('.play-btn').forEach(function (b) { b.classList.remove('primary'); });
+      best.classList.add('primary');
+    });
+
     // KT mascot: the eyes follow the mouse (or finger)
     var mascots = document.querySelectorAll('[data-mascot]');
     if (mascots.length && !reduceMotion) {
@@ -1100,9 +1228,23 @@
     // Screenshot carousels
     document.querySelectorAll('.carousel').forEach(function (c) {
       var track = c.querySelector('.shots');
-      var step = function (dir) { track.scrollBy({ left: dir * track.clientWidth * 0.5, behavior: 'smooth' }); };
-      c.querySelector('.car-prev').addEventListener('click', function () { step(-1); });
-      c.querySelector('.car-next').addEventListener('click', function () { step(1); });
+      var prev = c.querySelector('.car-prev'), next = c.querySelector('.car-next');
+      // Move by exactly one poster
+      var step = function (dir) {
+        var card = track.querySelector('.shot');
+        var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+        track.scrollBy({ left: dir * (card.offsetWidth + gap), behavior: 'smooth' });
+      };
+      // Hide an arrow when there is nothing more on that side
+      var update = function () {
+        prev.disabled = track.scrollLeft < 8;
+        next.disabled = track.scrollLeft + track.clientWidth > track.scrollWidth - 8;
+      };
+      prev.addEventListener('click', function () { step(-1); });
+      next.addEventListener('click', function () { step(1); });
+      track.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
     });
 
     // Screenshots open full size in a lightbox (plain links still work without JS)
