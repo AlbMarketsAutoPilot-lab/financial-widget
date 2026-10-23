@@ -19,6 +19,8 @@
   <link expr:href='data:blog.homepageUrl + &quot;feeds/posts/default&quot;' expr:title='data:blog.title + &quot; - Atom&quot;' rel='alternate' type='application/atom+xml'/>
 
   <!-- Google AdSense -->
+  <!-- Family site: ask Google for non-personalised ads only, for every visitor (remove this line to allow personalised ads) -->
+  <script>(adsbygoogle = window.adsbygoogle || []).requestNonPersonalizedAds = 1;</script>
   <script async='async' crossorigin='anonymous' src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2373589608434861'/>
 
   <link href='https://fonts.googleapis.com' rel='preconnect'/>
