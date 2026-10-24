@@ -314,7 +314,7 @@
     .dgm-tagline { font: 500 clamp(24px, 3.2vw, 40px)/1.2 var(--font-dgm); color: #9C7A2B; margin-top: 26px; }
     .dgm-main { display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: center; }
     .gold-frame { padding: 12px; border-radius: 18px; background: linear-gradient(135deg, #E9CF85, #B88D33 30%, #F3DE9C 55%, #B48A30 80%, #E8CB7A); box-shadow: 0 24px 50px -16px rgba(59,44,126,.45); }
-    .gold-frame .video, .gold-frame &gt; img { border-radius: 10px; border: 4px solid var(--dgm-cream); }
+    .gold-frame .video, .gold-frame > img { border-radius: 10px; border: 4px solid var(--dgm-cream); }
     .dgm-card { background: var(--dgm-cream); border: 3px solid var(--dgm-purple); border-radius: 26px; padding: 28px; box-shadow: 8px 10px 0 var(--dgm-purple); }
     .dgm-card .intro { font: 600 21px/1.45 var(--font-dgm); color: var(--dgm-purple); }
     .dgm-card p + p { margin-top: 12px; }
@@ -559,7 +559,7 @@
     .more-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
     .more-card { display: flex; flex-direction: column; text-decoration: none; border: 2.5px solid var(--kt-black); border-radius: 18px; overflow: hidden; background: #FFFDE0; transition: transform .25s var(--bounce); }
     .more-card:hover { transform: translateY(-4px); }
-    .more-card[hidden] { display: none; }
+    .more-card[hidden], .more-guides[hidden], .guides[hidden] { display: none; }
     .more-card img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-bottom: 2.5px solid var(--kt-black); }
     .more-card span { padding: 12px 14px 16px; font-weight: 900; font-size: 16px; line-height: 1.3; }
     .more-all { margin-top: 18px; }
@@ -573,12 +573,18 @@
     .entry-body a.kt-btn:hover { background: var(--kt-yellow); transform: translateY(-2px); }
     .entry-body a.kt-btn.main { background: var(--kt-black); color: var(--kt-yellow); font-size: 18px; min-height: 56px; padding: 0 26px; }
     .post-list { max-width: 1200px; margin: 0 auto; padding: 64px 22px 90px; }
-    .post-list &gt; h1 { font: italic 800 clamp(34px, 4.5vw, 52px)/1.05 var(--font-brand); margin-bottom: 32px; }
+    .post-list > h1 { font: italic 800 clamp(34px, 4.5vw, 52px)/1.05 var(--font-brand); margin-bottom: 32px; }
     .post-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 24px; }
     .post-card { display: block; text-decoration: none; border: 3px solid var(--kt-black); border-radius: 22px; overflow: hidden; box-shadow: 6px 8px 0 var(--kt-yellow), 6px 8px 0 3px var(--kt-black); transition: transform .3s var(--bounce); }
     .post-card:hover { transform: translateY(-5px) rotate(-.5deg); }
     .post-card img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-bottom: 3px solid var(--kt-black); }
-    .post-card h2 { font: 900 21px/1.25 var(--font-body); padding: 18px 20px 22px; }
+    .post-card { display: flex; flex-direction: column; background: #FFFDE0; }
+    .post-card h2 { font: 900 21px/1.25 var(--font-body); margin: 0; }
+    .post-list-sub { font-weight: 800; font-size: 18px; margin: -18px 0 30px; color: #3d424a; }
+    .post-card-text { display: flex; flex-direction: column; gap: 8px; padding: 16px 20px 20px; flex: 1; }
+    .post-card-meta { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 700; color: #4a4f57; }
+    .post-card-text p { font-size: 16px; color: #3d424a; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .post-card .go { margin-top: auto; font-weight: 900; }
     .pager { display: flex; justify-content: center; gap: 14px; margin-top: 40px; }
 
     /* Screenshot lightbox */
@@ -1000,34 +1006,6 @@
       </div>
     </section>
 
-    <!-- ===================== GAME NIGHT GUIDES (the two featured guides, always shown) ===================== -->
-    <section aria-labelledby="guides-title" class="guides" id="guides">
-      <div class="wrap">
-        <h2 class="reveal" id="guides-title">Game night guides</h2>
-        <p class="guides-sub reveal">Rules, tips and ideas for playing together.</p>
-        <div class="guide-grid">
-          <a class="guide-card gc-dgm reveal" href="#">
-            <img alt="Don't Get Mad! board game rules" height="675" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhFeUzlzBqsswjPklGjIxopSrYcadoBbVeSS2Kg3uwwqy0h_Mb3NO8O62fKEpFIr5n-zxgHTqO0B_POAZNKSbrE3CFXY-or6DcccVXRMRI8jpK0tAPTV_uH1bbVvEg_lO0BBNDSCJX5OeKTjHuCys0Wi-lJn-wmaF9sEZnUYjD4xiPzogYxgL_-p9Av9yE/w800-rj-l82/DGM-poster-1.png" width="1200"/>
-            <span class="guide-text">
-              <span class="guide-tag">Featured guide</span>
-              <h3>How to Play Don't Get Mad!: Rules, Tips and Tricks</h3>
-              <p>Everything for your first game: rolling a 6 to start, lanterns, the Bog, Bonus cards, bumping and how to win.</p>
-              <span class="go">Read the guide →</span>
-            </span>
-          </a>
-          <a class="guide-card gc-kaj reveal" href="#">
-            <img alt="Kris Ann's Journey world map" height="675" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEib9HbKKlDG-639ZB8WxvwoyetUjySDcT0tuKEnPWdUDFiuLw5dKhtU-jIn4Gnw23WtOcln52gicAGI8M2MyWkwuzWthfjsH_Ze9AHtPpfGqAz2QUxfvrekl7ZXrrHS65Zcx6yOaYgml6GyYvDCy9_Hualh07qYVMDHaGJPyxPdGhza-EqhvyZLfdrrFYg/w800-rj-l82/image-1791785856805.png" width="1200"/>
-            <span class="guide-text">
-              <span class="guide-tag">Featured guide</span>
-              <h3>How to Play Kris Ann's Journey: Rules, Travellers and Tips</h3>
-              <p>Choose your traveller, collect points around the world, win free tickets with quizzes, and plan your way to victory.</p>
-              <span class="go">Read the guide →</span>
-            </span>
-          </a>
-        </div>
-        <p class="guides-all reveal"><a class="btn btn-black" href="#">Other guides →</a></p>
-      </div>
-    </section>
   
 
   <!-- Blog widget: the post or page itself (nothing on the homepage) -->
@@ -1272,47 +1250,69 @@
       }).observe(hero);
     }
 
-    // Post pages: "You may also like" = the featured guides (minus this one) + the latest other guides
-    var more = document.querySelector('[data-more-guides]');
-    if (more) {
-      var here = location.pathname;
-      var grid = more.querySelector('.more-grid');
-      var known = [];
-      grid.querySelectorAll('.more-card').forEach(function (a) {
-        var path = new URL(a.href, location.href).pathname;
-        known.push(path);
-        if (path === here) a.hidden = true;
+    // Guides from Blogger's feed (same site). Featured guides carry the label "Featured".
+    var feed = function (label, n) {
+      var url = '/feeds/posts/summary' + (label ? '/-/' + encodeURIComponent(label) : '') + '?alt=json&max-results=' + n;
+      return fetch(url).then(function (r) { return r.json(); }).then(function (d) {
+        return (d.feed.entry || []).map(function (e) {
+          var link = (e.link || []).filter(function (l) { return l.rel === 'alternate'; })[0];
+          var tags = (e.category || []).map(function (c) { return c.term; });
+          return link && {
+            path: new URL(link.href).pathname,
+            title: e.title.$t,
+            text: e.summary ? e.summary.$t : '',
+            image: e.media$thumbnail ? e.media$thumbnail.url.replace(/\/s\d+(-c)?\//, '/w800-h450-p-k-no-nu/') : '',
+            kaj: tags.indexOf("Kris Ann's Journey") !== -1
+          };
+        }).filter(Boolean);
       });
-      known.push(here);
-      if (window.fetch) {
-        fetch('/feeds/posts/summary?alt=json&max-results=10')
-          .then(function (r) { return r.json(); })
-          .then(function (data) {
-            var added = 0;
-            (data.feed.entry || []).forEach(function (e) {
-              if (added >= 3) return;
-              var link = (e.link || []).filter(function (l) { return l.rel === 'alternate'; })[0];
-              if (!link) return;
-              var path = new URL(link.href).pathname;
-              if (known.indexOf(path) !== -1) return;
-              var a = document.createElement('a');
-              a.className = 'more-card';
-              a.href = path;
-              if (e.media$thumbnail) {
-                var im = document.createElement('img');
-                im.src = e.media$thumbnail.url.replace(/\/s\d+(-c)?\//, '/w480-h270-p-k-no-nu/');
-                im.alt = ''; im.loading = 'lazy'; im.width = 480; im.height = 270;
-                a.appendChild(im);
-              }
-              var t = document.createElement('span');
-              t.textContent = e.title.$t;
-              a.appendChild(t);
-              grid.appendChild(a);
-              added++;
-            });
-          })
-          .catch(function () { /* the featured guides are already there */ });
+    };
+    var el = function (tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text) n.textContent = text; return n; };
+
+    // Homepage: if Blogger couldn't show 2 featured guides (they are older than the posts it loads), fetch them
+    var featured = document.querySelector('[data-featured-guides]');
+    if (featured) {
+      var fgrid = featured.querySelector('.guide-grid');
+      var have = fgrid.querySelectorAll('.guide-card').length;
+      if (have < 2 && window.fetch) {
+        var shown = [].map.call(fgrid.querySelectorAll('a'), function (a) { return new URL(a.href).pathname; });
+        feed('Featured', 4).then(function (list) {
+          list.filter(function (g) { return shown.indexOf(g.path) === -1; }).slice(0, 2 - have).forEach(function (g) {
+            var a = el('a', 'guide-card in' + (g.kaj ? ' gc-kaj' : '')); a.href = g.path;
+            if (g.image) { var im = el('img'); im.src = g.image; im.alt = g.title; im.width = 800; im.height = 450; a.appendChild(im); }
+            var t = el('span', 'guide-text');
+            t.appendChild(el('span', 'guide-tag', 'Featured guide'));
+            t.appendChild(el('h3', '', g.title));
+            t.appendChild(el('p', '', g.text));
+            t.appendChild(el('span', 'go', 'Read the guide \u2192'));
+            a.appendChild(t);
+            fgrid.appendChild(a);
+          });
+          if (!fgrid.querySelector('.guide-card')) featured.hidden = true;
+        }).catch(function () { if (!have) featured.hidden = true; });
+      } else if (!have) {
+        featured.hidden = true;
       }
+    }
+
+    // Post pages: "You may also like" = featured guides first, then the newest posts; never this one; up to 4
+    var more = document.querySelector('[data-more-guides]');
+    if (more && window.fetch) {
+      var mgrid = more.querySelector('.more-grid');
+      Promise.all([feed('Featured', 4).catch(function () { return []; }), feed('', 12).catch(function () { return []; })])
+        .then(function (lists) {
+          var seen = [location.pathname];
+          mgrid.textContent = '';
+          lists[0].concat(lists[1]).forEach(function (g) {
+            if (seen.indexOf(g.path) !== -1 || mgrid.children.length >= 4) return;
+            seen.push(g.path);
+            var a = el('a', 'more-card'); a.href = g.path;
+            if (g.image) { var im = el('img'); im.src = g.image.replace('w800-h450', 'w480-h270'); im.alt = ''; im.loading = 'lazy'; im.width = 480; im.height = 270; a.appendChild(im); }
+            a.appendChild(el('span', '', g.title));
+            mgrid.appendChild(a);
+          });
+          if (mgrid.children.length) more.hidden = false;
+        });
     }
 
     // Long posts: one more ad in the middle of the article, between two sections (never next to buttons)
