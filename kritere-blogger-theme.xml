@@ -1046,23 +1046,24 @@
   </b:if>
 
   <!-- Blog widget: the post or page itself (nothing on the homepage) -->
-    <b:section id='main' maxwidgets='1' name='Main Content' showaddelement='no'>
+    <b:section id='main' name='Main Content' showaddelement='yes'>
       <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='2' visible='true'>
         <b:widget-settings>
           <b:widget-setting name='showDateHeader'>false</b:widget-setting>
           <b:widget-setting name='showShareButtons'>false</b:widget-setting>
-          <b:widget-setting name='showCommentLink'>false</b:widget-setting>
+          <b:widget-setting name='showCommentLink'>true</b:widget-setting>
           <b:widget-setting name='showAuthor'>false</b:widget-setting>
+          <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
+          <b:widget-setting name='reactionsLabel'/>
           <b:widget-setting name='showAuthorProfile'>false</b:widget-setting>
-          <b:widget-setting name='showLabels'>false</b:widget-setting>
+          <b:widget-setting name='style.layout'>1x1</b:widget-setting>
+          <b:widget-setting name='showLabels'>true</b:widget-setting>
           <b:widget-setting name='showLocation'>false</b:widget-setting>
-          <b:widget-setting name='showTimestamp'>false</b:widget-setting>
+          <b:widget-setting name='showTimestamp'>true</b:widget-setting>
+          <b:widget-setting name='postsPerAd'>1</b:widget-setting>
           <b:widget-setting name='showBacklinks'>false</b:widget-setting>
           <b:widget-setting name='showInlineAds'>false</b:widget-setting>
           <b:widget-setting name='showReactions'>false</b:widget-setting>
-          <b:widget-setting name='style.layout'>1x1</b:widget-setting>
-          <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
-          <b:widget-setting name='postsPerAd'>1</b:widget-setting>
         </b:widget-settings>
         <!-- Only simple Blogger data is used here (Blogger silently drops a widget whose code it can't evaluate).
              Featured guides, suggestions and breadcrumbs are filled in by the page script from the blog feed. -->
