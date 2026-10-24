@@ -1064,32 +1064,17 @@
           <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
           <b:widget-setting name='postsPerAd'>1</b:widget-setting>
         </b:widget-settings>
+        <!-- Only simple Blogger data is used here (Blogger silently drops a widget whose code it can't evaluate).
+             Featured guides, suggestions and breadcrumbs are filled in by the page script from the blog feed. -->
         <b:includable id='main' var='top'>
           <b:if cond='data:view.isHomepage'>
-            <!-- Homepage: up to 2 posts with the label "Featured" (any capitals), newest first. Add or remove the label in
-                 the post editor to change them; no theme edit needed. -->
-            <section aria-labelledby='guides-title' class='guides' data-featured-guides='1' id='guides'>
+            <!-- Homepage: the 2 newest posts labelled "Featured" (any capitals), added by the script -->
+            <section aria-labelledby='guides-title' class='guides' data-featured-guides='1' hidden='hidden' id='guides'>
               <div class='wrap'>
-                <h2 class='reveal' id='guides-title'>Game night guides</h2>
-                <p class='guides-sub reveal'>Rules, tips and ideas for playing together.</p>
-                <div class='guide-grid'>
-                  <b:loop index='i' values='data:posts filter (p =&gt; p.labels any (l =&gt; l.name in {&quot;Featured&quot;, &quot;featured&quot;, &quot;FEATURED&quot;, &quot;Featured guide&quot;, &quot;featured guide&quot;}))' var='post'>
-                    <b:if cond='data:i &lt; 2'>
-                      <a expr:class='&quot;guide-card reveal&quot; + (data:post.labels any (l =&gt; l.name == &quot;Kris Ann&#39;s Journey&quot;) ? &quot; gc-kaj&quot; : &quot;&quot;)' expr:href='data:post.url'>
-                        <b:if cond='data:post.featuredImage'>
-                          <img expr:alt='data:post.title' expr:src='resizeImage(data:post.featuredImage, 800, &quot;16:9&quot;)' height='450' loading='lazy' width='800'/>
-                        </b:if>
-                        <span class='guide-text'>
-                          <span class='guide-tag'>Featured guide</span>
-                          <h3><data:post.title/></h3>
-                          <p><data:post.snippets.short/></p>
-                          <span class='go'>Read the guide &#8594;</span>
-                        </span>
-                      </a>
-                    </b:if>
-                  </b:loop>
-                </div>
-                <p class='guides-all reveal'><a class='btn btn-black' expr:href='data:blog.searchUrl'>Other guides &#8594;</a></p>
+                <h2 id='guides-title'>Game night guides</h2>
+                <p class='guides-sub'>Rules, tips and ideas for playing together.</p>
+                <div class='guide-grid'>&#8203;</div>
+                <p class='guides-all'><a class='btn btn-black' expr:href='data:blog.homepageUrl + &quot;search&quot;'>Other guides &#8594;</a></p>
               </div>
             </section>
           <b:else/>
@@ -1104,7 +1089,7 @@
             <b:loop values='data:posts' var='post'>
               <article class='entry'>
                 <b:if cond='data:view.isPost'>
-                  <nav aria-label='Breadcrumb' class='crumbs'><a expr:href='data:blog.homepageUrl'>KriTere</a> &#8250; <a expr:href='data:blog.searchUrl'>Game night guides</a></nav>
+                  <nav aria-label='Breadcrumb' class='crumbs'><a expr:href='data:blog.homepageUrl'>KriTere</a> &#8250; <a expr:href='data:blog.homepageUrl + &quot;search&quot;'>Game night guides</a></nav>
                 </b:if>
                 <h1><data:post.title/></h1>
                 <b:if cond='data:view.isPost'>
@@ -1128,41 +1113,20 @@
                   <section aria-labelledby='more-title' class='more-guides' data-more-guides='1' hidden='hidden'>
                     <h2 id='more-title'>You may also like</h2>
                     <div class='more-grid'>&#8203;</div>
-                    <p class='more-all'><a class='btn btn-outline' expr:href='data:blog.searchUrl'>All guides &#8594;</a></p>
+                    <p class='more-all'><a class='btn btn-outline' expr:href='data:blog.homepageUrl + &quot;search&quot;'>All guides &#8594;</a></p>
                   </section>
-                  <script type='application/ld+json'>{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "mainEntityOfPage": { "@type": "WebPage", "@id": "<data:post.url.canonical.jsonEscaped/>" },
-  "headline": "<data:post.title.jsonEscaped/>",
-  "description": "<data:post.snippets.short.jsonEscaped/>",
-  "datePublished": "<data:post.date.iso8601.jsonEscaped/>",
-  "dateModified": "<data:post.lastUpdated.iso8601.jsonEscaped/>",<b:if cond='data:post.featuredImage'>
-  "image": "<b:eval expr='resizeImage(data:post.featuredImage, 1200, &quot;1200:630&quot;)'/>",</b:if>
-  "inLanguage": "en",
-  "isFamilyFriendly": true,<b:if cond='data:post.labels'>
-  "keywords": "<b:loop index='k' values='data:post.labels filter (l =&gt; l.name not in {&quot;Featured&quot;, &quot;featured&quot;, &quot;FEATURED&quot;, &quot;Featured guide&quot;, &quot;featured guide&quot;})' var='label'><b:if cond='data:k != 0'>, </b:if><data:label.name.jsonEscaped/></b:loop>",</b:if><b:if cond='data:post.labels any (l =&gt; l.name == &quot;Don&#39;t Get Mad!&quot;)'>
-  "about": { "@type": "VideoGame", "@id": "https://www.kritere.com/#dont-get-mad", "name": "Don't Get Mad!", "url": "https://www.kritere.com/#dont-get-mad" },</b:if><b:if cond='data:post.labels any (l =&gt; l.name == &quot;Kris Ann&#39;s Journey&quot;)'>
-  "about": { "@type": "VideoGame", "@id": "https://www.kritere.com/#kris-anns-journey", "name": "Kris Ann's Journey", "url": "https://www.kritere.com/#kris-anns-journey" },</b:if>
-  "author": { "@type": "Organization", "name": "KriTere", "url": "https://www.kritere.com/" },
-  "publisher": { "@type": "Organization", "@id": "https://www.kritere.com/#organization", "name": "KriTere", "logo": { "@type": "ImageObject", "url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiORkyylSiIfsD7S_ToHyIBdmyp0BdGSh2vOXsHuhMKZG4ypYKFWcMIak6wqATsnidNebAqdRf5qSqWNrRe2V0SCMO4R5rmHz0S4KBzhQ55os28C9vHJDn1Q58yJBstiU2_lunP2oxxOMOqFurlKEB3yPfVtaSgRYimlPjpOrdPR2H8D3mw-FKIWoPPQcU/s512/icon-512x512.png" } }
-}</script>
-                  <script type='application/ld+json'>{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "KriTere", "item": "https://www.kritere.com/" },
-    { "@type": "ListItem", "position": 2, "name": "Game night guides", "item": "https://www.kritere.com/search" },
-    { "@type": "ListItem", "position": 3, "name": "<data:post.title.jsonEscaped/>", "item": "<data:post.url.canonical.jsonEscaped/>" }
-  ]
-}</script>
+                  <b:include data='post' name='postMetadataJSON'/>
                 </b:if>
                 <a class='btn btn-black back-home' expr:href='data:blog.homepageUrl + &quot;#which-game&quot;'>&#8592; Back to the games</a>
               </article>
             </b:loop>
           <b:else/>
             <div class='post-list'>
-              <h1><b:if cond='data:view.isSearch and not data:view.search.query and not data:view.search.label'>All game night guides<b:else/><data:view.title.escaped/></b:if></h1>
+              <b:if cond='data:view.isLabelSearch'>
+                <h1><data:view.title.escaped/></h1>
+              <b:else/>
+                <h1>All game night guides</h1>
+              </b:if>
               <p class='post-list-sub'>Rules, tips and ideas for game night. Newest first.</p>
               <div class='post-grid'>
                 <b:loop values='data:posts' var='post'>
@@ -1172,11 +1136,11 @@
                     </b:if>
                     <span class='post-card-text'>
                       <span class='post-card-meta'>
-                        <b:if cond='data:post.labels any (l =&gt; l.name in {&quot;Featured&quot;, &quot;featured&quot;, &quot;FEATURED&quot;, &quot;Featured guide&quot;, &quot;featured guide&quot;})'><span class='guide-tag'>Featured</span></b:if>
+                        <b:loop values='data:post.labels' var='label'><b:if cond='data:label.name == &quot;Featured&quot;'><span class='guide-tag'>Featured</span></b:if></b:loop>
                         <time expr:datetime='data:post.date.iso8601'><data:post.date/></time>
                       </span>
                       <h2><data:post.title/></h2>
-                      <p><data:post.snippets.short/></p>
+                      <p><data:post.snippet/></p>
                       <span class='go'>Read the guide &#8594;</span>
                     </span>
                   </a>
@@ -1190,6 +1154,33 @@
           </b:if>
           </div>
           </b:if>
+        </b:includable>
+        <!-- Used by Blogger's own article data (postMetadataJSON): picture and publisher -->
+        <b:includable id='postMetadataJSONImage'>
+  &quot;image&quot;: {
+    &quot;@type&quot;: &quot;ImageObject&quot;,
+    <b:if cond='data:post.featuredImage.isResizable'>
+    &quot;url&quot;: &quot;<b:eval expr='resizeImage(data:post.featuredImage, 1200, &quot;1200:630&quot;)'/>&quot;,
+    &quot;height&quot;: 630,
+    &quot;width&quot;: 1200
+    <b:else/>
+    &quot;url&quot;: &quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiiz-iBbouZRaTttBvaa33WCgPpnKCUAmWebpR91HWNzyQNLBe_gmvKOvYBqjTOeitATHTKiUJ1A6Pw4MNMo8OMOcUJAylCzLe0vqcLbzAgEbwLPd4lR_zkN0C9u1HV2-9LenzPbvBShI62sO4DHHE1vtf3z7IcVW1izW_CYAvNOe-reYLyLcuNuRnZR4A/s1600/kritere-share.jpg&quot;,
+    &quot;height&quot;: 630,
+    &quot;width&quot;: 1200
+    </b:if>
+  },
+        </b:includable>
+        <b:includable id='postMetadataJSONPublisher'>
+ &quot;publisher&quot;: {
+    &quot;@type&quot;: &quot;Organization&quot;,
+    &quot;name&quot;: &quot;KriTere&quot;,
+    &quot;logo&quot;: {
+      &quot;@type&quot;: &quot;ImageObject&quot;,
+      &quot;url&quot;: &quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiORkyylSiIfsD7S_ToHyIBdmyp0BdGSh2vOXsHuhMKZG4ypYKFWcMIak6wqATsnidNebAqdRf5qSqWNrRe2V0SCMO4R5rmHz0S4KBzhQ55os28C9vHJDn1Q58yJBstiU2_lunP2oxxOMOqFurlKEB3yPfVtaSgRYimlPjpOrdPR2H8D3mw-FKIWoPPQcU/s512/icon-512x512.png&quot;,
+      &quot;width&quot;: 512,
+      &quot;height&quot;: 512
+    }
+  },
         </b:includable>
       </b:widget>
     </b:section>
@@ -1445,7 +1436,7 @@
             featured: low.indexOf('featured') !== -1 || low.indexOf('featured guide') !== -1,
             path: new URL(link.href).pathname,
             title: e.title.$t,
-            text: e.summary ? e.summary.$t : '',
+            text: e.summary ? e.summary.$t.replace(/\s+/g, ' ').trim().slice(0, 160) : '',
             image: e.media$thumbnail ? e.media$thumbnail.url.replace(/\/s\d+(-c)?\//, '/w800-h450-p-k-no-nu/') : '',
             kaj: low.indexOf("kris ann's journey") !== -1
           };
@@ -1454,30 +1445,42 @@
     };
     var el = function (tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text) n.textContent = text; return n; };
 
-    // Homepage: if Blogger couldn't show 2 featured guides (they are older than the posts it loads), fetch them
+    // Homepage: the 2 newest posts labelled "Featured" (any capitals)
     var featured = document.querySelector('[data-featured-guides]');
-    if (featured) {
+    if (featured && window.fetch) {
       var fgrid = featured.querySelector('.guide-grid');
-      var have = fgrid.querySelectorAll('.guide-card').length;
-      if (have < 2 && window.fetch) {
-        var shown = [].map.call(fgrid.querySelectorAll('a'), function (a) { return new URL(a.href).pathname; });
-        feed(true, 4).then(function (list) {
-          list.filter(function (g) { return shown.indexOf(g.path) === -1; }).slice(0, 2 - have).forEach(function (g) {
-            var a = el('a', 'guide-card in' + (g.kaj ? ' gc-kaj' : '')); a.href = g.path;
-            if (g.image) { var im = el('img'); im.src = g.image; im.alt = g.title; im.width = 800; im.height = 450; a.appendChild(im); }
-            var t = el('span', 'guide-text');
-            t.appendChild(el('span', 'guide-tag', 'Featured guide'));
-            t.appendChild(el('h3', '', g.title));
-            t.appendChild(el('p', '', g.text));
-            t.appendChild(el('span', 'go', 'Read the guide \u2192'));
-            a.appendChild(t);
-            fgrid.appendChild(a);
-          });
-          if (!fgrid.querySelector('.guide-card')) featured.hidden = true;
-        }).catch(function () { if (!have) featured.hidden = true; });
-      } else if (!have) {
-        featured.hidden = true;
-      }
+      feed(true, 2).then(function (list) {
+        if (!list.length) return;
+        fgrid.textContent = '';
+        list.forEach(function (g) {
+          var a = el('a', 'guide-card' + (g.kaj ? ' gc-kaj' : '')); a.href = g.path;
+          if (g.image) { var im = el('img'); im.src = g.image; im.alt = g.title; im.width = 800; im.height = 450; im.loading = 'lazy'; a.appendChild(im); }
+          var t = el('span', 'guide-text');
+          t.appendChild(el('span', 'guide-tag', 'Featured guide'));
+          t.appendChild(el('h3', '', g.title));
+          t.appendChild(el('p', '', g.text));
+          t.appendChild(el('span', 'go', 'Read the guide \u2192'));
+          a.appendChild(t);
+          fgrid.appendChild(a);
+        });
+        featured.hidden = false;
+      }).catch(function () { /* no feed: the section stays hidden */ });
+    }
+
+    // Post pages: breadcrumb data for Google (KriTere > Game night guides > this post)
+    if (document.querySelector('[data-more-guides]')) {
+      var h1 = document.querySelector('.entry h1');
+      var crumbs = document.createElement('script');
+      crumbs.type = 'application/ld+json';
+      crumbs.textContent = JSON.stringify({
+        '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'KriTere', item: location.origin + '/' },
+          { '@type': 'ListItem', position: 2, name: 'Game night guides', item: location.origin + '/search' },
+          { '@type': 'ListItem', position: 3, name: h1 ? h1.textContent.trim() : document.title, item: location.origin + location.pathname }
+        ]
+      });
+      document.head.appendChild(crumbs);
     }
 
     // Post pages: "You may also like" = featured guides first, then the newest posts; never this one; up to 4

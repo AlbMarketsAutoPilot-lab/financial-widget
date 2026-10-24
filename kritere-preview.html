@@ -1265,7 +1265,7 @@
             featured: low.indexOf('featured') !== -1 || low.indexOf('featured guide') !== -1,
             path: new URL(link.href).pathname,
             title: e.title.$t,
-            text: e.summary ? e.summary.$t : '',
+            text: e.summary ? e.summary.$t.replace(/\s+/g, ' ').trim().slice(0, 160) : '',
             image: e.media$thumbnail ? e.media$thumbnail.url.replace(/\/s\d+(-c)?\//, '/w800-h450-p-k-no-nu/') : '',
             kaj: low.indexOf("kris ann's journey") !== -1
           };
@@ -1274,30 +1274,42 @@
     };
     var el = function (tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text) n.textContent = text; return n; };
 
-    // Homepage: if Blogger couldn't show 2 featured guides (they are older than the posts it loads), fetch them
+    // Homepage: the 2 newest posts labelled "Featured" (any capitals)
     var featured = document.querySelector('[data-featured-guides]');
-    if (featured) {
+    if (featured && window.fetch) {
       var fgrid = featured.querySelector('.guide-grid');
-      var have = fgrid.querySelectorAll('.guide-card').length;
-      if (have < 2 && window.fetch) {
-        var shown = [].map.call(fgrid.querySelectorAll('a'), function (a) { return new URL(a.href).pathname; });
-        feed(true, 4).then(function (list) {
-          list.filter(function (g) { return shown.indexOf(g.path) === -1; }).slice(0, 2 - have).forEach(function (g) {
-            var a = el('a', 'guide-card in' + (g.kaj ? ' gc-kaj' : '')); a.href = g.path;
-            if (g.image) { var im = el('img'); im.src = g.image; im.alt = g.title; im.width = 800; im.height = 450; a.appendChild(im); }
-            var t = el('span', 'guide-text');
-            t.appendChild(el('span', 'guide-tag', 'Featured guide'));
-            t.appendChild(el('h3', '', g.title));
-            t.appendChild(el('p', '', g.text));
-            t.appendChild(el('span', 'go', 'Read the guide \u2192'));
-            a.appendChild(t);
-            fgrid.appendChild(a);
-          });
-          if (!fgrid.querySelector('.guide-card')) featured.hidden = true;
-        }).catch(function () { if (!have) featured.hidden = true; });
-      } else if (!have) {
-        featured.hidden = true;
-      }
+      feed(true, 2).then(function (list) {
+        if (!list.length) return;
+        fgrid.textContent = '';
+        list.forEach(function (g) {
+          var a = el('a', 'guide-card' + (g.kaj ? ' gc-kaj' : '')); a.href = g.path;
+          if (g.image) { var im = el('img'); im.src = g.image; im.alt = g.title; im.width = 800; im.height = 450; im.loading = 'lazy'; a.appendChild(im); }
+          var t = el('span', 'guide-text');
+          t.appendChild(el('span', 'guide-tag', 'Featured guide'));
+          t.appendChild(el('h3', '', g.title));
+          t.appendChild(el('p', '', g.text));
+          t.appendChild(el('span', 'go', 'Read the guide \u2192'));
+          a.appendChild(t);
+          fgrid.appendChild(a);
+        });
+        featured.hidden = false;
+      }).catch(function () { /* no feed: the section stays hidden */ });
+    }
+
+    // Post pages: breadcrumb data for Google (KriTere > Game night guides > this post)
+    if (document.querySelector('[data-more-guides]')) {
+      var h1 = document.querySelector('.entry h1');
+      var crumbs = document.createElement('script');
+      crumbs.type = 'application/ld+json';
+      crumbs.textContent = JSON.stringify({
+        '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'KriTere', item: location.origin + '/' },
+          { '@type': 'ListItem', position: 2, name: 'Game night guides', item: location.origin + '/search' },
+          { '@type': 'ListItem', position: 3, name: h1 ? h1.textContent.trim() : document.title, item: location.origin + location.pathname }
+        ]
+      });
+      document.head.appendChild(crumbs);
     }
 
     // Post pages: "You may also like" = featured guides first, then the newest posts; never this one; up to 4
