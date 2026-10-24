@@ -28,15 +28,15 @@
   <link href='https://fonts.googleapis.com/css2?family=Cinzel:wght@700&amp;family=Kanit:ital,wght@1,800&amp;family=Nunito:wght@400;700;800;900&amp;family=Patrick+Hand&amp;family=Raleway:wght@500;600&amp;display=swap' rel='stylesheet'/>
 
   <b:if cond='data:view.isHomepage'>
-    <title>Family Board Games for Kids &amp; Adults: Don&#39;t Get Mad! &amp; Kris Ann&#39;s Journey | KriTere</title>
-    <meta content='Family board games for game night: the dice race game Don&#39;t Get Mad! and the geography trivia game Kris Ann&#39;s Journey. 2-4 players or vs robots. Play online, on PC or Android. No ads, no in-app purchases, works offline.' name='description'/>
+    <title>Free Family Board Games for Kids &amp; Adults: Don&#39;t Get Mad! &amp; Kris Ann&#39;s Journey | KriTere</title>
+    <meta content='Free family board games for game night: the dice race game Don&#39;t Get Mad! and the geography trivia game Kris Ann&#39;s Journey. 2-4 players or vs robots. Play online, on PC or Android. No ads, no in-app purchases, works offline.' name='description'/>
     <link expr:href='data:blog.canonicalHomepageUrl' rel='canonical'/>
     <meta content='index, follow, max-image-preview:large' name='robots'/>
 
     <meta content='website' property='og:type'/>
     <meta content='KriTere' property='og:site_name'/>
-    <meta content='KriTere - Family Game Night: Don&#39;t Get Mad! &amp; Kris Ann&#39;s Journey' property='og:title'/>
-    <meta content='Two family-friendly board games for all ages, 2-4 players or vs AI. Play on web, PC or Android. No ads, no in-app purchases, no accounts.' property='og:description'/>
+    <meta content='KriTere - Free Family Board Games: Don&#39;t Get Mad! &amp; Kris Ann&#39;s Journey' property='og:title'/>
+    <meta content='Two free family board games for all ages, 2-4 players or vs AI. Play on web, PC or Android. No ads, no in-app purchases, no accounts.' property='og:description'/>
     <meta expr:content='data:blog.canonicalHomepageUrl' property='og:url'/>
     <meta content='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiiz-iBbouZRaTttBvaa33WCgPpnKCUAmWebpR91HWNzyQNLBe_gmvKOvYBqjTOeitATHTKiUJ1A6Pw4MNMo8OMOcUJAylCzLe0vqcLbzAgEbwLPd4lR_zkN0C9u1HV2-9LenzPbvBShI62sO4DHHE1vtf3z7IcVW1izW_CYAvNOe-reYLyLcuNuRnZR4A/s1600/kritere-share.jpg' property='og:image'/>
     <meta content='1200' property='og:image:width'/>
@@ -45,7 +45,7 @@
 
     <meta content='summary_large_image' name='twitter:card'/>
     <meta content='KriTere - Family Game Night' name='twitter:title'/>
-    <meta content='Don&#39;t Get Mad! and Kris Ann&#39;s Journey. Family board games for all ages on web, PC and Android.' name='twitter:description'/>
+    <meta content='Don&#39;t Get Mad! and Kris Ann&#39;s Journey: free family board games for all ages on web, PC and Android.' name='twitter:description'/>
     <meta content='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiiz-iBbouZRaTttBvaa33WCgPpnKCUAmWebpR91HWNzyQNLBe_gmvKOvYBqjTOeitATHTKiUJ1A6Pw4MNMo8OMOcUJAylCzLe0vqcLbzAgEbwLPd4lR_zkN0C9u1HV2-9LenzPbvBShI62sO4DHHE1vtf3z7IcVW1izW_CYAvNOe-reYLyLcuNuRnZR4A/s1600/kritere-share.jpg' name='twitter:image'/>
 
     <script type='application/ld+json'>
@@ -92,6 +92,7 @@
           "installUrl": ["https://dgm.kritere.com", "https://apps.microsoft.com/detail/9mtj320kbn5t", "https://play.google.com/store/apps/details?id=com.dontgetmad.game"],
           "sameAs": ["https://play.google.com/store/apps/details?id=com.dontgetmad.game", "https://apps.microsoft.com/detail/9mtj320kbn5t"],
           "applicationSubCategory": "Board game",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock" },
           "creator": { "@id": "https://www.kritere.com/#organization" },
           "playMode": ["MultiPlayer", "SinglePlayer"],
           "numberOfPlayers": { "@type": "QuantitativeValue", "minValue": 2, "maxValue": 4 },
@@ -126,6 +127,7 @@
           "installUrl": ["https://kaj.kritere.com", "https://apps.microsoft.com/detail/9msz5ddh2krt", "https://play.google.com/store/apps/details?id=com.kaj.game"],
           "sameAs": ["https://play.google.com/store/apps/details?id=com.kaj.game", "https://apps.microsoft.com/detail/9msz5ddh2krt"],
           "applicationSubCategory": "Board game",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock" },
           "creator": { "@id": "https://www.kritere.com/#organization" },
           "playMode": ["MultiPlayer", "SinglePlayer"],
           "numberOfPlayers": { "@type": "QuantitativeValue", "minValue": 2, "maxValue": 4 },
@@ -148,8 +150,8 @@
           "@type": "WebPage",
           "@id": "https://www.kritere.com/#webpage",
           "url": "https://www.kritere.com/",
-          "name": "Family Board Games for Kids &amp; Adults: Don't Get Mad! &amp; Kris Ann's Journey",
-          "description": "Family board games for game night: the dice race game Don't Get Mad! and the geography trivia game Kris Ann's Journey. Play online, on PC or Android.",
+          "name": "Free Family Board Games for Kids &amp; Adults: Don't Get Mad! &amp; Kris Ann's Journey",
+          "description": "Free family board games for game night: the dice race game Don't Get Mad! and the geography trivia game Kris Ann's Journey. Play online, on PC or Android.",
           "inLanguage": "en",
           "isPartOf": { "@id": "https://www.kritere.com/#website" },
           "about": [{ "@id": "https://www.kritere.com/#dont-get-mad" }, { "@id": "https://www.kritere.com/#kris-anns-journey" }],
@@ -161,6 +163,7 @@
           "mainEntity": [
             {"@type": "Question", "name": "What is Don't Get Mad!?", "acceptedAnswer": {"@type": "Answer", "text": "Don't Get Mad! is a dice board game for 2 to 4 players on one phone, tablet or computer. Roll the die and race from your front door to the Festival of Lights. Every square is a little story: hot-air balloons, wrong ferries, sheep with right of way. Bonus cards and lanterns can turn the game around, so the leader is never safe and the player in last place can still win. If your family loves classic dice race games like Ludo or Snakes and Ladders, you will feel right at home."}},
             {"@type": "Question", "name": "What is Kris Ann's Journey?", "acceptedAnswer": {"@type": "Answer", "text": "Kris Ann's Journey (KAJ) is a geography strategy board game and trivia quiz in one. Choose a traveller, travel the world by walking, flying, sailing, train, bus or car, answer quiz questions and make smart choices to score the most points. There are no dice: you choose every move."}},
+            {"@type": "Question", "name": "Are the games free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Both games are completely free: no price, no ads, no in-app purchases and no accounts. Just download or open them and play."}},
             {"@type": "Question", "name": "Which game is best for young children?", "acceptedAnswer": {"@type": "Answer", "text": "Don't Get Mad! is perfect for little ones: luck makes everyone equal, so a child can beat a grown-up. Kris Ann's Journey is great for kids who can read and love quizzes, and for the whole family to learn about the world together."}},
             {"@type": "Question", "name": "What do kids learn from Kris Ann's Journey?", "acceptedAnswer": {"@type": "Answer", "text": "Kids learn flags, capitals, currencies, continents, neighbouring countries and which countries are bigger, plus hundreds of fun facts about countries, wonders, food, animals, languages and inventions. They also learn to plan ahead and make smart choices."}},
             {"@type": "Question", "name": "Are the games safe for kids?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Both games have no ads, no in-app purchases, no accounts, no chat, and they collect no personal data. You can hand them to your children without worry."}},
@@ -519,6 +522,20 @@
     .faq-list details[open] summary::after { transform: rotate(45deg); }
     .faq-list details p { padding: 0 22px 20px; font-size: 17px; }
 
+    /* ================= Game night guides (latest posts) ================= */
+    .guides { background: var(--kt-white); padding: 10px 0 100px; }
+    .guides h2 { font: italic 800 clamp(34px, 4.4vw, 54px)/1.05 var(--font-brand); text-align: center; }
+    .guides-sub { text-align: center; font-weight: 800; font-size: 19px; margin: 12px 0 34px; }
+    .guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .guide-card { display: flex; flex-direction: column; text-decoration: none; border: 3px solid var(--kt-black); border-radius: 24px; overflow: hidden; background: #FFFDE0; box-shadow: 6px 8px 0 var(--kt-black); transition: transform .3s var(--bounce), box-shadow .3s; }
+    .guide-card:hover { transform: translateY(-6px) rotate(-.6deg); box-shadow: 10px 12px 0 var(--kt-black); }
+    .guide-card img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-bottom: 3px solid var(--kt-black); }
+    .guide-text { display: flex; flex-direction: column; gap: 8px; padding: 18px 20px 22px; flex: 1; }
+    .guide-card h3 { font: 900 21px/1.25 var(--font-body); margin: 0; }
+    .guide-card p { font-size: 16px; color: #3d424a; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .guide-card .go { margin-top: auto; font-weight: 900; }
+    .guides-all { text-align: center; margin-top: 34px; }
+
     /* ================= Story ================= */
     .story { position: relative; background: #FFFCD2; padding: 100px 0; border-top: 4px solid var(--kt-black); }
     .story .wrap { display: grid; grid-template-columns: .9fr 1.1fr; gap: 64px; align-items: center; }
@@ -572,6 +589,23 @@
     .entry-body img { height: auto !important; margin: 18px auto; border-radius: 18px; }
     .entry-body iframe { width: 100% !important; height: auto !important; aspect-ratio: 16 / 9; border: 0; border-radius: 18px; }
     .back-home { margin-top: 40px; }
+    .entry-meta { margin: -14px 0 28px; color: #4a4f57; font-weight: 700; font-size: 16px; }
+    .entry-body table { width: 100%; border-collapse: collapse; margin: 0 0 20px; font-size: 16px; display: block; overflow-x: auto; }
+    .entry-body th, .entry-body td { border: 2px solid var(--kt-black); padding: 8px 12px; text-align: left; vertical-align: top; }
+    .entry-body th { background: var(--kt-yellow); }
+    .entry-body tr:nth-child(even) td { background: #FFFDE0; }
+    .play-box { margin-top: 48px; padding: 24px; border: 3px solid var(--kt-black); border-radius: 24px; background: var(--kt-yellow); box-shadow: 6px 8px 0 var(--kt-black); }
+    .play-box-title { font: italic 800 26px/1.1 var(--font-brand); margin-bottom: 16px; }
+    .play-box-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .play-box-game { display: flex; align-items: center; gap: 12px; padding: 10px; border-radius: 18px; text-decoration: none; border: 2.5px solid var(--kt-black); transition: transform .25s var(--bounce); }
+    .play-box-game:hover { transform: translateY(-3px); }
+    .play-box-game img { width: 64px; height: 64px; border-radius: 14px; flex: none; }
+    .play-box-game span { display: flex; flex-direction: column; font-size: 14px; font-weight: 700; line-height: 1.3; }
+    .play-box-game b { font-size: 17px; font-weight: 900; }
+    .pb-g-dgm { background: var(--kt-white); color: var(--dgm-purple); }
+    .pb-g-kaj { background: var(--kaj-night); color: var(--kaj-text); }
+    .pb-g-kaj b { color: var(--kaj-gold); }
+    @media (max-width: 640px) { .play-box-row { grid-template-columns: 1fr; } }
     /* Boxes and buttons used on the Privacy Policy and Contact pages */
     .entry-body .kt-updated { color: #4a4f57; font-size: 16px; margin-top: -10px; }
     .entry-body .kt-box { background: #FFFDE0; border: 2.5px solid var(--kt-black); border-radius: 20px; padding: 18px 22px; margin: 24px 0; }
@@ -676,24 +710,26 @@
         <a expr:href='data:blog.homepageUrl + &quot;#kris-anns-journey&quot;'>Kris Ann&#39;s Journey</a>
         <a expr:href='data:blog.homepageUrl + &quot;#parents&quot;'>Parents</a>
         <a expr:href='data:blog.homepageUrl + &quot;#faq&quot;'>FAQ</a>
+        <a expr:href='data:blog.homepageUrl + &quot;#guides&quot;'>Guides</a>
         <a expr:href='data:blog.homepageUrl + &quot;#story&quot;'>Our story</a>
         <a class='nav-cta' expr:href='data:blog.homepageUrl + &quot;#which-game&quot;'>Let&#39;s play!</a>
       </nav>
     </div>
   </header>
 
-  <b:if cond='data:view.isHomepage'>
   <main id='content'>
+  <b:if cond='data:view.isHomepage'>
 
     <!-- ===================== HERO ===================== -->
     <section aria-labelledby='hero-title' class='hero'>
       <div class='wrap'>
         <div class='hero-top'>
           <div>
-            <span class='badge'>&#127881; 2 board games &#183; 2-4 players &#183; all ages</span>
+            <span class='badge'>&#127881; 2 free board games &#183; 2-4 players &#183; all ages</span>
             <h1 id='hero-title'>Family board games for <span class='underline'>game night!</span></h1>
             <p class='lead'>KriTere.com, named after two sisters, KrisAnn and Terez, offers two family-friendly, intelligent, educational and fun board games: <strong>Don&#39;t Get Mad!</strong> and <strong>Kris Ann&#39;s Journey</strong>. Easily play on any device: PC, web browser or Android app.</p>
             <ul aria-label='Our promise' class='ticks'>
+              <li>100% free</li>
               <li>No ads in the games</li>
               <li>No in-app purchases</li>
               <li>No accounts</li>
@@ -1022,6 +1058,10 @@
             <p>Kris Ann&#39;s Journey (KAJ) is a geography strategy board game and trivia quiz in one. Choose a traveller, travel the world by walking, flying, sailing, train, bus or car, answer quiz questions and make smart choices to score the most points. There are no dice: you choose every move.</p>
           </details>
           <details>
+            <summary>Are the games free?</summary>
+            <p>Yes. Both games are completely free: no price, no ads, no in-app purchases and no accounts. Just download or open them and play.</p>
+          </details>
+          <details>
             <summary>Which game is best for young children?</summary>
             <p>Don&#39;t Get Mad! is perfect for little ones: luck makes everyone equal, so a child can beat a grown-up. Kris Ann&#39;s Journey is great for kids who can read and love quizzes, and for the whole family to learn about the world together.</p>
           </details>
@@ -1057,6 +1097,123 @@
       </div>
     </section>
 
+  </b:if>
+
+  <!-- Blog widget: on the homepage the "Game night guides"; on other pages the post or page itself -->
+    <b:section id='main' maxwidgets='1' name='Main Content' showaddelement='no'>
+      <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='2' visible='true'>
+        <b:widget-settings>
+          <b:widget-setting name='showDateHeader'>false</b:widget-setting>
+          <b:widget-setting name='showShareButtons'>false</b:widget-setting>
+          <b:widget-setting name='showCommentLink'>false</b:widget-setting>
+          <b:widget-setting name='showAuthor'>false</b:widget-setting>
+          <b:widget-setting name='showAuthorProfile'>false</b:widget-setting>
+          <b:widget-setting name='showLabels'>false</b:widget-setting>
+          <b:widget-setting name='showLocation'>false</b:widget-setting>
+          <b:widget-setting name='showTimestamp'>false</b:widget-setting>
+          <b:widget-setting name='showBacklinks'>false</b:widget-setting>
+          <b:widget-setting name='showInlineAds'>false</b:widget-setting>
+          <b:widget-setting name='showReactions'>false</b:widget-setting>
+          <b:widget-setting name='style.layout'>1x1</b:widget-setting>
+          <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
+          <b:widget-setting name='postsPerAd'>1</b:widget-setting>
+        </b:widget-settings>
+        <b:includable id='main' var='top'>
+          <b:if cond='data:view.isHomepage'>
+            <!-- Homepage: the three latest posts -->
+            <b:if cond='not data:posts.empty'>
+              <section aria-labelledby='guides-title' class='guides' id='guides'>
+                <div class='wrap'>
+                  <h2 class='reveal' id='guides-title'>Game night guides</h2>
+                  <p class='guides-sub reveal'>Rules, tips and ideas for playing together.</p>
+                  <div class='guide-grid'>
+                    <b:loop index='i' values='data:posts' var='post'>
+                      <b:if cond='data:i &lt; 3'>
+                        <a class='guide-card reveal' expr:href='data:post.url'>
+                          <b:if cond='data:post.featuredImage'>
+                            <img expr:alt='data:post.title' expr:src='resizeImage(data:post.featuredImage, 640, &quot;16:9&quot;)' height='360' loading='lazy' width='640'/>
+                          </b:if>
+                          <span class='guide-text'>
+                            <h3><data:post.title/></h3>
+                            <p><data:post.snippet/></p>
+                            <span class='go'>Read the guide &#8594;</span>
+                          </span>
+                        </a>
+                      </b:if>
+                    </b:loop>
+                  </div>
+                  <p class='guides-all'><a class='btn btn-black' expr:href='data:blog.searchUrl'>All guides &#8594;</a></p>
+                </div>
+              </section>
+            </b:if>
+          <b:else/>
+          <div class='content-area'>
+          <b:if cond='data:view.isError'>
+            <article class='entry'>
+              <h1>Oops! Wrong ferry! &#9875;</h1>
+              <div class='entry-body'><p>This page doesn&#39;t exist. Don&#39;t get mad: head back to the games and keep playing.</p></div>
+              <a class='btn btn-black back-home' expr:href='data:blog.homepageUrl'>&#8592; Back to the games</a>
+            </article>
+          <b:elseif cond='data:view.isSingleItem'/>
+            <b:loop values='data:posts' var='post'>
+              <article class='entry'>
+                <h1><data:post.title/></h1>
+                <b:if cond='data:view.isPost'>
+                  <p class='entry-meta'>By the KriTere family &#183; <time expr:datetime='data:post.date.iso8601'><data:post.date/></time></p>
+                </b:if>
+                <div class='entry-body'><data:post.body/></div>
+                <b:if cond='data:view.isPost'>
+                  <aside class='play-box'>
+                    <p class='play-box-title'>Play our free family board games</p>
+                    <div class='play-box-row'>
+                      <a class='play-box-game pb-g-dgm' expr:href='data:blog.homepageUrl + &quot;#dont-get-mad&quot;'><img alt='' height='64' loading='lazy' src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg8CXosmK_MLzF_oDIIy-DVPh0rSdXXy6ya_19h3tcnrpsDJSzsl6Z2Uyyt2K0t2579AUpbrwOqg7eC2qu1AdLoS2f8IZQQAo4rea6hyphenhyphen6PlL0f01swWdADq0nP5IXwgHU5vdLA7W5lncy-uJ1IgDhVuumlvCeSW9GNd2-vdsX61fhrXvATJF-Xg7ygridk/s128-rj/DGM-icon.png' width='64'/><span><b>Don&#39;t Get Mad!</b>The family dice race game</span></a>
+                      <a class='play-box-game pb-g-kaj' expr:href='data:blog.homepageUrl + &quot;#kris-anns-journey&quot;'><img alt='' height='64' loading='lazy' src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgrtA56ZRsvWVZzntQAMjZcKHpjtDbHTFUkp0MUKrLhLhMHcGWNVOqiub76SZKh5QCefaAwvfdxWttr09YgpLOWHXesdcPXgQEeN8m4UhqeRzqHm1nJGhItJlT83GtWVkcuKqv9Ws83LiQEC6fF6-UjctJnuEHaWdNSzRKlsqEOXoGvSbxTKYt4MUPQCZ4/s128-rj/icon512.png' width='64'/><span><b>Kris Ann&#39;s Journey</b>The geography trivia board game</span></a>
+                    </div>
+                  </aside>
+                  <script type='application/ld+json'>{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "<data:post.url.canonical.jsonEscaped/>" },
+  "headline": "<data:post.title.jsonEscaped/>",
+  "description": "<data:post.snippets.short.jsonEscaped/>",
+  "datePublished": "<data:post.date.iso8601.jsonEscaped/>",
+  "dateModified": "<data:post.lastUpdated.iso8601.jsonEscaped/>",<b:if cond='data:post.featuredImage'>
+  "image": "<b:eval expr='resizeImage(data:post.featuredImage, 1200, &quot;1200:630&quot;)'/>",</b:if>
+  "inLanguage": "en",
+  "isFamilyFriendly": true,
+  "author": { "@type": "Organization", "name": "KriTere", "url": "https://www.kritere.com/" },
+  "publisher": { "@type": "Organization", "name": "KriTere", "logo": { "@type": "ImageObject", "url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiORkyylSiIfsD7S_ToHyIBdmyp0BdGSh2vOXsHuhMKZG4ypYKFWcMIak6wqATsnidNebAqdRf5qSqWNrRe2V0SCMO4R5rmHz0S4KBzhQ55os28C9vHJDn1Q58yJBstiU2_lunP2oxxOMOqFurlKEB3yPfVtaSgRYimlPjpOrdPR2H8D3mw-FKIWoPPQcU/s512/icon-512x512.png" } }
+}</script>
+                </b:if>
+                <a class='btn btn-black back-home' expr:href='data:blog.homepageUrl + &quot;#which-game&quot;'>&#8592; Back to the games</a>
+              </article>
+            </b:loop>
+          <b:else/>
+            <div class='post-list'>
+              <h1><b:if cond='data:view.isSearch and not data:view.search.query and not data:view.search.label'>Game night guides<b:else/><data:view.title.escaped/></b:if></h1>
+              <div class='post-grid'>
+                <b:loop values='data:posts' var='post'>
+                  <a class='post-card' expr:href='data:post.url'>
+                    <b:if cond='data:post.featuredImage'>
+                      <img expr:alt='data:post.title' expr:src='resizeImage(data:post.featuredImage, 640, &quot;16:9&quot;)' loading='lazy'/>
+                    </b:if>
+                    <h2><data:post.title/></h2>
+                  </a>
+                </b:loop>
+              </div>
+              <div class='pager'>
+                <b:if cond='data:newerPageUrl'><a class='btn btn-outline' expr:href='data:newerPageUrl'>&#8592; Newer</a></b:if>
+                <b:if cond='data:olderPageUrl'><a class='btn btn-black' expr:href='data:olderPageUrl'>Older &#8594;</a></b:if>
+              </div>
+            </div>
+          </b:if>
+          </div>
+          </b:if>
+        </b:includable>
+      </b:widget>
+    </b:section>
+
+  <b:if cond='data:view.isHomepage'>
     <!-- ===================== STORY ===================== -->
     <section aria-labelledby='story-title' class='story' id='story'>
       <div class='wrap'>
@@ -1079,69 +1236,8 @@
       <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </aside>
 
-  </main>
   </b:if>
-
-  <!-- Blogger posts and pages (privacy policy, game rules, news) render here; the homepage uses the landing page above -->
-  <b:if cond='!data:view.isHomepage'>
-  <main class='content-area' id='content'>
-    <b:section id='main' maxwidgets='1' name='Main Content' showaddelement='no'>
-      <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='2' visible='true'>
-        <b:widget-settings>
-          <b:widget-setting name='showDateHeader'>false</b:widget-setting>
-          <b:widget-setting name='showShareButtons'>false</b:widget-setting>
-          <b:widget-setting name='showCommentLink'>false</b:widget-setting>
-          <b:widget-setting name='showAuthor'>false</b:widget-setting>
-          <b:widget-setting name='showAuthorProfile'>false</b:widget-setting>
-          <b:widget-setting name='showLabels'>false</b:widget-setting>
-          <b:widget-setting name='showLocation'>false</b:widget-setting>
-          <b:widget-setting name='showTimestamp'>false</b:widget-setting>
-          <b:widget-setting name='showBacklinks'>false</b:widget-setting>
-          <b:widget-setting name='showInlineAds'>false</b:widget-setting>
-          <b:widget-setting name='showReactions'>false</b:widget-setting>
-          <b:widget-setting name='style.layout'>1x1</b:widget-setting>
-          <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
-          <b:widget-setting name='postsPerAd'>1</b:widget-setting>
-        </b:widget-settings>
-        <b:includable id='main' var='top'>
-          <b:if cond='data:view.isError'>
-            <article class='entry'>
-              <h1>Oops! Wrong ferry! &#9875;</h1>
-              <div class='entry-body'><p>This page doesn&#39;t exist. Don&#39;t get mad: head back to the games and keep playing.</p></div>
-              <a class='btn btn-black back-home' expr:href='data:blog.homepageUrl'>&#8592; Back to the games</a>
-            </article>
-          <b:elseif cond='data:view.isSingleItem'/>
-            <b:loop values='data:posts' var='post'>
-              <article class='entry'>
-                <h1><data:post.title/></h1>
-                <div class='entry-body'><data:post.body/></div>
-                <a class='btn btn-black back-home' expr:href='data:blog.homepageUrl + &quot;#which-game&quot;'>&#8592; Back to the games</a>
-              </article>
-            </b:loop>
-          <b:else/>
-            <div class='post-list'>
-              <h1><data:view.title.escaped/></h1>
-              <div class='post-grid'>
-                <b:loop values='data:posts' var='post'>
-                  <a class='post-card' expr:href='data:post.url'>
-                    <b:if cond='data:post.featuredImage'>
-                      <img expr:alt='data:post.title' expr:src='resizeImage(data:post.featuredImage, 640, &quot;16:9&quot;)' loading='lazy'/>
-                    </b:if>
-                    <h2><data:post.title/></h2>
-                  </a>
-                </b:loop>
-              </div>
-              <div class='pager'>
-                <b:if cond='data:newerPageUrl'><a class='btn btn-outline' expr:href='data:newerPageUrl'>&#8592; Newer</a></b:if>
-                <b:if cond='data:olderPageUrl'><a class='btn btn-black' expr:href='data:olderPageUrl'>Older &#8594;</a></b:if>
-              </div>
-            </div>
-          </b:if>
-        </b:includable>
-      </b:widget>
-    </b:section>
   </main>
-  </b:if>
 
   <!-- ===================== FOLLOW ===================== -->
   <section aria-labelledby='follow-title' class='follow' id='follow'>
