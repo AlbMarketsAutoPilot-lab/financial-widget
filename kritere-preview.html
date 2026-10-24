@@ -1254,20 +1254,22 @@
     }
 
     // Guides from Blogger's feed (same site). Featured guides carry the label "Featured".
-    var feed = function (label, n) {
-      var url = '/feeds/posts/summary' + (label ? '/-/' + encodeURIComponent(label) : '') + '?alt=json&max-results=' + n;
+    var feed = function (featuredOnly, n) {
+      var url = '/feeds/posts/summary?alt=json&max-results=' + (featuredOnly ? 150 : n);
       return fetch(url).then(function (r) { return r.json(); }).then(function (d) {
         return (d.feed.entry || []).map(function (e) {
           var link = (e.link || []).filter(function (l) { return l.rel === 'alternate'; })[0];
           var tags = (e.category || []).map(function (c) { return c.term; });
+          var low = tags.map(function (t) { return t.trim().toLowerCase(); });
           return link && {
+            featured: low.indexOf('featured') !== -1 || low.indexOf('featured guide') !== -1,
             path: new URL(link.href).pathname,
             title: e.title.$t,
             text: e.summary ? e.summary.$t : '',
             image: e.media$thumbnail ? e.media$thumbnail.url.replace(/\/s\d+(-c)?\//, '/w800-h450-p-k-no-nu/') : '',
-            kaj: tags.indexOf("Kris Ann's Journey") !== -1
+            kaj: low.indexOf("kris ann's journey") !== -1
           };
-        }).filter(Boolean);
+        }).filter(function (g) { return g && (!featuredOnly || g.featured); }).slice(0, n);
       });
     };
     var el = function (tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text) n.textContent = text; return n; };
@@ -1279,7 +1281,7 @@
       var have = fgrid.querySelectorAll('.guide-card').length;
       if (have < 2 && window.fetch) {
         var shown = [].map.call(fgrid.querySelectorAll('a'), function (a) { return new URL(a.href).pathname; });
-        feed('Featured', 4).then(function (list) {
+        feed(true, 4).then(function (list) {
           list.filter(function (g) { return shown.indexOf(g.path) === -1; }).slice(0, 2 - have).forEach(function (g) {
             var a = el('a', 'guide-card in' + (g.kaj ? ' gc-kaj' : '')); a.href = g.path;
             if (g.image) { var im = el('img'); im.src = g.image; im.alt = g.title; im.width = 800; im.height = 450; a.appendChild(im); }
@@ -1302,7 +1304,7 @@
     var more = document.querySelector('[data-more-guides]');
     if (more && window.fetch) {
       var mgrid = more.querySelector('.more-grid');
-      Promise.all([feed('Featured', 4).catch(function () { return []; }), feed('', 12).catch(function () { return []; })])
+      Promise.all([feed(true, 4).catch(function () { return []; }), feed(false, 12).catch(function () { return []; })])
         .then(function (lists) {
           var seen = [location.pathname];
           mgrid.textContent = '';
