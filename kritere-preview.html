@@ -465,16 +465,18 @@
     .ad-white + .parents { padding-top: 56px; }
 
     /* ================= Game night guides (latest posts) ================= */
-    .guides { background: var(--kt-white); padding: 0 0 100px; }
+    .guides { position: relative; background: var(--kt-yellow); padding: 90px 0 100px; border-top: 4px solid var(--kt-black); }
+    .guides::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(1,8,17,.07) 2px, transparent 2.5px); background-size: 26px 26px; pointer-events: none; }
+    .guides .wrap { position: relative; }
     .guides h2 { font: italic 800 clamp(34px, 4.4vw, 54px)/1.05 var(--font-brand); text-align: center; }
     .guides-sub { text-align: center; font-weight: 800; font-size: 19px; margin: 12px 0 34px; }
-    .guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-    .guide-card { display: flex; flex-direction: column; text-decoration: none; border: 3px solid var(--kt-black); border-radius: 24px; overflow: hidden; background: #FFFDE0; box-shadow: 6px 8px 0 var(--kt-black); transition: transform .3s var(--bounce), box-shadow .3s; }
+    .guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 64px; }
+    .guide-card { display: flex; flex-direction: column; text-decoration: none; border: 4px solid var(--kt-black); border-radius: 24px; overflow: hidden; background: #FFFDE0; box-shadow: 6px 8px 0 var(--kt-black); transition: transform .3s var(--bounce), box-shadow .3s; }
     .guide-card:hover { transform: translateY(-6px) rotate(-.6deg); box-shadow: 10px 12px 0 var(--kt-black); }
-    .guide-card img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-bottom: 3px solid var(--kt-black); }
-    .guide-text { display: flex; flex-direction: column; gap: 8px; padding: 18px 20px 22px; flex: 1; }
+    .guide-card img { width: 100%; aspect-ratio: 3 / 1; object-fit: cover; border-bottom: 3px solid var(--kt-black); }
+    .guide-text { display: flex; flex-direction: column; gap: 8px; padding: 16px 22px 20px; flex: 1; }
     .guide-card h3 { font: 900 21px/1.25 var(--font-body); margin: 0; }
-    .guide-card p { font-size: 16px; color: #3d424a; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .guide-card p { font-size: 16px; color: #3d424a; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
     .guide-card .go { margin-top: auto; font-weight: 900; }
     .guide-tag { align-self: flex-start; background: var(--kt-black); color: var(--kt-yellow); border-radius: 999px; padding: 4px 12px; font-size: 12px; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; }
     .gc-kaj { background: var(--kaj-night); color: var(--kaj-text); }
@@ -609,6 +611,8 @@
       .mascot { width: 210px; margin: -105px 0 0 -105px; }
       .doors, .versus, .kaj-grid { grid-template-columns: 1fr; }
       .versus { gap: 14px; }
+      .guide-grid { gap: 24px; }
+      .guides { padding: 70px 0 80px; }
       .or-both { position: relative; left: auto; top: auto; margin: 0; justify-self: center; width: 96px; height: 96px; font-size: 17px; }
       .parents .wrap, .story .wrap { gap: 48px; }
     }
@@ -1012,7 +1016,7 @@
   
 
   <!-- Blog widget: the post or page itself (nothing on the homepage) -->
-    <div></div>
+    <section aria-labelledby="guides-title" class="guides" data-featured-guides="1" hidden="hidden" id="guides"><div class="wrap"><h2 id="guides-title">Game night guides</h2><p class="guides-sub">Rules, tips and ideas for playing together.</p><div class="guide-grid">​</div><p class="guides-all"><a class="btn btn-black" href="/search">Other guides →</a></p></div></section>
 
   
     <!-- ===================== STORY ===================== -->
