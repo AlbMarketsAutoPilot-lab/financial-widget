@@ -473,7 +473,7 @@
     .guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 64px; }
     .guide-card { display: flex; flex-direction: column; text-decoration: none; border: 4px solid var(--kt-black); border-radius: 24px; overflow: hidden; background: #FFFDE0; box-shadow: 6px 8px 0 var(--kt-black); transition: transform .3s var(--bounce), box-shadow .3s; }
     .guide-card:hover { transform: translateY(-6px) rotate(-.6deg); box-shadow: 10px 12px 0 var(--kt-black); }
-    .guide-card img { width: 100%; aspect-ratio: 3 / 1; object-fit: cover; border-bottom: 3px solid var(--kt-black); }
+    .guide-card img { width: 100%; aspect-ratio: 3 / 1; object-fit: cover; object-position: center; border-bottom: 3px solid var(--kt-black); }
     .guide-text { display: flex; flex-direction: column; gap: 8px; padding: 16px 22px 20px; flex: 1; }
     .guide-card h3 { font: 900 21px/1.25 var(--font-body); margin: 0; }
     .guide-card p { font-size: 16px; color: #3d424a; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
@@ -565,7 +565,7 @@
     .more-card { display: flex; flex-direction: column; text-decoration: none; border: 2.5px solid var(--kt-black); border-radius: 18px; overflow: hidden; background: #FFFDE0; transition: transform .25s var(--bounce); }
     .more-card:hover { transform: translateY(-4px); }
     .more-card[hidden], .more-guides[hidden], .guides[hidden] { display: none; }
-    .more-card img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-bottom: 2.5px solid var(--kt-black); }
+    .more-card img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: center; border-bottom: 2.5px solid var(--kt-black); }
     .more-card span { padding: 12px 14px 16px; font-weight: 900; font-size: 16px; line-height: 1.3; }
     .more-all { margin-top: 18px; }
     /* Boxes and buttons used on the Privacy Policy and Contact pages */
@@ -1270,7 +1270,7 @@
             path: new URL(link.href).pathname,
             title: e.title.$t,
             text: e.summary ? e.summary.$t.replace(/\s+/g, ' ').trim().slice(0, 160) : '',
-            image: e.media$thumbnail ? e.media$thumbnail.url.replace(/\/s\d+(-c)?\//, '/w800-h450-p-k-no-nu/') : '',
+            image: e.media$thumbnail ? e.media$thumbnail.url.replace(/\/s\d+[^\/]*\//, '/w800-rj/') : '',
             kaj: low.indexOf("kris ann's journey") !== -1
           };
         }).filter(function (g) { return g && (!featuredOnly || g.featured); }).slice(0, n);
@@ -1328,7 +1328,7 @@
             if (seen.indexOf(g.path) !== -1 || mgrid.children.length >= 4) return;
             seen.push(g.path);
             var a = el('a', 'more-card'); a.href = g.path;
-            if (g.image) { var im = el('img'); im.src = g.image.replace('w800-h450', 'w480-h270'); im.alt = ''; im.loading = 'lazy'; im.width = 480; im.height = 270; a.appendChild(im); }
+            if (g.image) { var im = el('img'); im.src = g.image.replace('/w800-rj/', '/w480-rj/'); im.alt = ''; im.loading = 'lazy'; im.width = 480; im.height = 270; a.appendChild(im); }
             a.appendChild(el('span', '', g.title));
             mgrid.appendChild(a);
           });
