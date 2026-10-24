@@ -168,11 +168,16 @@
     <b:if cond='data:view.isSingleItem'>
       <link expr:href='data:view.url.canonical' rel='canonical'/>
       <meta content='index, follow, max-image-preview:large' name='robots'/>
-      <meta content='article' property='og:type'/>
+      <meta expr:content='data:view.isPost ? &quot;article&quot; : &quot;website&quot;' property='og:type'/>
       <meta expr:content='data:view.url.canonical' property='og:url'/>
       <meta expr:content='data:view.title' property='og:title'/>
+      <meta content='en_US' property='og:locale'/>
+      <meta content='KriTere' name='author'/>
+      <meta expr:content='data:view.title' name='twitter:title'/>
+      <meta expr:content='data:view.featuredImage ?: &quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiiz-iBbouZRaTttBvaa33WCgPpnKCUAmWebpR91HWNzyQNLBe_gmvKOvYBqjTOeitATHTKiUJ1A6Pw4MNMo8OMOcUJAylCzLe0vqcLbzAgEbwLPd4lR_zkN0C9u1HV2-9LenzPbvBShI62sO4DHHE1vtf3z7IcVW1izW_CYAvNOe-reYLyLcuNuRnZR4A/s1600/kritere-share.jpg&quot;' name='twitter:image'/>
       <b:if cond='data:view.description'>
         <meta expr:content='data:view.description' property='og:description'/>
+        <meta expr:content='data:view.description' name='twitter:description'/>
       </b:if>
       <meta expr:content='data:view.featuredImage ?: &quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiiz-iBbouZRaTttBvaa33WCgPpnKCUAmWebpR91HWNzyQNLBe_gmvKOvYBqjTOeitATHTKiUJ1A6Pw4MNMo8OMOcUJAylCzLe0vqcLbzAgEbwLPd4lR_zkN0C9u1HV2-9LenzPbvBShI62sO4DHHE1vtf3z7IcVW1izW_CYAvNOe-reYLyLcuNuRnZR4A/s1600/kritere-share.jpg&quot;' property='og:image'/>
       <meta content='summary_large_image' name='twitter:card'/>
@@ -565,6 +570,9 @@
     .entry-body img { height: auto !important; margin: 18px auto; border-radius: 18px; }
     .entry-body iframe { width: 100% !important; height: auto !important; aspect-ratio: 16 / 9; border: 0; border-radius: 18px; }
     .back-home { margin-top: 40px; }
+    .crumbs { font-size: 15px; font-weight: 800; margin-bottom: 14px; color: #4a4f57; }
+    .crumbs a { text-decoration: none; }
+    .crumbs a:hover { text-decoration: underline; text-decoration-color: var(--kt-yellow); text-decoration-thickness: 3px; }
     .entry-meta { margin: -14px 0 28px; color: #4a4f57; font-weight: 700; font-size: 16px; }
     .entry-body table { width: 100%; border-collapse: collapse; margin: 0 0 20px; font-size: 16px; display: block; overflow-x: auto; }
     .entry-body th, .entry-body td { border: 2px solid var(--kt-black); padding: 8px 12px; text-align: left; vertical-align: top; }
@@ -1095,6 +1103,9 @@
           <b:elseif cond='data:view.isSingleItem'/>
             <b:loop values='data:posts' var='post'>
               <article class='entry'>
+                <b:if cond='data:view.isPost'>
+                  <nav aria-label='Breadcrumb' class='crumbs'><a expr:href='data:blog.homepageUrl'>KriTere</a> &#8250; <a expr:href='data:blog.searchUrl'>Game night guides</a></nav>
+                </b:if>
                 <h1><data:post.title/></h1>
                 <b:if cond='data:view.isPost'>
                   <p class='entry-meta'>By the KriTere family &#183; <time expr:datetime='data:post.date.iso8601'><data:post.date/></time></p>
@@ -1129,9 +1140,21 @@
   "dateModified": "<data:post.lastUpdated.iso8601.jsonEscaped/>",<b:if cond='data:post.featuredImage'>
   "image": "<b:eval expr='resizeImage(data:post.featuredImage, 1200, &quot;1200:630&quot;)'/>",</b:if>
   "inLanguage": "en",
-  "isFamilyFriendly": true,
+  "isFamilyFriendly": true,<b:if cond='data:post.labels'>
+  "keywords": "<b:loop index='k' values='data:post.labels filter (l =&gt; l.name != &quot;Featured&quot;)' var='label'><b:if cond='data:k != 0'>, </b:if><data:label.name.jsonEscaped/></b:loop>",</b:if><b:if cond='data:post.labels any (l =&gt; l.name == &quot;Don&#39;t Get Mad!&quot;)'>
+  "about": { "@type": "VideoGame", "@id": "https://www.kritere.com/#dont-get-mad", "name": "Don't Get Mad!", "url": "https://www.kritere.com/#dont-get-mad" },</b:if><b:if cond='data:post.labels any (l =&gt; l.name == &quot;Kris Ann&#39;s Journey&quot;)'>
+  "about": { "@type": "VideoGame", "@id": "https://www.kritere.com/#kris-anns-journey", "name": "Kris Ann's Journey", "url": "https://www.kritere.com/#kris-anns-journey" },</b:if>
   "author": { "@type": "Organization", "name": "KriTere", "url": "https://www.kritere.com/" },
-  "publisher": { "@type": "Organization", "name": "KriTere", "logo": { "@type": "ImageObject", "url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiORkyylSiIfsD7S_ToHyIBdmyp0BdGSh2vOXsHuhMKZG4ypYKFWcMIak6wqATsnidNebAqdRf5qSqWNrRe2V0SCMO4R5rmHz0S4KBzhQ55os28C9vHJDn1Q58yJBstiU2_lunP2oxxOMOqFurlKEB3yPfVtaSgRYimlPjpOrdPR2H8D3mw-FKIWoPPQcU/s512/icon-512x512.png" } }
+  "publisher": { "@type": "Organization", "@id": "https://www.kritere.com/#organization", "name": "KriTere", "logo": { "@type": "ImageObject", "url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiORkyylSiIfsD7S_ToHyIBdmyp0BdGSh2vOXsHuhMKZG4ypYKFWcMIak6wqATsnidNebAqdRf5qSqWNrRe2V0SCMO4R5rmHz0S4KBzhQ55os28C9vHJDn1Q58yJBstiU2_lunP2oxxOMOqFurlKEB3yPfVtaSgRYimlPjpOrdPR2H8D3mw-FKIWoPPQcU/s512/icon-512x512.png" } }
+}</script>
+                  <script type='application/ld+json'>{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "KriTere", "item": "https://www.kritere.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Game night guides", "item": "https://www.kritere.com/search" },
+    { "@type": "ListItem", "position": 3, "name": "<data:post.title.jsonEscaped/>", "item": "<data:post.url.canonical.jsonEscaped/>" }
+  ]
 }</script>
                 </b:if>
                 <a class='btn btn-black back-home' expr:href='data:blog.homepageUrl + &quot;#which-game&quot;'>&#8592; Back to the games</a>
